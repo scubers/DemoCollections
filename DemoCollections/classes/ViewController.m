@@ -74,8 +74,6 @@
 
     //初始化底部tableView
     {
-        CGSize windowSize = [UIApplication sharedApplication].keyWindow.frame.size;
-
         UIScrollView *tableScrollView = [[UIScrollView alloc] init];
         [self.view addSubview:tableScrollView];
         _tableScrollView = tableScrollView;

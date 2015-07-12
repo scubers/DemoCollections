@@ -180,6 +180,8 @@
 		A8AB88C51B52AECD009B6D52 /* POPVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88AF1B52AECD009B6D52 /* POPVector.mm */; };
 		A8AB88C61B52AECD009B6D52 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88B21B52AECD009B6D52 /* TransformationMatrix.cpp */; };
 		A8AB88CA1B52AEEA009B6D52 /* QTSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */; };
+		A8AB88CD1B52B0E7009B6D52 /* UIImage+JR.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */; };
+		A8AB88D31B52B247009B6D52 /* QTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D21B52B247009B6D52 /* QTTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -573,6 +575,10 @@
 		A8AB88B41B52AECD009B6D52 /* UnitBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitBezier.h; sourceTree = "<group>"; };
 		A8AB88C81B52AEEA009B6D52 /* QTSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTSelectionView.h; sourceTree = "<group>"; };
 		A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTSelectionView.m; sourceTree = "<group>"; };
+		A8AB88CB1B52B0E7009B6D52 /* UIImage+JR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JR.h"; sourceTree = "<group>"; };
+		A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JR.m"; sourceTree = "<group>"; };
+		A8AB88D11B52B247009B6D52 /* QTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTestViewController.h; sourceTree = "<group>"; };
+		A8AB88D21B52B247009B6D52 /* QTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,10 +657,10 @@
 		A8AB86981B52AE4C009B6D52 /* classes */ = {
 			isa = PBXGroup;
 			children = (
-				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
-				A8AB86991B52AE4C009B6D52 /* other */,
 				A8AB869F1B52AE4C009B6D52 /* ViewController.h */,
 				A8AB86A01B52AE4C009B6D52 /* ViewController.m */,
+				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
+				A8AB86991B52AE4C009B6D52 /* other */,
 			);
 			path = classes;
 			sourceTree = "<group>";
@@ -674,6 +680,8 @@
 		A8AB869C1B52AE4C009B6D52 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				A8AB88CB1B52B0E7009B6D52 /* UIImage+JR.h */,
+				A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -1191,6 +1199,8 @@
 			children = (
 				A8AB88C81B52AEEA009B6D52 /* QTSelectionView.h */,
 				A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */,
+				A8AB88D11B52B247009B6D52 /* QTTestViewController.h */,
+				A8AB88D21B52B247009B6D52 /* QTTestViewController.m */,
 			);
 			path = QTSelectionView;
 			sourceTree = "<group>";
@@ -1456,9 +1466,11 @@
 				A8AB88B81B52AECD009B6D52 /* POPAnimationExtras.mm in Sources */,
 				A8AB88211B52AEB8009B6D52 /* RACPassthroughSubscriber.m in Sources */,
 				A8AB88401B52AEB8009B6D52 /* UIControl+RACSignalSupportPrivate.m in Sources */,
+				A8AB88CD1B52B0E7009B6D52 /* UIImage+JR.m in Sources */,
 				A8AB88411B52AEB8009B6D52 /* UIDatePicker+RACSignalSupport.m in Sources */,
 				A8AB88331B52AEB8009B6D52 /* RACTargetQueueScheduler.m in Sources */,
 				A8AB87F71B52AEB8009B6D52 /* NSEnumerator+RACSequenceAdditions.m in Sources */,
+				A8AB88D31B52B247009B6D52 /* QTTestViewController.m in Sources */,
 				A8AB88181B52AEB8009B6D52 /* RACEvent.m in Sources */,
 				A8AB883E1B52AEB8009B6D52 /* UICollectionReusableView+RACSignalSupport.m in Sources */,
 				A8AB872D1B52AEAF009B6D52 /* UIImagePickerController+BlocksKit.m in Sources */,

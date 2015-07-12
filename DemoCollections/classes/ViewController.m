@@ -12,8 +12,9 @@
 #import "ReactiveCocoa.h"
 #import "POP+MCAnimate.h"
 #import "QTSelectionView.h"
+#import "QTMultiTableView.h"
 
-@interface ViewController () <QTSelectionViewDelegate,QTSelectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
+@interface ViewController () <QTSelectionViewDelegate,QTSelectionViewDataSource,UITableViewDelegate,UITableViewDataSource, QTMultiTableViewDataSource>
 
 /**
  *  顶部选择view
@@ -22,11 +23,8 @@
 /**
  *  底部ScrollView
  */
-@property (nonatomic, weak) UIScrollView *tableScrollView;
+@property (nonatomic, weak) QTMultiTableView *multiTableView;
 
-@property (nonatomic, weak) UITableView *tableView1;
-@property (nonatomic, weak) UITableView *tableView2;
-@property (nonatomic, weak) UITableView *tableView3;
 
 
 @end
@@ -51,12 +49,6 @@
 {
     [super viewDidAppear:animated];
 
-    _tableView1.frame = CGRectMake(0*320, 0, _tableScrollView.bounds.size.width, _tableScrollView.bounds.size.height);
-    _tableView2.frame = CGRectMake(1*320, 0, _tableScrollView.bounds.size.width, _tableScrollView.bounds.size.height);
-    _tableView3.frame = CGRectMake(2*320, 0, _tableScrollView.bounds.size.width, _tableScrollView.bounds.size.height);
-
-
-    _tableScrollView.contentSize = CGSizeMake(3*320, 0);
 }
 
 - (void)setupSubviews
@@ -72,50 +64,17 @@
 
     }
 
-    //初始化底部tableView
     {
-        UIScrollView *tableScrollView = [[UIScrollView alloc] init];
-        [self.view addSubview:tableScrollView];
-        _tableScrollView = tableScrollView;
-        tableScrollView.backgroundColor = [UIColor purpleColor];
-        _tableScrollView.pagingEnabled = YES;
-//        _tableScrollView.showsHorizontalScrollIndicator = NO;
+        QTMultiTableView *multiTableView = [[QTMultiTableView alloc] init];
+        _multiTableView = multiTableView;
+        _multiTableView.dataSource = self;
+        multiTableView.backgroundColor = [UIColor blueColor];
+        [self.view addSubview:multiTableView];
 
-        UITableView *tableView1 = [[UITableView alloc] init];
-        UITableView *tableView2 = [[UITableView alloc] init];
-        UITableView *tableView3 = [[UITableView alloc] init];
-
-        tableView1.tag = 10001;
-        tableView2.tag = 10002;
-        tableView3.tag = 10003;
-
-        _tableView1 = tableView1;
-        _tableView2 = tableView2;
-        _tableView3 = tableView3;
-
-        _tableView1.dataSource = self;
-        _tableView2.dataSource = self;
-        _tableView3.dataSource = self;
-
-        _tableView1.delegate = self;
-        _tableView2.delegate = self;
-        _tableView3.delegate = self;
-
-        [_tableScrollView addSubview:_tableView1];
-        [_tableScrollView addSubview:_tableView2];
-        [_tableScrollView addSubview:_tableView3];
-
-        //添加约束
-        {
-
-
-            [_tableScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.bottom.mas_equalTo(_tableScrollView.superview);
-                make.top.mas_equalTo(_selectionView.mas_bottom);
-            }];
-
-        }
-
+        [multiTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.bottom.mas_equalTo(multiTableView.superview);
+            make.top.mas_equalTo(_selectionView.mas_bottom);
+        }];
     }
 
 }
@@ -161,24 +120,13 @@
     return view;
 }
 #pragma mark - <UITableViewDelegate,UITableViewDataSource>
+#pragma mark - <QTMultiTableViewDataSource,QTMultiTableViewDelegate>
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfTableViewInMultiTableView:(QTMultiTableView *)multiTableView
 {
-    return 10;
+    return 3;
 }
 
-static int count = 0;
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%d", count++);
-    static NSString *ID = @"ID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
-    return cell;
-}
 
 @end
 

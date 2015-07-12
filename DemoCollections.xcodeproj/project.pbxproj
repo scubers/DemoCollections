@@ -182,6 +182,7 @@
 		A8AB88CA1B52AEEA009B6D52 /* QTSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */; };
 		A8AB88CD1B52B0E7009B6D52 /* UIImage+JR.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */; };
 		A8AB88D31B52B247009B6D52 /* QTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D21B52B247009B6D52 /* QTTestViewController.m */; };
+		A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -579,6 +580,8 @@
 		A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JR.m"; sourceTree = "<group>"; };
 		A8AB88D11B52B247009B6D52 /* QTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTestViewController.h; sourceTree = "<group>"; };
 		A8AB88D21B52B247009B6D52 /* QTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTestViewController.m; sourceTree = "<group>"; };
+		A8AB88D41B52B2D5009B6D52 /* QTMultiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTMultiTableView.h; sourceTree = "<group>"; };
+		A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTMultiTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1199,6 +1202,8 @@
 			children = (
 				A8AB88C81B52AEEA009B6D52 /* QTSelectionView.h */,
 				A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */,
+				A8AB88D41B52B2D5009B6D52 /* QTMultiTableView.h */,
+				A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */,
 				A8AB88D11B52B247009B6D52 /* QTTestViewController.h */,
 				A8AB88D21B52B247009B6D52 /* QTTestViewController.m */,
 			);
@@ -1421,6 +1426,7 @@
 				A8AB88061B52AEB8009B6D52 /* NSString+RACSupport.m in Sources */,
 				A8AB88091B52AEB8009B6D52 /* RACArraySequence.m in Sources */,
 				A8AB88741B52AEC2009B6D52 /* MCBeginTime.m in Sources */,
+				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,
 				A8AB88481B52AEB8009B6D52 /* UISwitch+RACSignalSupport.m in Sources */,
 				A8AB871C1B52AEAF009B6D52 /* NSObject+BKBlockObservation.m in Sources */,
 				A8AB88761B52AEC2009B6D52 /* MCSpringAnimation.m in Sources */,

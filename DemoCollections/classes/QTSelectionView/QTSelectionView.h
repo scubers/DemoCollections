@@ -14,7 +14,7 @@
  */
 @protocol QTSelectionViewDelegate <NSObject>
 @optional
-- (UIView *)viewForSelectionView:(QTSelectionView *)selectionView atIndex:(NSInteger)index;
+- (UIView *)selectionView:(QTSelectionView *)selectionView viewAtIndex:(NSInteger)index;
 - (UIView *)markViewForSelectionView:(QTSelectionView *)selectionView;
 
 - (void)selectionView:(QTSelectionView *)selectionView
@@ -31,7 +31,8 @@
 @protocol QTSelectionViewDataSource <NSObject>
 @required
 - (NSInteger)numberOfSelectionsInSelectionView:(QTSelectionView *)selectionView;
-- (CGSize)sizeForSelectionsInSelectionView:(QTSelectionView *)selectionView atIndex:(NSInteger)index;
+- (CGSize)selectionView:(QTSelectionView *)selectionView sizeForSelectionsAtIndex:(NSInteger)index;
+
 
 @optional
 - (NSInteger)marginForEachSelectionsInSelectionView:(QTSelectionView *)selectionView;

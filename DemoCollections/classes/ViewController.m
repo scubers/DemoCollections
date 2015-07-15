@@ -87,7 +87,7 @@
     return 3;
 }
 
-- (CGSize)sizeForSelectionsInSelectionView:(QTSelectionView *)selectionView atIndex:(NSInteger)index
+- (CGSize)selectionView:(QTSelectionView *)selectionView sizeForSelectionsAtIndex:(NSInteger)index
 {
     return CGSizeMake(320/3, 50);
 }

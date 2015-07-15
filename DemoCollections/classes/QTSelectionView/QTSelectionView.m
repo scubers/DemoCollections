@@ -129,7 +129,7 @@
     {
 
         //每个view的size
-        CGSize viewSize = [_dataSource sizeForSelectionsInSelectionView:self atIndex:i];
+        CGSize viewSize = [_dataSource selectionView:self sizeForSelectionsAtIndex:i];
 
 
         //每个Selection之间的间距
@@ -137,9 +137,9 @@
         //计算每个View的Frame
         //有代理时
         UIView *view;
-        if (_delegate && [_delegate respondsToSelector:@selector(viewForSelectionView:atIndex:)])
+        if (_delegate && [_delegate respondsToSelector:@selector(selectionView:viewAtIndex:)])
         {
-            view = [_delegate viewForSelectionView:self atIndex:i];
+            view = [_delegate selectionView:self viewAtIndex:i];
         }
         else //无代理时默认使用UILabel
         {

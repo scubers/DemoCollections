@@ -22,6 +22,12 @@
               onIndex:(NSInteger)from
                toView:(UIView *)toView
               onIndex:(NSInteger)toIndex;
+
+- (void)selectionView:(QTSelectionView *)selectionView
+        selectionView:(UIView *)view
+              atIndex:(NSInteger)index
+     withDistanceToCenter:(CGFloat)distance;
+
 @end
 
 
@@ -51,11 +57,15 @@
 
 @property (nonatomic, assign, getter=isMarViewHidden) BOOL markViewHidden;
 @property (nonatomic, assign, getter=isScrollable) BOOL scrollable;
+/**
+ *  是否跟随选择滚动
+ */
+@property (nonatomic, assign, getter=isScrollViewFollowSelect) BOOL scrollViewFollowSelect;
 
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 
 - (void)reloadSelections;
-- (void)scrollToIndex:(NSInteger)index;
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end
 

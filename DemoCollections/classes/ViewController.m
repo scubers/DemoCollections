@@ -41,7 +41,7 @@
     self.view.backgroundColor = [UIColor blackColor];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_selectionView scrollToIndex:19];
+//        [_selectionView scrollToIndex:5 animated:YES];
     });
 }
 
@@ -59,7 +59,7 @@
         selectionView.delegate = self;
         selectionView.dataSource = self;
         _selectionView = selectionView;
-        _selectionView.scrollable = NO;
+        _selectionView.backgroundColor = [UIColor yellowColor];
         [self.view addSubview:selectionView];
 
     }
@@ -84,12 +84,12 @@
 
 - (NSInteger)numberOfSelectionsInSelectionView:(QTSelectionView *)selectionView
 {
-    return 3;
+    return 10;
 }
 
 - (CGSize)selectionView:(QTSelectionView *)selectionView sizeForSelectionsAtIndex:(NSInteger)index
 {
-    return CGSizeMake(320/3, 50);
+    return CGSizeMake(320/3, 30);
 }
 
 - (void)selectionView:(QTSelectionView *)selectionView didSelectedFrom:(UIView *)fromView onIndex:(NSInteger)from toView:(UIView *)toView onIndex:(NSInteger)toIndex
@@ -107,7 +107,7 @@
 
 - (NSInteger)marginForEachSelectionsInSelectionView:(QTSelectionView *)selectionView
 {
-    return 0;
+    return 5;
 }
 
 - (UIView *)markViewForSelectionView:(QTSelectionView *)selectionView
@@ -118,6 +118,16 @@
     view.layer.cornerRadius = 4;
     view.clipsToBounds = YES;
     return view;
+}
+
+- (void)selectionView:(QTSelectionView *)selectionView
+        selectionView:(UIView *)view
+              atIndex:(NSInteger)index
+ withDistanceToCenter:(CGFloat)distance
+{
+    NSLog(@"%f",distance);
+
+
 }
 #pragma mark - <UITableViewDelegate,UITableViewDataSource>
 #pragma mark - <QTMultiTableViewDataSource,QTMultiTableViewDelegate>

@@ -9,14 +9,17 @@
 #import "QTSelectionView.h"
 
 #define QTSelectionViewDefaultMargin 5
+#define QTDefaultMarkViewHeight 5
 
-@interface QTSelectionView()
+@interface QTSelectionView() <UIScrollViewDelegate>
 
 @property (nonatomic, weak) UIScrollView *scrollView;
 
 @property (nonatomic, weak) UIView *markView;
 
 @property (nonatomic, strong) NSMutableArray *selections;
+@property (nonatomic, strong) NSMutableArray *marginViews;
+
 
 @end
 
@@ -27,7 +30,8 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor        = [UIColor whiteColor];
+        self.scrollViewFollowSelect = YES;
         [self setupSubviews];
     }
     return self;
@@ -38,9 +42,14 @@
 
     {
         UIScrollView *scrollView = [[UIScrollView alloc] init];
+
         scrollView.backgroundColor = [UIColor clearColor];
+        scrollView.delegate        = self;
+
         _scrollView = scrollView;
         [self addSubview:scrollView];
+
+        _scrollView.backgroundColor = [UIColor grayColor];
     }
 
 }
@@ -51,15 +60,15 @@
 
     {
         //设置scrollView的大小 以及 contentSize;
-        CGFloat x = _contentInsets.left;
-        CGFloat y = _contentInsets.top;
-        CGFloat width = self.bounds.size.width - _contentInsets.left - _contentInsets.right;
+        CGFloat x      = _contentInsets.left;
+        CGFloat y      = _contentInsets.top;
+        CGFloat width  = self.bounds.size.width - _contentInsets.left - _contentInsets.right;
         CGFloat height = self.bounds.size.height - _contentInsets.top - _contentInsets.bottom;
-        CGRect rect = CGRectMake(x, y, width, height);
-        _scrollView.frame = rect;
-        _scrollView.contentSize = CGSizeMake(CGRectGetMaxX([_selections.lastObject frame]), 0);
+
+        _scrollView.frame                          = CGRectMake(x, y, width, height);
+        _scrollView.contentSize                    = CGSizeMake(CGRectGetMaxX([_selections.lastObject frame]), 0);
+        _scrollView.userInteractionEnabled         = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
-        _scrollView.userInteractionEnabled = YES;
     }
 
 
@@ -67,11 +76,16 @@
         view.center = CGPointMake(view.center.x, _scrollView.center.y);
     }];
 
+    [self scrollToIndex:_selectedIndex animated:NO];
+
 }
 
 #pragma mark - 事件响应
 - (void)selectionClick:(UITapGestureRecognizer *)recognizer
 {
+
+    int previousIndex = _selectedIndex;
+
     //获取当前点击的view
     UIView *view = recognizer.view;
     int index = (int)[self.selections indexOfObject:view];
@@ -79,24 +93,36 @@
     //如果点中的就是已经选中的View则什么都不做
     if (index == _selectedIndex) return;
 
+    _selectedIndex = index;
 
-    [self scrollToIndex:index];
+    //移动MarkView
+    [self moveMarkViewToIndex:_selectedIndex animated:YES];
+
+    //通知代理
+    [self didSelectViewFrom:previousIndex to:_selectedIndex];
+
+    //判断是否需要滚动scrollView
+    if(_scrollViewFollowSelect) [self scrollViewScrollToIndex:_selectedIndex animated:YES];
+
+
 }
 
-- (void)selectViewAtIndex:(NSInteger)index
-{
-    int previousIndex = _selectedIndex;
-    _selectedIndex = (int)index;
+#pragma mark - 私有方法
 
+/**
+ *  移动底部指示View （MarkView）到指定index
+ */
+- (void)moveMarkViewToIndex:(NSInteger)index animated:(BOOL)animated
+{
     UIView *view = [_selections objectAtIndex:index];
 
     if (!_markViewHidden)
     {
         //标识滑动到指定的index下
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:animated ? 0.3 : 0 animations:^{
 
             CGFloat x = view.center.x;
-            CGFloat y = view.center.y + view.bounds.size.height/2 - 5/2;
+            CGFloat y = _scrollView.frame.size.height - QTDefaultMarkViewHeight;
             if (_dataSource && [_dataSource respondsToSelector:@selector(centeyYForMarkViewInSelectionView:)])
             {
                 y = [_dataSource centeyYForMarkViewInSelectionView:self];
@@ -106,18 +132,96 @@
         }];
     }
 
+}
+
+/**
+ *  手动选择某个View
+ */
+- (void)selectViewAtIndex:(NSInteger)index animated:(BOOL)animated
+{
+    int previousIndex = _selectedIndex;
+    _selectedIndex = (int)index;
+
+    [self moveMarkViewToIndex:_selectedIndex animated:animated];
+
+    [self didSelectViewFrom:previousIndex to:_selectedIndex];
+}
+
+/**
+ *  让ScrollView滚动至选择中的view居中
+ */
+- (void)scrollViewScrollToIndex:(NSInteger)index animated:(BOOL)animated
+{
+    if (index > _selections.count-1 || index < 0 ) return;
+
+    if (_scrollView.isScrollEnabled)
+    {
+        CGRect rect = [[_selections objectAtIndex:index] frame];
+        CGPoint point = rect.origin;
+
+        CGFloat windowWidth = _scrollView.frame.size.width;
+        //计算滚动到的位置
+        CGFloat x = point.x - windowWidth/2 + rect.size.width/2;
+        if ( x < 0 )
+        {
+            point = CGPointZero;
+        }
+        else if(x > _scrollView.contentSize.width - windowWidth)
+        {
+            point = CGPointMake(_scrollView.contentSize.width - windowWidth, 0);
+        }
+        else
+        {
+            point = CGPointMake(x, 0);
+        }
+        [_scrollView setContentOffset:point animated:animated];
+    }
+}
+
+/**
+ *  通知外部代理方法
+ */
+- (void)didSelectViewFrom:(NSInteger)from to:(NSInteger)to
+{
     //通知代理
     if (_delegate && [_delegate respondsToSelector:@selector(selectionView:didSelectedFrom:onIndex:toView:onIndex:)])
     {
-        [_delegate selectionView:self didSelectedFrom:[_selections objectAtIndex:previousIndex] onIndex:previousIndex toView:[_selections objectAtIndex:index] onIndex:index];
+        [_delegate selectionView:self didSelectedFrom:[_selections objectAtIndex:from] onIndex:from toView:[_selections objectAtIndex:to] onIndex:to];
     }
+}
 
+#pragma mark - <UIScrollViewDelegate>
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
 
+    if (_delegate && [_delegate respondsToSelector:@selector(selectionView:selectionView:atIndex:withDistanceToCenter:)])
+    {
+
+        __weak typeof(self) ws = self;
+        [_selections enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+
+            //判断当前view和可视窗口有无相交，即判断view是否可见
+            CGRect rect = CGRectIntersection([_scrollView convertRect:_scrollView.bounds toView:self], [view convertRect:view.bounds toView:self]);
+
+            if (!CGRectIsNull(rect))//如果可见，计算此view的中间与可视窗口中心的距离
+            {
+                
+                CGFloat currentCenterX = _scrollView.contentOffset.x + _scrollView.frame.size.width / 2;
+                CGFloat distance =  ABS(currentCenterX - view.center.x);
+
+                [_delegate selectionView:ws selectionView:view atIndex:idx withDistanceToCenter:distance];
+            }
+
+        }];
+    }
 }
 
 #pragma mark - 公共方法
 
+/**
+ *  重新绘制ScrollView内部控件
+ */
 - (void)reloadSelections
 {
     [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -144,8 +248,11 @@
         else //无代理时默认使用UILabel
         {
             UILabel *label = [[UILabel alloc] init];
+
+            label.backgroundColor = [UIColor purpleColor];
+
             label.text = [NSString stringWithFormat:@"%zd",i];
-            view = label;
+            view       = label;
         }
 
         CGFloat x = 0;
@@ -159,10 +266,13 @@
         [self.selections addObject:view];
         [_scrollView addSubview:view];
 
+
         //设置事件
         {
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectionClick:)];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(selectionClick:)];
             view.userInteractionEnabled = YES;
+
             [view addGestureRecognizer:tap];
 
         }
@@ -182,7 +292,7 @@
                 {
                     markView = [[UIView alloc] init];
                     markView.backgroundColor = [UIColor yellowColor];
-                    markView.frame = CGRectMake(0, 0, [_selections[0] bounds].size.width, 5);
+                    markView.frame = CGRectMake(0, 0, [_selections[0] bounds].size.width, QTDefaultMarkViewHeight);
                 }
                 _markView.backgroundColor = [UIColor yellowColor];
                 [_scrollView addSubview:markView];
@@ -190,42 +300,16 @@
             }
         }
     }
-
-    //默认选中第一个
-    [self scrollToIndex:_selectedIndex];
-
 }
 
-- (void)scrollToIndex:(NSInteger)index
+/**
+ *  滚动至并选中对应的view
+ */
+- (void)scrollToIndex:(NSInteger)index animated:(BOOL)animated
 {
-    if (index > _selections.count-1 || index < 0 ) return;
+    [self scrollViewScrollToIndex:index animated:animated];
 
-    if (_scrollView.isScrollEnabled)
-    {
-        CGRect rect = [[_selections objectAtIndex:index] frame];
-        CGPoint point = rect.origin;
-
-        CGFloat windowWidth = _scrollView.frame.size.width;
-        //计算滚动到的位置
-        CGFloat x = point.x - windowWidth/2 + rect.size.width/2;
-        if (x < 0 )
-        {
-            point = CGPointZero;
-        }
-        else if(x > _scrollView.contentSize.width - windowWidth)
-        {
-            point = CGPointMake(_scrollView.contentSize.width - windowWidth, 0);
-        }
-        else
-        {
-            point = CGPointMake(x, 0);
-        }
-        [_scrollView setContentOffset:point animated:YES];
-    }
-
-    [self selectViewAtIndex:index];
-
-
+    [self selectViewAtIndex:index animated:animated];
 }
 
 #pragma mark - Getter Setter
@@ -250,6 +334,17 @@
         _selections = [NSMutableArray array];
     }
     return _selections;
+}
+
+/**
+ *  懒加载
+ */
+- (NSMutableArray *)marginViews
+{
+    if (!_marginViews) {
+        _marginViews = [NSMutableArray array];
+    }
+    return _marginViews;
 }
 
 - (int)selectionMargin

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84643981B5A8EDD009322F1 /* QTTagListView.m */; };
+		A846439B1B5A9F68009322F1 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = A846439A1B5A9F68009322F1 /* abc.png */; };
 		A8AB867E1B52ADEF009B6D52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867C1B52ADEF009B6D52 /* Main.storyboard */; };
 		A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867F1B52ADEF009B6D52 /* Images.xcassets */; };
 		A8AB86831B52ADEF009B6D52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB86811B52ADEF009B6D52 /* LaunchScreen.xib */; };
@@ -196,6 +198,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A84643971B5A8EDD009322F1 /* QTTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListView.h; sourceTree = "<group>"; };
+		A84643981B5A8EDD009322F1 /* QTTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListView.m; sourceTree = "<group>"; };
+		A846439A1B5A9F68009322F1 /* abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc.png; sourceTree = "<group>"; };
 		A8AB866F1B52ADEF009B6D52 /* DemoCollections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoCollections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8AB86731B52ADEF009B6D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8AB867D1B52ADEF009B6D52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -602,6 +607,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A84643961B5A8EB4009322F1 /* QTTagListView */ = {
+			isa = PBXGroup;
+			children = (
+				A84643971B5A8EDD009322F1 /* QTTagListView.h */,
+				A84643981B5A8EDD009322F1 /* QTTagListView.m */,
+			);
+			path = QTTagListView;
+			sourceTree = "<group>";
+		};
 		A8AB86661B52ADEF009B6D52 = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +646,7 @@
 		A8AB86721B52ADEF009B6D52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A846439A1B5A9F68009322F1 /* abc.png */,
 				A8AB867C1B52ADEF009B6D52 /* Main.storyboard */,
 				A8AB867F1B52ADEF009B6D52 /* Images.xcassets */,
 				A8AB86811B52ADEF009B6D52 /* LaunchScreen.xib */,
@@ -662,6 +677,7 @@
 			children = (
 				A8AB869F1B52AE4C009B6D52 /* ViewController.h */,
 				A8AB86A01B52AE4C009B6D52 /* ViewController.m */,
+				A84643961B5A8EB4009322F1 /* QTTagListView */,
 				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
 				A8AB86991B52AE4C009B6D52 /* other */,
 			);
@@ -1290,6 +1306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A846439B1B5A9F68009322F1 /* abc.png in Resources */,
 				A8AB867E1B52ADEF009B6D52 /* Main.storyboard in Resources */,
 				A8AB86831B52ADEF009B6D52 /* LaunchScreen.xib in Resources */,
 				A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */,
@@ -1430,6 +1447,7 @@
 				A8AB88481B52AEB8009B6D52 /* UISwitch+RACSignalSupport.m in Sources */,
 				A8AB871C1B52AEAF009B6D52 /* NSObject+BKBlockObservation.m in Sources */,
 				A8AB88761B52AEC2009B6D52 /* MCSpringAnimation.m in Sources */,
+				A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */,
 				A8AB88351B52AEB8009B6D52 /* RACTuple.m in Sources */,
 				A8AB883C1B52AEB8009B6D52 /* UIBarButtonItem+RACCommandSupport.m in Sources */,
 				A8AB883A1B52AEB8009B6D52 /* UIActionSheet+RACSignalSupport.m in Sources */,
@@ -1678,6 +1696,7 @@
 				A8AB86941B52ADEF009B6D52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8AB86951B52ADEF009B6D52 /* Build configuration list for PBXNativeTarget "DemoCollectionsTests" */ = {
 			isa = XCConfigurationList;
@@ -1686,6 +1705,7 @@
 				A8AB86971B52ADEF009B6D52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

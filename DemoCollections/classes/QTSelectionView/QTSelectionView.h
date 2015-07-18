@@ -57,11 +57,19 @@
 
 @property (nonatomic, assign, getter=isMarViewHidden) BOOL markViewHidden;
 @property (nonatomic, assign, getter=isScrollable) BOOL scrollable;
+
 /**
  *  是否跟随选择滚动
  */
 @property (nonatomic, assign, getter=isScrollViewFollowSelect) BOOL scrollViewFollowSelect;
 
+/**
+ *  内部scrollView的contentInsets
+ */
+@property (nonatomic, assign) UIEdgeInsets scrollViewContentInsets;
+/**
+ *  scrollView外部的contentInsets
+ */
 @property (nonatomic, assign) UIEdgeInsets contentInsets;
 
 - (void)reloadSelections;

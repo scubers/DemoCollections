@@ -78,6 +78,8 @@
 
     [self scrollToIndex:_selectedIndex animated:NO];
 
+    [_scrollView bringSubviewToFront:_markView];
+
 }
 
 #pragma mark - 事件响应
@@ -162,11 +164,11 @@
         CGFloat windowWidth = _scrollView.frame.size.width;
         //计算滚动到的位置
         CGFloat x = point.x - windowWidth/2 + rect.size.width/2;
-        if ( x < 0 )
+        if ( x < (-1 * _scrollView.contentInset.left) )
         {
             point = CGPointZero;
         }
-        else if(x > _scrollView.contentSize.width - windowWidth)
+        else if(x > (_scrollView.contentSize.width - windowWidth + _scrollView.contentInset.right))
         {
             point = CGPointMake(_scrollView.contentSize.width - windowWidth, 0);
         }
@@ -367,6 +369,14 @@
     _scrollable = scrollable;
     _scrollView.scrollEnabled = scrollable;
 }
+
+- (void)setScrollViewContentInsets:(UIEdgeInsets)scrollViewContentInsets
+{
+    _scrollViewContentInsets = scrollViewContentInsets;
+
+    _scrollView.contentInset = scrollViewContentInsets;
+}
+
 
 @end
 

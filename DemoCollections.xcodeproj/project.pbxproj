@@ -587,6 +587,7 @@
 		A8AB88D21B52B247009B6D52 /* QTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTestViewController.m; sourceTree = "<group>"; };
 		A8AB88D41B52B2D5009B6D52 /* QTMultiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTMultiTableView.h; sourceTree = "<group>"; };
 		A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTMultiTableView.m; sourceTree = "<group>"; };
+		A8D5793D1B5AAAD100824E82 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -646,6 +647,7 @@
 		A8AB86721B52ADEF009B6D52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A8D5793D1B5AAAD100824E82 /* Prefix.pch */,
 				A846439A1B5A9F68009322F1 /* abc.png */,
 				A8AB867C1B52ADEF009B6D52 /* Main.storyboard */,
 				A8AB867F1B52ADEF009B6D52 /* Images.xcassets */,
@@ -1627,6 +1629,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DemoCollections/Prefix.pch;
 				INFOPLIST_FILE = DemoCollections/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1637,6 +1641,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DemoCollections/Prefix.pch;
 				INFOPLIST_FILE = DemoCollections/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

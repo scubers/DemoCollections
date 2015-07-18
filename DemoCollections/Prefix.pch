@@ -1,0 +1,74 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+
+// 1.判断是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+// 2.获得RGB颜色
+#define RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+// 3.获取随机颜色
+#define RandomColor [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:arc4random()];
+
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+#define TABBAR_HEIGHT 49
+
+#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
+
+//use dlog to print while in debug model
+#ifdef DEBUG
+#   define JRLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define JRLog(...)
+#endif
+
+
+
+//使用一个弱引用来调用self，以防止再block中使用self的循环调用
+#define weak_self __unsafe_unretained typeof(self)
+
+
+/*
+ 专门用来保存单例代码
+ 最后一行不要加 \
+ */
+
+// @interface
+#define singleton_interface(className) \
++ (className *)shared##className;
+
+// @implementation
+#define singleton_implementation(className) \
+static className *_instance; \
++ (id)allocWithZone:(NSZone *)zone \
+{ \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instance = [super allocWithZone:zone]; \
+}); \
+return _instance; \
+} \
++ (className *)shared##className \
+{ \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+_instance = [[self alloc] init]; \
+}); \
+return _instance; \
+}
+
+#endif

@@ -43,8 +43,10 @@
     {
         UIScrollView *scrollView = [[UIScrollView alloc] init];
 
-        scrollView.backgroundColor = [UIColor clearColor];
-        scrollView.delegate        = self;
+        scrollView.backgroundColor                 = [UIColor clearColor];
+        scrollView.delegate                        = self;
+        _scrollView.userInteractionEnabled         = YES;
+        _scrollView.showsHorizontalScrollIndicator = NO;
 
         _scrollView = scrollView;
         [self addSubview:scrollView];
@@ -67,8 +69,7 @@
 
         _scrollView.frame                          = CGRectMake(x, y, width, height);
         _scrollView.contentSize                    = CGSizeMake(CGRectGetMaxX([_selections.lastObject frame]), 0);
-        _scrollView.userInteractionEnabled         = YES;
-        _scrollView.showsHorizontalScrollIndicator = NO;
+
     }
 
 

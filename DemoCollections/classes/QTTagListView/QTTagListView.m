@@ -42,8 +42,6 @@
     {
         UIScrollView *scrollView = [[UIScrollView alloc] init];
 
-        scrollView.backgroundColor = [UIColor blackColor];
-
         [self addSubview:scrollView];
         _scrollView = scrollView;
     }
@@ -66,8 +64,6 @@
 
         _scrollView.frame = CGRectMake(x, y, width, height);
 
-
-        int currentRow = 0;
         for (int i = 0; i < _tagTitles.count; i++)
         {
 
@@ -107,8 +103,6 @@
 
                 if (x + width > _scrollView.frame.size.width)
                 {
-                    //行数+1
-                    currentRow++;
 
                     CGFloat extractWidth = _scrollView.frame.size.width - (x - _columnMargin);
 
@@ -143,15 +137,9 @@
                     x  = 0;
                     y  = y + _rowMargin + _tagHeight;
 
-
                 }
-
-
                 btn.frame = CGRectMake(x, y, width, height);
             }
-
-
-
 
             [_scrollView addSubview:btn];
             [self.tags addObject:btn];
@@ -163,16 +151,30 @@
 #pragma mark - 公共方法
 - (void)reloadTags
 {
-//    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//    [self.tags removeAllObjects];
-//
-//    [self setNeedsDisplay];
+    [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.tags removeAllObjects];
+
+    [self setNeedsDisplay];
 }
 
 #pragma mark - 事件响应
 - (void)tagClick:(UIButton *)button
 {
     button.selected = !button.isSelected;
+
+    //通知代理
+    if (_delegate)
+    {
+        if ([_delegate respondsToSelector:@selector(tagListView:didSelectedAtIndex:)] && button.isSelected)
+        {
+            [_delegate tagListView:self didSelectedAtIndex:[self.tags indexOfObject:button]];
+        }
+        else
+        {
+            [_delegate tagListView:self didDeselectedAtIndex:[self.tags indexOfObject:button]];
+        }
+    }
+
 }
 
 #pragma mark - Getter Setter

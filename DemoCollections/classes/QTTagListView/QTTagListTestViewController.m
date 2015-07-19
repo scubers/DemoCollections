@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 王俊仁. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "QTTagListTestViewController.h"
 #import "Masonry.h"
 #import "BlocksKit.h"
 #import "ReactiveCocoa.h"
@@ -17,13 +17,13 @@
 #import "QTTagListView.h"
 
 
-@interface ViewController () <QTTagListViewDelegate>
+@interface QTTagListTestViewController () <QTTagListViewDelegate>
 
 @property (nonatomic, weak) QTTagListView *tagListView;
 
 @end
 
-@implementation ViewController
+@implementation QTTagListTestViewController
 
 #pragma mark - 生命周期
 - (void)viewDidLoad
@@ -31,7 +31,7 @@
     [super viewDidLoad];
 
     [self setupSubviews];
-  
+
 }
 
 - (void)setupSubviews

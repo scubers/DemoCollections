@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84643981B5A8EDD009322F1 /* QTTagListView.m */; };
 		A846439B1B5A9F68009322F1 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = A846439A1B5A9F68009322F1 /* abc.png */; };
+		A88AACB71B5B744F00FBBFA7 /* QTTagListTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */; };
 		A8AB867E1B52ADEF009B6D52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867C1B52ADEF009B6D52 /* Main.storyboard */; };
 		A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867F1B52ADEF009B6D52 /* Images.xcassets */; };
 		A8AB86831B52ADEF009B6D52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8AB86811B52ADEF009B6D52 /* LaunchScreen.xib */; };
@@ -201,6 +202,8 @@
 		A84643971B5A8EDD009322F1 /* QTTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListView.h; sourceTree = "<group>"; };
 		A84643981B5A8EDD009322F1 /* QTTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListView.m; sourceTree = "<group>"; };
 		A846439A1B5A9F68009322F1 /* abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc.png; sourceTree = "<group>"; };
+		A88AACB51B5B744F00FBBFA7 /* QTTagListTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListTestViewController.h; sourceTree = "<group>"; };
+		A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListTestViewController.m; sourceTree = "<group>"; };
 		A8AB866F1B52ADEF009B6D52 /* DemoCollections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoCollections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8AB86731B52ADEF009B6D52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8AB867D1B52ADEF009B6D52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -613,6 +616,8 @@
 			children = (
 				A84643971B5A8EDD009322F1 /* QTTagListView.h */,
 				A84643981B5A8EDD009322F1 /* QTTagListView.m */,
+				A88AACB51B5B744F00FBBFA7 /* QTTagListTestViewController.h */,
+				A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */,
 			);
 			path = QTTagListView;
 			sourceTree = "<group>";
@@ -1379,6 +1384,7 @@
 				A8AB88071B52AEB8009B6D52 /* NSURLConnection+RACSupport.m in Sources */,
 				A8AB88371B52AEB8009B6D52 /* RACUnarySequence.m in Sources */,
 				A8AB87FC1B52AEB8009B6D52 /* NSObject+RACDeallocating.m in Sources */,
+				A88AACB71B5B744F00FBBFA7 /* QTTagListTestViewController.m in Sources */,
 				A8AB88311B52AEB8009B6D52 /* RACSubscriptingAssignmentTrampoline.m in Sources */,
 				A8AB86C11B52AEA5009B6D52 /* MASViewConstraint.m in Sources */,
 				A8AB86BC1B52AEA5009B6D52 /* MASCompositeConstraint.m in Sources */,

@@ -8,22 +8,35 @@
 
 #import <UIKit/UIKit.h>
 
+@class QTTagListView;
+
+@protocol QTTagListViewDelegate <NSObject>
+
+@optional
+
+- (void)tagListView:(QTTagListView *)tagListView didSelectedAtIndex:(NSInteger)index;
+- (void)tagListView:(QTTagListView *)tagListView didDeselectedAtIndex:(NSInteger)index;
+
+
+@end
+
 @interface QTTagListView : UIView
 
-@property (nonatomic, strong) NSArray  *tagTitles;
+@property (nonatomic, strong) NSMutableArray        *tagTitles;
+@property (nonatomic, assign) UIEdgeInsets          contentInsets;
 
-@property (nonatomic, assign) UIEdgeInsets contentInsets;
 
+@property (nonatomic, assign) CGFloat               rowMargin;
+@property (nonatomic, assign) CGFloat               columnMargin;
 
-@property (nonatomic, assign) CGFloat rowMargin;
-@property (nonatomic, assign) CGFloat columnMargin;
-
-@property (nonatomic, assign) CGFloat tagHeight;
-
+@property (nonatomic, assign) CGFloat               tagHeight;
 /**
  *  最多有多少列
  */
-@property (nonatomic, assign) NSUInteger columns;
+@property (nonatomic, assign) NSUInteger            columns;
+
+@property (nonatomic, weak  ) id<QTTagListViewDelegate> delegate;
+
 
 - (void)reloadTags;
 

@@ -41,6 +41,7 @@
     [self setupSubviews];
 
     self.view.backgroundColor = [UIColor blackColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //        [_selectionView scrollToIndex:5 animated:YES];
@@ -88,7 +89,7 @@
 
 - (NSInteger)numberOfSelectionsInSelectionView:(QTSelectionView *)selectionView
 {
-    return 50;
+    return 5;
 }
 
 - (CGSize)selectionView:(QTSelectionView *)selectionView sizeForSelectionsAtIndex:(NSInteger)index

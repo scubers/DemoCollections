@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
 
+    self.view.backgroundColor = RandomColor;
+
     [self setupSubviews];
 
 }

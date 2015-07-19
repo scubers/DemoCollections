@@ -47,6 +47,7 @@
         scrollView.delegate                        = self;
         _scrollView.userInteractionEnabled         = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator   = NO;
 
         _scrollView = scrollView;
         [self addSubview:scrollView];
@@ -69,6 +70,7 @@
 
         _scrollView.frame                          = CGRectMake(x, y, width, height);
         _scrollView.contentSize                    = CGSizeMake(CGRectGetMaxX([_selections.lastObject frame]), 0);
+        _scrollView.showsHorizontalScrollIndicator = NO;
 
     }
 
@@ -228,6 +230,7 @@
 - (void)reloadSelections
 {
     [_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.selections removeAllObjects];
 
     //根据数据源初始化内部控件
     NSInteger count = [_dataSource numberOfSelectionsInSelectionView:self];

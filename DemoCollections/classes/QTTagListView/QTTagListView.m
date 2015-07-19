@@ -64,6 +64,11 @@
 
         _scrollView.frame = CGRectMake(x, y, width, height);
 
+        _scrollView.showsVerticalScrollIndicator = YES;
+
+
+        int currentLine = 0;
+
         for (int i = 0; i < _tagTitles.count; i++)
         {
 
@@ -103,6 +108,8 @@
 
                 if (x + width > _scrollView.frame.size.width)
                 {
+
+                    currentLine++;
 
                     CGFloat extractWidth = _scrollView.frame.size.width - (x - _columnMargin);
 
@@ -145,6 +152,47 @@
             [self.tags addObject:btn];
             
         }
+
+        {//处理最后一行，弱长度超过了_scrollView的2/3的话，让最行一行也充满一行
+
+            UIButton *lastButton = self.tags.lastObject;
+
+            CGFloat extractWidth = _scrollView.frame.size.width - (lastButton.frame.origin.x + lastButton.frame.size.width);
+
+            if (extractWidth < _scrollView.frame.size.width / 3)
+            {
+
+                NSMutableArray *lastLine = [NSMutableArray array];
+                [self.tags enumerateObjectsWithOptions:NSEnumerationReverse
+                                            usingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
+                    if (button.frame.origin.y == lastButton.frame.origin.y)
+                    {
+                        [lastLine insertObject:button atIndex:0];
+                    }
+                    else
+                    {
+                        *stop = YES;
+                    }
+
+                }];
+
+
+                for (int j = 0; j < lastLine.count; j++)
+                {
+                    CGFloat lastWidth = [lastLine[j] frame].size.width + extractWidth / lastLine.count;
+                    CGFloat lastX = [lastLine[j] frame].origin.x + j * (extractWidth / lastLine.count);
+                    CGFloat lastY = y;
+                    CGFloat lastHeight = _tagHeight;
+
+                    [lastLine[j] setFrame:CGRectMake(lastX, lastY, lastWidth, lastHeight)];
+                }
+            }
+        }
+
+        NSLog(@"%d", currentLine);
+
+        CGRect lastFrame = [self.tags.lastObject frame];
+        _scrollView.contentSize = CGSizeMake(0, lastFrame.origin.y + lastFrame.size.height);
     }
 }
 
@@ -165,13 +213,13 @@
     //通知代理
     if (_delegate)
     {
-        if ([_delegate respondsToSelector:@selector(tagListView:didSelectedAtIndex:)] && button.isSelected)
+        if ([_delegate respondsToSelector:@selector(tagListView:didSelectedTag:atIndex:)] && button.isSelected)
         {
-            [_delegate tagListView:self didSelectedAtIndex:[self.tags indexOfObject:button]];
+            [_delegate tagListView:self didSelectedTag:button atIndex:[self.tags indexOfObject:button]];
         }
-        else
+        else if([_delegate respondsToSelector:@selector(tagListView:didDeselectedTag:atIndex:)] && !button.isSelected)
         {
-            [_delegate tagListView:self didDeselectedAtIndex:[self.tags indexOfObject:button]];
+            [_delegate tagListView:self didDeselectedTag:button atIndex:[self.tags indexOfObject:button]];
         }
     }
 

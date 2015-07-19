@@ -27,6 +27,8 @@
 
 @property (nonatomic, weak) UIDatePicker *datePicker;
 
+@property (nonatomic, copy) CompleteHandler handler;
+
 @end
 
 @implementation QTPickerView
@@ -36,7 +38,7 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        self.layer.cornerRadius = 5;
+        self.layer.cornerRadius = 8;
         self.clipsToBounds      = YES;
         self.backgroundColor    = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
 
@@ -50,6 +52,15 @@
     QTPickerView *pickerView = [[QTPickerView alloc] init];
 
     pickerView.pickerMode = pickerMode;
+
+    return pickerView;
+}
+
+- (instancetype)initWithPickerMode:(QTPickerMode)pickerMode withBlock:(CompleteHandler)handler
+{
+    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:pickerMode];
+
+    pickerView.handler = handler;
 
     return pickerView;
 }
@@ -119,7 +130,7 @@
     //初始化pickView
     {
 
-        if (_pickerMode != QTPickerModeCoustom)
+        if (_pickerMode != QTPickerModeCustomize)
         {
             UIDatePicker *dp = [[UIDatePicker alloc] init];
 
@@ -205,6 +216,11 @@
     {
         [_delegate pickerViewDidConfirm:self];
     }
+
+    if (_handler)
+    {
+        self.handler(self, YES);
+    }
 }
 
 - (void)cancelButtonClick:(UIButton *)button
@@ -213,12 +229,17 @@
     {
         [_delegate pickerViewDidCancel:self];
     }
+
+    if (_handler)
+    {
+        self.handler(self, NO);
+    }
 }
 
 #pragma mark - 公共方法
 - (UIView *)pickerView
 {
-    if (_pickerMode == QTPickerModeCoustom)
+    if (_pickerMode == QTPickerModeCustomize)
     {
         return _pickerView;
     }
@@ -281,6 +302,14 @@
 
     }];
 
+    //使用pop动画
+//    [NSObject pop_animate:^{
+//
+//        ws.pop_springSpeed = 20;
+//        cover.layer.pop_spring.opacity = 0.5;
+//        ws.pop_spring.center           = window.center;
+//
+//    } completion:nil];
 
 
 }

@@ -30,7 +30,21 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCoustom];
+//    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCustomize];
+    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCustomize
+                                                              withBlock:^(QTPickerView *pickerView, BOOL isConfirm) {
+        if (isConfirm)
+        {
+            UIPickerView *pv = (UIPickerView *)pickerView.pickerView;
+            NSLog(@"%.2zd小时，%@分钟",[pv selectedRowInComponent:0], [pv selectedRowInComponent:2] == 0 ? @"00": @"30");
+            [pickerView hide];
+        }
+        else
+        {
+            NSLog(@"取消");
+            [pickerView hide];
+        }
+    }];
 
     pickerView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     pickerView.delegate        = self;
@@ -76,6 +90,7 @@
     sv.dataSource = self;
     sv.delegate   = self;
 
+    sv.scrollable = NO;
 
     return sv;
 
@@ -134,20 +149,23 @@
     }
 }
 
-- (void)pickerViewDidConfirm:(QTPickerView *)pickerView
-{
-    UIPickerView *pv = (UIPickerView *)pickerView.pickerView;
+//- (void)pickerViewDidConfirm:(QTPickerView *)pickerView
+//{
+//    UIPickerView *pv = (UIPickerView *)pickerView.pickerView;
+//
+//    NSLog(@"%.2zd小时，%@分钟",[pv selectedRowInComponent:0], [pv selectedRowInComponent:2] == 0 ? @"00": @"30");
+//
+//    [pickerView hide];
+//
+//}
+//
+//- (void)pickerViewDidCancel:(QTPickerView *)pickerView
+//{
+//    NSLog(@"取消");
+//    [pickerView hide];
+//}
 
-    NSLog(@"%.2zd小时，%@分钟",[pv selectedRowInComponent:0], [pv selectedRowInComponent:2] == 0 ? @"00": @"30");
-
-}
-
-- (void)pickerViewDidCancel:(QTPickerView *)pickerView
-{
-    NSLog(@"取消");
-}
-
-#pragma mark - <QTPickerViewDelegate,QTSelectionViewDataSource>
+#pragma mark - <QTSelectionViewDelegate,QTSelectionViewDataSource>
 - (NSInteger)numberOfSelectionsInSelectionView:(QTSelectionView *)selectionView
 {
     return 3;
@@ -155,7 +173,7 @@
 
 - (NSInteger)marginForEachSelectionsInSelectionView:(QTSelectionView *)selectionView
 {
-    return 5;
+    return 0;
 }
 
 - (CGSize)selectionView:(QTSelectionView *)selectionView sizeForSelectionsAtIndex:(NSInteger)index

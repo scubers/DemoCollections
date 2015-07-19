@@ -13,7 +13,7 @@ typedef enum
     QTPickerModeDate,
     QTPickerModeDateAndTime,
     QTPickerModeCountDownTimer,
-    QTPickerModeCoustom
+    QTPickerModeCustomize
 
 }QTPickerMode;
 
@@ -28,6 +28,9 @@ typedef enum
 } QTPickerAnimateDirection;
 
 @class QTPickerView;
+
+typedef void(^CompleteHandler)(QTPickerView *pickerView, BOOL isConfirm);
+
 
 typedef void(^QTCancelButtonAction)(QTPickerView *pickerView);
 typedef void(^QTConfirmButtonAction)(QTPickerView *pickerView);
@@ -62,7 +65,14 @@ typedef void(^QTConfirmButtonAction)(QTPickerView *pickerView);
 
 @property (nonatomic, assign) QTPickerAnimateDirection animateDirection;
 
+/**
+ *  初始化，本初始化需要使用代理来处理确认
+ */
 - (instancetype)initWithPickerMode:(QTPickerMode)pickerMode;
+/**
+ *  本初始化不需要代理，直接使用Block调用
+ */
+- (instancetype)initWithPickerMode:(QTPickerMode)pickerMode withBlock:(CompleteHandler)handler;
 
 /**
  *  返回内部包装的pickerView,或者UIDatePicker

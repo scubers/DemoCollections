@@ -112,7 +112,7 @@
 
 - (NSInteger)marginForEachSelectionsInSelectionView:(QTSelectionView *)selectionView
 {
-    return 50;
+    return 10;
 }
 
 - (UIView *)markViewForSelectionView:(QTSelectionView *)selectionView

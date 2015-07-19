@@ -14,9 +14,8 @@
 
 @optional
 
-- (void)tagListView:(QTTagListView *)tagListView didSelectedAtIndex:(NSInteger)index;
-- (void)tagListView:(QTTagListView *)tagListView didDeselectedAtIndex:(NSInteger)index;
-
+- (void)tagListView:(QTTagListView *)tagListView didSelectedTag:(UIButton *)button atIndex:(NSInteger)index;
+- (void)tagListView:(QTTagListView *)tagListView didDeselectedTag:(UIButton *)button atIndex:(NSInteger)index;
 
 @end
 

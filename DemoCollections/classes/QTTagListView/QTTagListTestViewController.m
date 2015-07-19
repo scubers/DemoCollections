@@ -32,6 +32,8 @@
 
     self.view.backgroundColor = RandomColor;
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     [self setupSubviews];
 
 }
@@ -41,8 +43,10 @@
     QTTagListView *tag = [[QTTagListView alloc] init];
 
     tag.frame           = CGRectMake(0, 100, 320, 200);
-    tag.tagTitles       = [NSMutableArray arrayWithArray:@[@"猪肉sdfsdf猪肉sdfsdf猪肉sdfsd",@"猪肉",@"猪sdf肉",@"猪肉",@"猪肉",@"猪sdf肉",@"猪肉",@"猪sdf肉",@"猪肉"]];
+    tag.backgroundColor = [UIColor whiteColor];
+    tag.tagTitles       = [NSMutableArray arrayWithArray:@[@"猪肉sdfsdf猪肉sdfsdf猪肉sdfsd",@"猪肉",@"猪sdf肉",@"猪肉",@"猪肉",@"猪sdf肉",@"猪肉",@"猪sdf肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉",@"猪肉df",]];
     tag.delegate        = self;
+    tag.contentInsets   = UIEdgeInsetsMake(0, 10, 0, 10);
 
     _tagListView = tag;
     [self.view addSubview:tag];
@@ -53,14 +57,16 @@
 }
 
 #pragma mark - QTTagListViewDelegate
-- (void)tagListView:(QTTagListView *)tagListView didSelectedAtIndex:(NSInteger)index
+- (void)tagListView:(QTTagListView *)tagListView didSelectedTag:(UIButton *)button atIndex:(NSInteger)index
 {
     NSLog(@"选择 --%@", [_tagListView.tagTitles objectAtIndex:index]);
+    [button setBackgroundColor:[UIColor redColor]];
 }
 
-- (void)tagListView:(QTTagListView *)tagListView didDeselectedAtIndex:(NSInteger)index
+- (void)tagListView:(QTTagListView *)tagListView didDeselectedTag:(UIButton *)button atIndex:(NSInteger)index
 {
     NSLog(@"取消 --%@", [_tagListView.tagTitles objectAtIndex:index]);
+    [button setBackgroundColor:[UIColor purpleColor]];
 }
 
 @end

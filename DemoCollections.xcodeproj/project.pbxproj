@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A842CF471B5D27390015464E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */; };
+		A842CF481B5D27390015464E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A842CF441B5D27390015464E /* MBProgressHUD.bundle */; };
+		A842CF491B5D27390015464E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF461B5D27390015464E /* MBProgressHUD.m */; };
 		A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84643981B5A8EDD009322F1 /* QTTagListView.m */; };
 		A846439B1B5A9F68009322F1 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = A846439A1B5A9F68009322F1 /* abc.png */; };
 		A88AACB71B5B744F00FBBFA7 /* QTTagListTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */; };
@@ -201,6 +204,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A842CF421B5D27390015464E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		A842CF441B5D27390015464E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		A842CF451B5D27390015464E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A842CF461B5D27390015464E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A84643971B5A8EDD009322F1 /* QTTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListView.h; sourceTree = "<group>"; };
 		A84643981B5A8EDD009322F1 /* QTTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListView.m; sourceTree = "<group>"; };
 		A846439A1B5A9F68009322F1 /* abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc.png; sourceTree = "<group>"; };
@@ -617,6 +625,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A842CF411B5D27390015464E /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A842CF421B5D27390015464E /* MBProgressHUD+MJ.h */,
+				A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */,
+				A842CF441B5D27390015464E /* MBProgressHUD.bundle */,
+				A842CF451B5D27390015464E /* MBProgressHUD.h */,
+				A842CF461B5D27390015464E /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		A84643961B5A8EB4009322F1 /* QTTagListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +753,7 @@
 		A8AB869D1B52AE4C009B6D52 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				A842CF411B5D27390015464E /* MBProgressHUD */,
 				A8AB88801B52AECD009B6D52 /* pop */,
 				A8AB884D1B52AEC1009B6D52 /* POP+MCAnimate */,
 				A8AB87321B52AEB7009B6D52 /* ReactiveCocoa */,
@@ -1333,6 +1354,7 @@
 			files = (
 				A846439B1B5A9F68009322F1 /* abc.png in Resources */,
 				A8AB867E1B52ADEF009B6D52 /* Main.storyboard in Resources */,
+				A842CF481B5D27390015464E /* MBProgressHUD.bundle in Resources */,
 				A8AB86831B52ADEF009B6D52 /* LaunchScreen.xib in Resources */,
 				A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */,
 			);
@@ -1505,6 +1527,7 @@
 				A8AB86BE1B52AEA5009B6D52 /* MASConstraintMaker.m in Sources */,
 				A8AB871B1B52AEAF009B6D52 /* NSObject+BKBlockExecution.m in Sources */,
 				A8AB88101B52AEB8009B6D52 /* RACDelegateProxy.m in Sources */,
+				A842CF471B5D27390015464E /* MBProgressHUD+MJ.m in Sources */,
 				A8AB88301B52AEB8009B6D52 /* RACSubscriber.m in Sources */,
 				A8AB87121B52AEAF009B6D52 /* NSDictionary+BlocksKit.m in Sources */,
 				A8AB87FE1B52AEB8009B6D52 /* NSObject+RACKVOWrapper.m in Sources */,
@@ -1512,6 +1535,7 @@
 				A8AB88231B52AEB8009B6D52 /* RACReplaySubject.m in Sources */,
 				A8AB88001B52AEB8009B6D52 /* NSObject+RACPropertySubscribing.m in Sources */,
 				A8AB88291B52AEB8009B6D52 /* RACSignal+Operations.m in Sources */,
+				A842CF491B5D27390015464E /* MBProgressHUD.m in Sources */,
 				A8AB87141B52AEAF009B6D52 /* NSInvocation+BlocksKit.m in Sources */,
 				A8AB88C01B52AECD009B6D52 /* POPGeometry.mm in Sources */,
 				A8AB88BF1B52AECD009B6D52 /* POPDecayAnimation.mm in Sources */,

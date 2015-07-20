@@ -171,4 +171,28 @@
 - (NSString *)stringOfDateWithFormatYYYYMMddHHmmInChinese;
 - (NSString *)stringOfDateWithFormatMMddHHmmInChinese;
 
+/****************************************************
+ *@Description:明天
+ ****************************************************/
+- (NSDate *)tomorrow;
+/****************************************************
+ *@Description:昨天
+ ****************************************************/
+- (NSDate *)yesterday;
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,6 +10,7 @@
 #import "QTTestViewController.h"
 #import "QTTagListTestViewController.h"
 #import "QTPickerViewController.h"
+#import "NSDate+Extension.h"
 
 @interface TableViewController ()
 
@@ -20,6 +21,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    NSDate *date = [NSDate date];
+
+    NSLog(@"%@",[[[date yesterday] yesterday] yesterday]);
 
 }
 

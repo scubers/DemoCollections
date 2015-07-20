@@ -333,5 +333,15 @@
     return [[NSDate defaultDateFormatterWithFormatMMddHHmmInChinese] stringFromDate:self];
 }
 
+- (NSDate *)tomorrow
+{
+    return [NSDate dateWithTimeInterval:60 * 60 * 24 sinceDate:self];
+}
+
+- (NSDate *)yesterday
+{
+    return [NSDate dateWithTimeInterval:-60 * 60 * 24 sinceDate:self];
+}
+
 
 @end

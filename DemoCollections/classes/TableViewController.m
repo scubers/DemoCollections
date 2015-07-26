@@ -11,6 +11,7 @@
 #import "QTTagListTestViewController.h"
 #import "QTPickerViewController.h"
 #import "NSDate+Extension.h"
+#import "DynamicController.h"
 
 @interface TableViewController ()
 
@@ -21,10 +22,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSDate *date = [NSDate date];
-
-    NSLog(@"%@",[[[date yesterday] yesterday] yesterday]);
 
 }
 
@@ -61,6 +58,10 @@
             cell.textLabel.text = @"QTPickerView";
         }break;
 
+        case 3:
+        {
+            cell.textLabel.text = @"DynamicDemo";
+        }break;
 
         default:
             break;
@@ -92,6 +93,12 @@
             [self.navigationController pushViewController:pv animated:YES];
         }break;
 
+        case 3:
+        {
+            DynamicController *dc = [[DynamicController alloc] init];
+
+            [self.navigationController pushViewController:dc animated:YES];
+        }break;
         default:
             break;
     }

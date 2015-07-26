@@ -194,7 +194,6 @@
 		A8AB88D31B52B247009B6D52 /* QTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D21B52B247009B6D52 /* QTTestViewController.m */; };
 		A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */; };
 		A8DC165E1B62912500FB5933 /* DynamicController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC165D1B62912500FB5933 /* DynamicController.m */; };
-		A8DC16611B6295FA00FB5933 /* MyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC16601B6295FA00FB5933 /* MyItem.m */; };
 		A8DC16661B629ACC00FB5933 /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC16631B629ACC00FB5933 /* BallView.m */; };
 		A8DC16671B629ACC00FB5933 /* NewtonsCradleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC16651B629ACC00FB5933 /* NewtonsCradleView.m */; };
 /* End PBXBuildFile section */
@@ -617,8 +616,6 @@
 		A8D5793D1B5AAAD100824E82 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		A8DC165C1B62912500FB5933 /* DynamicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicController.h; sourceTree = "<group>"; };
 		A8DC165D1B62912500FB5933 /* DynamicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicController.m; sourceTree = "<group>"; };
-		A8DC165F1B6295FA00FB5933 /* MyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyItem.h; sourceTree = "<group>"; };
-		A8DC16601B6295FA00FB5933 /* MyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyItem.m; sourceTree = "<group>"; };
 		A8DC16621B629ACC00FB5933 /* BallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallView.h; sourceTree = "<group>"; };
 		A8DC16631B629ACC00FB5933 /* BallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallView.m; sourceTree = "<group>"; };
 		A8DC16641B629ACC00FB5933 /* NewtonsCradleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewtonsCradleView.h; sourceTree = "<group>"; };
@@ -1300,8 +1297,6 @@
 			children = (
 				A8DC165C1B62912500FB5933 /* DynamicController.h */,
 				A8DC165D1B62912500FB5933 /* DynamicController.m */,
-				A8DC165F1B6295FA00FB5933 /* MyItem.h */,
-				A8DC16601B6295FA00FB5933 /* MyItem.m */,
 				A8DC16621B629ACC00FB5933 /* BallView.h */,
 				A8DC16631B629ACC00FB5933 /* BallView.m */,
 				A8DC16641B629ACC00FB5933 /* NewtonsCradleView.h */,
@@ -1428,7 +1423,6 @@
 				A8AB871F1B52AEAF009B6D52 /* NSTimer+BlocksKit.m in Sources */,
 				A8AB88391B52AEB8009B6D52 /* RACValueTransformer.m in Sources */,
 				A8AB88781B52AEC2009B6D52 /* NSArray+MCSequence.m in Sources */,
-				A8DC16611B6295FA00FB5933 /* MyItem.m in Sources */,
 				A8AB88161B52AEB8009B6D52 /* RACEmptySignal.m in Sources */,
 				A8AB88C41B52AECD009B6D52 /* POPSpringAnimation.mm in Sources */,
 				A8AB88C31B52AECD009B6D52 /* POPPropertyAnimation.mm in Sources */,

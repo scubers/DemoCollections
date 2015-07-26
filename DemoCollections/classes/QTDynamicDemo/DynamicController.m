@@ -7,7 +7,6 @@
 //
 
 #import "DynamicController.h"
-#import "MyItem.h"
 #import "NewtonsCradleView.h"
 
 @interface DynamicController() <UICollisionBehaviorDelegate, UIDynamicAnimatorDelegate>
@@ -113,10 +112,6 @@
     if (recognizer.state == UIGestureRecognizerStateBegan)
     {
 
-//        [self.push removeItem:recognizer.view];
-//        [self.animator removeBehavior:self.push];
-//        self.push = nil;
-
         [self.animator removeAllBehaviors];
 
         self.collision = nil;
@@ -156,7 +151,7 @@
 
         recognizer.view.center = CGPointMake(x, y);
 
-        _vector = CGVectorMake(point.x * 0.5, point.y * 0.5);
+        _vector = CGVectorMake(point.x * 0.3, point.y * 0.3);
 
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
         return;

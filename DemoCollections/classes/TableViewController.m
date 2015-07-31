@@ -12,6 +12,8 @@
 #import "QTPickerViewController.h"
 #import "NSDate+Extension.h"
 #import "DynamicController.h"
+#import "QTActionSheetViewController.h"
+#import "BlocksKit+UIKit.h"
 
 @interface TableViewController ()
 
@@ -62,7 +64,11 @@
         {
             cell.textLabel.text = @"DynamicDemo";
         }break;
-
+            
+        case 4:
+        {
+            cell.textLabel.text = @"QTActionSheet";
+        }break;
         default:
             break;
     }
@@ -97,6 +103,13 @@
         {
             DynamicController *dc = [[DynamicController alloc] init];
 
+            [self.navigationController pushViewController:dc animated:YES];
+        }break;
+            
+        case 4:
+        {
+            QTActionSheetViewController *dc = [[QTActionSheetViewController alloc] init];
+            
             [self.navigationController pushViewController:dc animated:YES];
         }break;
         default:

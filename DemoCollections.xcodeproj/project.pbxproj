@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
+		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
+		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
 		A842CF471B5D27390015464E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */; };
 		A842CF481B5D27390015464E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A842CF441B5D27390015464E /* MBProgressHUD.bundle */; };
 		A842CF491B5D27390015464E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF461B5D27390015464E /* MBProgressHUD.m */; };
@@ -15,7 +18,6 @@
 		A846439B1B5A9F68009322F1 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = A846439A1B5A9F68009322F1 /* abc.png */; };
 		A8771A271B652344009602D3 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A8771A261B652344009602D3 /* UIView+Extension.m */; };
 		A88AACB71B5B744F00FBBFA7 /* QTTagListTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */; };
-		A88AACBA1B5B74DA00FBBFA7 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACB91B5B74DA00FBBFA7 /* TableViewController.m */; };
 		A88AACBE1B5B785300FBBFA7 /* QTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACBD1B5B785300FBBFA7 /* QTPickerView.m */; };
 		A88AACC11B5B7F1500FBBFA7 /* QTPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACC01B5B7F1500FBBFA7 /* QTPickerViewController.m */; };
 		A8AB867E1B52ADEF009B6D52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867C1B52ADEF009B6D52 /* Main.storyboard */; };
@@ -209,6 +211,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D8524881B6B9B7200DA22FC /* QTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheet.h; sourceTree = "<group>"; };
+		3D8524891B6B9B7200DA22FC /* QTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheet.m; sourceTree = "<group>"; };
+		3D85248A1B6B9B7200DA22FC /* QTActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheetViewController.h; sourceTree = "<group>"; };
+		3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheetViewController.m; sourceTree = "<group>"; };
+		3D85248E1B6B9B9200DA22FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A842CF421B5D27390015464E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		A842CF441B5D27390015464E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -223,8 +231,6 @@
 		A8771A261B652344009602D3 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		A88AACB51B5B744F00FBBFA7 /* QTTagListTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListTestViewController.h; sourceTree = "<group>"; };
 		A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListTestViewController.m; sourceTree = "<group>"; };
-		A88AACB81B5B74DA00FBBFA7 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		A88AACB91B5B74DA00FBBFA7 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A88AACBC1B5B785300FBBFA7 /* QTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerView.h; sourceTree = "<group>"; };
 		A88AACBD1B5B785300FBBFA7 /* QTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerView.m; sourceTree = "<group>"; };
 		A88AACBF1B5B7F1500FBBFA7 /* QTPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerViewController.h; sourceTree = "<group>"; };
@@ -640,6 +646,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D8524871B6B9B7200DA22FC /* QTActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				3D8524881B6B9B7200DA22FC /* QTActionSheet.h */,
+				3D8524891B6B9B7200DA22FC /* QTActionSheet.m */,
+				3D85248A1B6B9B7200DA22FC /* QTActionSheetViewController.h */,
+				3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */,
+			);
+			path = QTActionSheet;
+			sourceTree = "<group>";
+		};
 		A842CF411B5D27390015464E /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,8 +751,9 @@
 		A8AB86981B52AE4C009B6D52 /* classes */ = {
 			isa = PBXGroup;
 			children = (
-				A88AACB81B5B74DA00FBBFA7 /* TableViewController.h */,
-				A88AACB91B5B74DA00FBBFA7 /* TableViewController.m */,
+				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
+				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D8524871B6B9B7200DA22FC /* QTActionSheet */,
 				A8DC165B1B62910600FB5933 /* QTDynamicDemo */,
 				A88AACBB1B5B783900FBBFA7 /* QTPickerView */,
 				A84643961B5A8EB4009322F1 /* QTTagListView */,
@@ -1501,7 +1519,9 @@
 				A8AB872B1B52AEAF009B6D52 /* UIControl+BlocksKit.m in Sources */,
 				A8AB87281B52AEAF009B6D52 /* UIActionSheet+BlocksKit.m in Sources */,
 				A8AB88341B52AEB8009B6D52 /* RACTestScheduler.m in Sources */,
+				3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */,
 				A8AB88431B52AEB8009B6D52 /* UIImagePickerController+RACSignalSupport.m in Sources */,
+				3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */,
 				A8AB88751B52AEC2009B6D52 /* MCDecayAnimation.m in Sources */,
 				A8AB87241B52AEAF009B6D52 /* NSObject+A2BlockDelegate.m in Sources */,
 				A8AB87291B52AEAF009B6D52 /* UIAlertView+BlocksKit.m in Sources */,
@@ -1525,7 +1545,6 @@
 				A8AB883B1B52AEB8009B6D52 /* UIAlertView+RACSignalSupport.m in Sources */,
 				A8AB88061B52AEB8009B6D52 /* NSString+RACSupport.m in Sources */,
 				A8AB88091B52AEB8009B6D52 /* RACArraySequence.m in Sources */,
-				A88AACBA1B5B74DA00FBBFA7 /* TableViewController.m in Sources */,
 				A8DC16671B629ACC00FB5933 /* NewtonsCradleView.m in Sources */,
 				A8AB88741B52AEC2009B6D52 /* MCBeginTime.m in Sources */,
 				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,
@@ -1549,6 +1568,7 @@
 				A8AB88C11B52AECD009B6D52 /* POPLayerExtras.mm in Sources */,
 				A8AB88151B52AEB8009B6D52 /* RACEmptySequence.m in Sources */,
 				A8AB87231B52AEAF009B6D52 /* NSURLConnection+BlocksKit.m in Sources */,
+				3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */,
 				A8AB881E1B52AEB8009B6D52 /* RACKVOTrampoline.m in Sources */,
 				A8AB88C61B52AECD009B6D52 /* TransformationMatrix.cpp in Sources */,
 				A8AB884B1B52AEB8009B6D52 /* UITextField+RACSignalSupport.m in Sources */,

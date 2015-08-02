@@ -8,27 +8,34 @@
 
 #import "DynamicController.h"
 #import "NewtonsCradleView.h"
+#import "BlocksKit+UIKit.h"
 
-@interface DynamicController() <UICollisionBehaviorDelegate, UIDynamicAnimatorDelegate>
+@interface DynamicController() <UICollisionBehaviorDelegate, UIDynamicAnimatorDelegate,
+UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, weak  ) UITableView          *tableView;
+@property (nonatomic, strong) UIDynamicAnimator    *tableViewAnimator;
 
-@property (nonatomic, strong) UIPushBehavior *pushBehavior;
+@property (nonatomic, strong) UIDynamicAnimator    *animator;
 
-@property (nonatomic, strong) UIGravityBehavior *gravity;
+@property (nonatomic, strong) UIDynamicBehavior    *behavior;
 
-@property (nonatomic, strong) UICollisionBehavior *collision;
+@property (nonatomic, strong) UIPushBehavior       *pushBehavior;
+
+@property (nonatomic, strong) UIGravityBehavior    *gravity;
+
+@property (nonatomic, strong) UICollisionBehavior  *collision;
 
 @property (nonatomic, strong) UIAttachmentBehavior *attachment;
 
-@property (nonatomic, strong) UISnapBehavior *snap;
+@property (nonatomic, strong) UISnapBehavior       *snap;
 
-@property (nonatomic, strong) UIPushBehavior *push;
+@property (nonatomic, strong) UIPushBehavior       *push;
 
-@property (nonatomic, assign) CGVector vector;
+@property (nonatomic, assign) CGVector             vector;
 
 
-@property (nonatomic, weak) UIView *centerCircle;
+@property (nonatomic, weak  ) UIView               *centerCircle;
 
 @end
 
@@ -41,13 +48,14 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+
     [self advanceDemo];
+
 
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
 
 }
 
@@ -56,12 +64,12 @@
 #pragma mark - 私有方法
 - (UIView *)createBall
 {
-    UIView *box = [[UIView alloc] initWithFrame:CGRectMake(arc4random_uniform(200), 0, 80, 80)];
+    UIView *box = [[UIView alloc] initWithFrame:CGRectMake(arc4random_uniform(200), 100, 80, 80)];
 
     box.layer.cornerRadius = 40;
     box.clipsToBounds = YES;
 
-    box.backgroundColor = [UIColor colorWithRed:arc4random_uniform(200)/255.0 green:arc4random_uniform(200)/255.0 blue:arc4random_uniform(200)/255.0 alpha:1];
+    box.backgroundColor = RandomColor;
 
     [self.view addSubview:box];
     return box;
@@ -89,8 +97,72 @@
 
 }
 
+#pragma mark - <UITableViewDelegate,UITableViewDataSource>
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 80;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+
+//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+        UIView *view = [self createBall];
+        view.frame = CGRectMake(0, 0, 80, 80);
+        view.backgroundColor = RandomColor;
+        [cell.contentView addSubview:view];
+
+        UIDynamicAnimator *animate = [[UIDynamicAnimator alloc] initWithReferenceView:cell];
+
+//        UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:view snapToPoint:CGPointMake(320/2, 80/2)];
+
+        UIGravityBehavior *gr = [[UIGravityBehavior alloc] initWithItems:@[view]];
+
+        [animate addBehavior:gr];
+
+//        [animate addBehavior:snap];
+
+
+
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
+
+
+
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
 #pragma mark - test Method
 
+/**
+ *  类message.app的滚动动画
+ */
+- (void)tableViewDemo
+{
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+
+    tableView.dataSource = self;
+    tableView.delegate   = self;
+
+    [self.view addSubview:tableView];
+    _tableView = tableView;
+
+
+}
+
+/**
+ *  高级综合demo
+ */
 - (void)advanceDemo
 {
     UIView *ball = [self createBall];
@@ -101,6 +173,7 @@
 
     [ball addGestureRecognizer:pan];
 
+    self.collision.collisionMode = UICollisionBehaviorModeEverything;
     [self.collision addItem:ball];
 
     [self.animator addBehavior:self.collision];
@@ -162,6 +235,9 @@
 
 }
 
+/**
+ *  推动力
+ */
 - (void)pushDemo
 {
     UIView *ball = [self createBall];
@@ -169,10 +245,6 @@
     ball.center = self.view.center;
 
     [self.push addItem:ball];
-
-
-
-    NSLog(@"%d, %f, %f, %@", self.push.active, self.push.angle, self.push.magnitude, NSStringFromCGVector(self.push.pushDirection));
 
     self.push.magnitude = 2;
     self.push.angle = M_PI_2;
@@ -185,19 +257,25 @@
 
 }
 
+/**
+ *  捕捉demo
+ */
 - (void)snapDemo
 {
-    UIView *ball = [self createBall];
 
-    [self.gravity addItem:ball];
+    UIView *ball1 = [self createBall];
 
-    CGPoint point = CGPointMake(arc4random_uniform(320), arc4random_uniform(568));
+    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:ball1 snapToPoint:CGPointMake(160, 260)];
 
-    UISnapBehavior *behavior = [[UISnapBehavior alloc] initWithItem:ball snapToPoint:point];
 
-    [self.animator addBehavior:behavior];
+    [self.animator addBehavior:snap];
+
+
 }
 
+/**
+ *  重力demo
+ */
 - (void)gravityDemo
 {
     NSMutableArray *boxs = [NSMutableArray array];
@@ -216,8 +294,10 @@
 
 
     [boxs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [self.gravity addItem:obj];
-        [self.collision addItem:obj];
+        if (idx % 2) {
+            [self.gravity addItem:obj];
+            [self.collision addItem:obj];
+        }
     }];
 
 
@@ -227,6 +307,9 @@
 
 }
 
+/**
+ *  粘附demo
+ */
 - (void)attachmentDemo
 {
     UIView *ball = [self createBall];
@@ -239,7 +322,6 @@
 
     UIAttachmentBehavior *att = [[UIAttachmentBehavior alloc ] initWithItem:ball attachedToAnchor:CGPointMake(160, 140)];
 
-
     att.length = 0;
     att.frequency = 1;
 
@@ -249,14 +331,13 @@
         att.frequency = 0;
     });
 
-    NSLog(@"%f,%f,%f", att.length, att.damping, att.frequency);
-
     [self.animator addBehavior:att];
 }
 
 #pragma mark - Getter Setter
 
-- (UIDynamicAnimator *)animator {
+- (UIDynamicAnimator *)animator
+{
     if (!_animator) {
         _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
         _animator.delegate = self;
@@ -324,6 +405,14 @@
         _push = [[UIPushBehavior alloc] initWithItems:nil mode:UIPushBehaviorModeInstantaneous];
     }
     return _push;
+}
+
+- (UIDynamicBehavior *)behavior
+{
+    if (!_behavior) {
+        _behavior = [[UIDynamicBehavior alloc] init];
+    }
+    return _behavior;
 }
 
 @end

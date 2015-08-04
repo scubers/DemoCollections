@@ -10,7 +10,7 @@
 #import "Masonry.h"
 
 #define QTActionSheetHeight 50
-#define QTActionSheetMargin 1
+#define QTActionSheetMargin 0.5
 #define QTActionSheetCoverTag 7878
 
 @interface QTActionSheet()
@@ -167,7 +167,7 @@
 #pragma mark - 公共方法
 - (CGFloat)heightForActionSheet
 {
-    CGFloat height = self.buttons.count * (QTActionSheetHeight + QTActionSheetMargin) + 3 * QTActionSheetMargin;
+    CGFloat height = self.buttons.count * (QTActionSheetHeight + QTActionSheetMargin) + (QTActionSheetMargin);
     return height;
 }
 
@@ -184,8 +184,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCover:)];
     [cover addGestureRecognizer:tap];
     
-    self.center = CGPointMake(window.center.x, window.bounds.size.height + self.bounds.size.height/2);
-    self.bounds = CGRectMake(0, 0, window.bounds.size.width, self.heightForActionSheet);
+    self.frame = CGRectMake(0, window.frame.size.height, window.bounds.size.width, self.heightForActionSheet);
     
     [window addSubview:cover];
     [window addSubview:self];
@@ -193,7 +192,7 @@
     __weak typeof(self) ws = self;
     [UIView animateWithDuration:0.3 animations:^{
         
-        cover.layer.opacity = 0.5;
+        cover.layer.opacity = 0.3;
         ws.center = CGPointMake(window.center.x, window.bounds.size.height - self.bounds.size.height/2);;
         
     }];

@@ -15,6 +15,7 @@
 #import "QTActionSheetViewController.h"
 #import "BlocksKit+UIKit.h"
 #import "RecommendTestViewController.h"
+#import "QTAlertViewViewController.h"
 
 @interface TableViewController ()
 
@@ -74,6 +75,10 @@
         {
             cell.textLabel.text = @"QTRecommendView";
         }break;
+        case 6:
+        {
+            cell.textLabel.text = @"QTAlertView";
+        }break;
         default:
             break;
     }
@@ -121,6 +126,13 @@
         case 5:
         {
             RecommendTestViewController *dc = [[RecommendTestViewController alloc] init];
+            
+            [self.navigationController pushViewController:dc animated:YES];
+        }break;
+            
+        case 6:
+        {
+            QTAlertViewViewController *dc = [[QTAlertViewViewController alloc] init];
             
             [self.navigationController pushViewController:dc animated:YES];
         }break;

@@ -13,6 +13,8 @@
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
+		3DE9F76D1B704F930072F24B /* QTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9F76C1B704F930072F24B /* QTAlertView.m */; };
+		3DE9F7701B705ABE0072F24B /* QTAlertViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9F76F1B705ABE0072F24B /* QTAlertViewViewController.m */; };
 		A842CF471B5D27390015464E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */; };
 		A842CF481B5D27390015464E /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A842CF441B5D27390015464E /* MBProgressHUD.bundle */; };
 		A842CF491B5D27390015464E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF461B5D27390015464E /* MBProgressHUD.m */; };
@@ -226,6 +228,10 @@
 		3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheetViewController.m; sourceTree = "<group>"; };
 		3D85248E1B6B9B9200DA22FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3DE9F76B1B704F930072F24B /* QTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAlertView.h; sourceTree = "<group>"; };
+		3DE9F76C1B704F930072F24B /* QTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTAlertView.m; sourceTree = "<group>"; };
+		3DE9F76E1B705ABE0072F24B /* QTAlertViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAlertViewViewController.h; sourceTree = "<group>"; };
+		3DE9F76F1B705ABE0072F24B /* QTAlertViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTAlertViewViewController.m; sourceTree = "<group>"; };
 		A842CF421B5D27390015464E /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		A842CF441B5D27390015464E /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -679,6 +685,17 @@
 			path = QTActionSheet;
 			sourceTree = "<group>";
 		};
+		3DE9F76A1B704F850072F24B /* QTAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				3DE9F76B1B704F930072F24B /* QTAlertView.h */,
+				3DE9F76C1B704F930072F24B /* QTAlertView.m */,
+				3DE9F76E1B705ABE0072F24B /* QTAlertViewViewController.h */,
+				3DE9F76F1B705ABE0072F24B /* QTAlertViewViewController.m */,
+			);
+			path = QTAlertView;
+			sourceTree = "<group>";
+		};
 		A842CF411B5D27390015464E /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +792,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3DE9F76A1B704F850072F24B /* QTAlertView */,
 				3D223B141B6EFCF600C1F1B0 /* QTRecommendView */,
 				3D8524871B6B9B7200DA22FC /* QTActionSheet */,
 				A8DC165B1B62910600FB5933 /* QTDynamicDemo */,
@@ -1470,6 +1488,7 @@
 				A8AB88C31B52AECD009B6D52 /* POPPropertyAnimation.mm in Sources */,
 				A8AB887C1B52AEC2009B6D52 /* NSNumber+MCAdditions.m in Sources */,
 				A8AB88BB1B52AECD009B6D52 /* POPAnimator.mm in Sources */,
+				3DE9F76D1B704F930072F24B /* QTAlertView.m in Sources */,
 				A8AB88471B52AEB8009B6D52 /* UIStepper+RACSignalSupport.m in Sources */,
 				A8AB88C51B52AECD009B6D52 /* POPVector.mm in Sources */,
 				A8AB88011B52AEB8009B6D52 /* NSObject+RACSelectorSignal.m in Sources */,
@@ -1552,6 +1571,7 @@
 				A8AB87291B52AEAF009B6D52 /* UIAlertView+BlocksKit.m in Sources */,
 				A8AB872A1B52AEAF009B6D52 /* UIBarButtonItem+BlocksKit.m in Sources */,
 				A8AB88271B52AEB8009B6D52 /* RACSequence.m in Sources */,
+				3DE9F7701B705ABE0072F24B /* QTAlertViewViewController.m in Sources */,
 				A8AB87F21B52AEB8009B6D52 /* RACEXTRuntimeExtensions.m in Sources */,
 				A8AB87161B52AEAF009B6D52 /* NSMutableDictionary+BlocksKit.m in Sources */,
 				A8AB88421B52AEB8009B6D52 /* UIGestureRecognizer+RACSignalSupport.m in Sources */,

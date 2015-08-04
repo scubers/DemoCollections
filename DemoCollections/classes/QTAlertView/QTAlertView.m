@@ -87,6 +87,8 @@
         
         titleLabel.text          = self.title;
         titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.numberOfLines = 0;
+        titleLabel.font          = [UIFont systemFontOfSize:13];
         
         [self addSubview:titleLabel];
         _titleLabel = titleLabel;
@@ -100,7 +102,8 @@
         [titleLabel addSubview:separator];
         
         [separator mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.mas_equalTo(titleLabel);
+            make.bottom.mas_equalTo(titleLabel);
+            make.left.right.mas_equalTo(titleLabel.superview);
             make.height.mas_equalTo(0.5);
         }];
         
@@ -113,11 +116,6 @@
             
             [button setTitle:obj forState:UIControlStateNormal];
             [button setTitleColor:[UIColor colorWithRed:52/255.0 green:118/255.0 blue:253/255.0 alpha:1] forState:UIControlStateNormal];
-            
-            if (idx == 0 && [obj isEqualToString:self.cancelButtonTitle])
-            {
-                [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            }
             
             [self.buttons addObject:button];
             
@@ -211,7 +209,7 @@
     __weak typeof(self) ws = self;
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(_titleLabel.superview);
+        make.top.left.right.mas_equalTo(_titleLabel.superview).insets(UIEdgeInsetsMake(0, 20, 20, 20));
         make.height.mas_equalTo(QTAlertViewTitleHeight);
     }];
     
@@ -227,7 +225,7 @@
             tempView = _passwordField;
             
             [_passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.mas_equalTo(ws);
+                make.left.right.mas_equalTo(ws).insets(UIEdgeInsetsMake(5, 5, 5, 5));
                 make.top.mas_equalTo(_titleLabel.mas_bottom);
                 make.height.mas_equalTo(QTAlertViewTextFieldHeight);
             }];
@@ -432,7 +430,7 @@
     __weak typeof(self) ws = self;
     [UIView animateWithDuration:0.25 animations:^{
         
-        cover.layer.opacity = 0.25;
+        cover.layer.opacity = 0.4;
         ws.bounds = CGRectMake(0, 0, 280, ws.caculateAlertViewHeight);
         
     }];

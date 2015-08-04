@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */; };
+		3D223B1D1B6EFEB100C1F1B0 /* QTRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */; };
+		3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */; };
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
@@ -211,6 +214,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D223B151B6EFD0100C1F1B0 /* QTRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendView.h; sourceTree = "<group>"; };
+		3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTRecommendView.m; sourceTree = "<group>"; };
+		3D223B1B1B6EFEB100C1F1B0 /* QTRecommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendViewCell.h; sourceTree = "<group>"; };
+		3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTRecommendViewCell.m; sourceTree = "<group>"; };
+		3D223B1E1B6F00F400C1F1B0 /* RecommendTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendTestViewController.h; sourceTree = "<group>"; };
+		3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendTestViewController.m; sourceTree = "<group>"; };
 		3D8524881B6B9B7200DA22FC /* QTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheet.h; sourceTree = "<group>"; };
 		3D8524891B6B9B7200DA22FC /* QTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheet.m; sourceTree = "<group>"; };
 		3D85248A1B6B9B7200DA22FC /* QTActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheetViewController.h; sourceTree = "<group>"; };
@@ -646,6 +655,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D223B141B6EFCF600C1F1B0 /* QTRecommendView */ = {
+			isa = PBXGroup;
+			children = (
+				3D223B151B6EFD0100C1F1B0 /* QTRecommendView.h */,
+				3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */,
+				3D223B1B1B6EFEB100C1F1B0 /* QTRecommendViewCell.h */,
+				3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */,
+				3D223B1E1B6F00F400C1F1B0 /* RecommendTestViewController.h */,
+				3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */,
+			);
+			path = QTRecommendView;
+			sourceTree = "<group>";
+		};
 		3D8524871B6B9B7200DA22FC /* QTActionSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,6 +775,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D223B141B6EFCF600C1F1B0 /* QTRecommendView */,
 				3D8524871B6B9B7200DA22FC /* QTActionSheet */,
 				A8DC165B1B62910600FB5933 /* QTDynamicDemo */,
 				A88AACBB1B5B783900FBBFA7 /* QTPickerView */,
@@ -1443,6 +1466,7 @@
 				A8AB88781B52AEC2009B6D52 /* NSArray+MCSequence.m in Sources */,
 				A8AB88161B52AEB8009B6D52 /* RACEmptySignal.m in Sources */,
 				A8AB88C41B52AECD009B6D52 /* POPSpringAnimation.mm in Sources */,
+				3D223B1D1B6EFEB100C1F1B0 /* QTRecommendViewCell.m in Sources */,
 				A8AB88C31B52AECD009B6D52 /* POPPropertyAnimation.mm in Sources */,
 				A8AB887C1B52AEC2009B6D52 /* NSNumber+MCAdditions.m in Sources */,
 				A8AB88BB1B52AECD009B6D52 /* POPAnimator.mm in Sources */,
@@ -1521,6 +1545,7 @@
 				A8AB88341B52AEB8009B6D52 /* RACTestScheduler.m in Sources */,
 				3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */,
 				A8AB88431B52AEB8009B6D52 /* UIImagePickerController+RACSignalSupport.m in Sources */,
+				3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */,
 				3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */,
 				A8AB88751B52AEC2009B6D52 /* MCDecayAnimation.m in Sources */,
 				A8AB87241B52AEAF009B6D52 /* NSObject+A2BlockDelegate.m in Sources */,
@@ -1535,6 +1560,7 @@
 				A8AB88771B52AEC2009B6D52 /* MCStopProxy.m in Sources */,
 				A8AB881D1B52AEB8009B6D52 /* RACKVOProxy.m in Sources */,
 				A8AB86C41B52AEA5009B6D52 /* View+MASAdditions.m in Sources */,
+				3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */,
 				A8AB88B91B52AECD009B6D52 /* POPAnimationRuntime.mm in Sources */,
 				A8AB88021B52AEB8009B6D52 /* NSOrderedSet+RACSequenceAdditions.m in Sources */,
 				A8AB880A1B52AEB8009B6D52 /* RACBehaviorSubject.m in Sources */,

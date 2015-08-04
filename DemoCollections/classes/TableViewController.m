@@ -14,6 +14,7 @@
 #import "DynamicController.h"
 #import "QTActionSheetViewController.h"
 #import "BlocksKit+UIKit.h"
+#import "RecommendTestViewController.h"
 
 @interface TableViewController ()
 
@@ -69,6 +70,10 @@
         {
             cell.textLabel.text = @"QTActionSheet";
         }break;
+        case 5:
+        {
+            cell.textLabel.text = @"QTRecommendView";
+        }break;
         default:
             break;
     }
@@ -112,6 +117,14 @@
             
             [self.navigationController pushViewController:dc animated:YES];
         }break;
+            
+        case 5:
+        {
+            RecommendTestViewController *dc = [[RecommendTestViewController alloc] init];
+            
+            [self.navigationController pushViewController:dc animated:YES];
+        }break;
+
         default:
             break;
     }

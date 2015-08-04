@@ -153,7 +153,7 @@
 - (void)buttonClick:(UIButton *)button
 {
     if (self.handler) {
-        self.handler(self, button.tag, button);
+        self.handler(self, button.tag);
     }
     
     [self hide];

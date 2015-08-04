@@ -10,7 +10,7 @@
 
 @class QTActionSheet;
 
-typedef void(^QTActionSheetHandler)(QTActionSheet *actionSheet, NSUInteger index, UIButton *button);
+typedef void(^QTActionSheetHandler)(QTActionSheet *actionSheet, NSUInteger index);
 
 @interface QTActionSheet : UIView
 

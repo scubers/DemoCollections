@@ -32,7 +32,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     QTActionSheet *sheet = [[QTActionSheet alloc] initWithTitle:@"你懂的"
-                                                        handler:^(QTActionSheet *actionSheet, NSUInteger index, UIButton *button) {
+                                                        handler:^(QTActionSheet *actionSheet, NSUInteger index) {
                                                             
                                                             NSLog(@"%zd", index);
                                                             

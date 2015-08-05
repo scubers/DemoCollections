@@ -16,6 +16,7 @@
 #import "BlocksKit+UIKit.h"
 #import "RecommendTestViewController.h"
 #import "QTAlertViewViewController.h"
+#import "TestViewController.h"
 
 @interface TableViewController ()
 
@@ -79,6 +80,10 @@
         {
             cell.textLabel.text = @"QTAlertView";
         }break;
+        case 7:
+        {
+            cell.textLabel.text = @"TEST";
+        }break;
         default:
             break;
     }
@@ -133,6 +138,13 @@
         case 6:
         {
             QTAlertViewViewController *dc = [[QTAlertViewViewController alloc] init];
+            
+            [self.navigationController pushViewController:dc animated:YES];
+        }break;
+            
+        case 7:
+        {
+            TestViewController *dc = [[TestViewController alloc] init];
             
             [self.navigationController pushViewController:dc animated:YES];
         }break;

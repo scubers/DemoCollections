@@ -8,6 +8,7 @@
 
 #import "QTAlertView.h"
 #import "Masonry.h"
+#import "POP+MCAnimate.h"
 
 #define QTAlertViewCoverTag 8653
 
@@ -118,15 +119,37 @@
             [self.buttons addObject:button];
             
             {
-                //设置顶部分割线
-                UIView *separator = [[UIView alloc] init];
-                separator.backgroundColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1];
-                [button addSubview:separator];
+                if (_alertViewMode != QTAlertViewModeDefault)
+                {
+                    //设置顶部分割线
+                    UIView *separator = [[UIView alloc] init];
+                    separator.backgroundColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1];
+                    [button addSubview:separator];
+                    
+                    [separator mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.left.right.top.mas_equalTo(button);
+                        make.height.mas_equalTo(0.5);
+                    }];
+                }
+                else
+                {
+                    if ((_buttonTitles.count == 1  && idx !=0)
+                        || (_buttonTitles.count == 2 && !(idx < 2))
+                        || (_buttonTitles.count > 2 && idx != 0))
+                    {
+                        //设置顶部分割线
+                        UIView *separator = [[UIView alloc] init];
+                        separator.backgroundColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1];
+                        [button addSubview:separator];
+                        
+                        [separator mas_makeConstraints:^(MASConstraintMaker *make) {
+                            make.left.right.top.mas_equalTo(button);
+                            make.height.mas_equalTo(0.5);
+                        }];
+                    }
+                }
                 
-                [separator mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.right.top.mas_equalTo(button);
-                    make.height.mas_equalTo(0.5);
-                }];
+                
             }
             
         }];
@@ -207,7 +230,7 @@
     __weak typeof(self) ws = self;
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(_titleLabel.superview).insets(UIEdgeInsetsMake(0, 20, 20, 20));
+        make.top.left.right.mas_equalTo(_titleLabel.superview);
         CGFloat height = [_title sizeWithAttributes:@{ NSFontAttributeName : _titleLabel.font}].height + 60;
         make.height.mas_equalTo(height);
     }];
@@ -421,17 +444,19 @@
     [cover addGestureRecognizer:tap];
     
     self.center = CGPointMake(window.center.x, window.center.y);
-    self.bounds = CGRectZero;
+    self.bounds = CGRectMake(0, 0, 280 * 1.05, self.caculateAlertViewHeight * 1.05);
+    self.alpha = 0.1;
     
     [window addSubview:cover];
     [window addSubview:self];
     
     __weak typeof(self) ws = self;
     [UIView animateWithDuration:0.25 animations:^{
-        
-        cover.layer.opacity = 0.4;
+
+        cover.layer.opacity = 0.3;
         ws.bounds = CGRectMake(0, 0, 280, ws.caculateAlertViewHeight);
-        
+        ws.alpha = 1;
+
     }];
 }
 
@@ -443,10 +468,11 @@
     
     
     __weak typeof(self) ws = self;
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         
         cover.layer.opacity = 0;
         ws.bounds = CGRectZero;
+        ws.alpha = 0.1;
         
     } completion:^(BOOL finished) {
         

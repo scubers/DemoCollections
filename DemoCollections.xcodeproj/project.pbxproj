@@ -13,6 +13,8 @@
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
+		3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B551B71BE29000383A0 /* TestViewController.m */; };
+		3DAE5B591B71BE73000383A0 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B581B71BE73000383A0 /* DrawView.m */; };
 		3DE9F76D1B704F930072F24B /* QTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9F76C1B704F930072F24B /* QTAlertView.m */; };
 		3DE9F7701B705ABE0072F24B /* QTAlertViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9F76F1B705ABE0072F24B /* QTAlertViewViewController.m */; };
 		A842CF471B5D27390015464E /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A842CF431B5D27390015464E /* MBProgressHUD+MJ.m */; };
@@ -228,6 +230,10 @@
 		3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheetViewController.m; sourceTree = "<group>"; };
 		3D85248E1B6B9B9200DA22FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3DAE5B541B71BE29000383A0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		3DAE5B551B71BE29000383A0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		3DAE5B571B71BE73000383A0 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		3DAE5B581B71BE73000383A0 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
 		3DE9F76B1B704F930072F24B /* QTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAlertView.h; sourceTree = "<group>"; };
 		3DE9F76C1B704F930072F24B /* QTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTAlertView.m; sourceTree = "<group>"; };
 		3DE9F76E1B705ABE0072F24B /* QTAlertViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAlertViewViewController.h; sourceTree = "<group>"; };
@@ -685,6 +691,17 @@
 			path = QTActionSheet;
 			sourceTree = "<group>";
 		};
+		3DAE5B531B71BE1D000383A0 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3DAE5B541B71BE29000383A0 /* TestViewController.h */,
+				3DAE5B551B71BE29000383A0 /* TestViewController.m */,
+				3DAE5B571B71BE73000383A0 /* DrawView.h */,
+				3DAE5B581B71BE73000383A0 /* DrawView.m */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		3DE9F76A1B704F850072F24B /* QTAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,6 +815,7 @@
 				A8DC165B1B62910600FB5933 /* QTDynamicDemo */,
 				A88AACBB1B5B783900FBBFA7 /* QTPickerView */,
 				A84643961B5A8EB4009322F1 /* QTTagListView */,
+				3DAE5B531B71BE1D000383A0 /* Test */,
 				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
 				A8AB86991B52AE4C009B6D52 /* other */,
 			);
@@ -1480,6 +1498,7 @@
 				A8AB88BC1B52AECD009B6D52 /* POPBasicAnimation.mm in Sources */,
 				A8AB88791B52AEC2009B6D52 /* MCAnimationGroup.m in Sources */,
 				A8AB871F1B52AEAF009B6D52 /* NSTimer+BlocksKit.m in Sources */,
+				3DAE5B591B71BE73000383A0 /* DrawView.m in Sources */,
 				A8AB88391B52AEB8009B6D52 /* RACValueTransformer.m in Sources */,
 				A8AB88781B52AEC2009B6D52 /* NSArray+MCSequence.m in Sources */,
 				A8AB88161B52AEB8009B6D52 /* RACEmptySignal.m in Sources */,
@@ -1523,6 +1542,7 @@
 				A8AB88311B52AEB8009B6D52 /* RACSubscriptingAssignmentTrampoline.m in Sources */,
 				A8AB86C11B52AEA5009B6D52 /* MASViewConstraint.m in Sources */,
 				A8AB86BC1B52AEA5009B6D52 /* MASCompositeConstraint.m in Sources */,
+				3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */,
 				A8AB88221B52AEB8009B6D52 /* RACQueueScheduler.m in Sources */,
 				A8AB880E1B52AEB8009B6D52 /* RACCompoundDisposable.m in Sources */,
 				A8AB882C1B52AEB8009B6D52 /* RACSignalSequence.m in Sources */,

@@ -22,7 +22,7 @@
     
     self.view.backgroundColor = [UIColor purpleColor];
     
-    QTAlertView *view = [[QTAlertView alloc] initWithTitle:@"111" message:@"222" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] mode:QTAlertViewModeUsernameAndPassword handler:^(QTAlertView *alertView, NSInteger index) {
+    QTAlertView *view = [[QTAlertView alloc] initWithTitle:@"111" message:@"222" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] mode:QTAlertViewModeDefault handler:^(QTAlertView *alertView, NSInteger index) {
         NSLog(@"%ld", index);
     }];
     

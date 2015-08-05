@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define QTAlertViewTitleHeight 120
+//#define QTAlertViewTitleHeight 120
 #define QTAlertViewButtonHeight 55
 #define QTAlertViewTextFieldHeight 44
 
@@ -29,13 +29,17 @@ typedef void(^QTAlertViewHandler)(QTAlertView *alertView, NSInteger index);
 
 @optional
 - (UIView *)custmizedViewForAlertView:(QTAlertView *)alertView;
+- (UIView *)titleViewForAlertView:(QTAlertView *)alertView;
+
 - (CGFloat)alertView:(QTAlertView *)alertView heightForCustmizedView:(UIView *)custmizedView;
+
 
 @end
 
 @interface QTAlertView : UIView
 
-@property (nonatomic, weak) id<QTAlertViewDelegate> delegate;
+@property (nonatomic, weak            ) id<QTAlertViewDelegate> delegate;
+@property (nonatomic, weak, readonly  ) UIView              *custmizedView;
 
 - (instancetype)initWithTitle:(NSString *)title
                       message:(NSString *)message

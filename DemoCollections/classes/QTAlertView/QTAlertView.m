@@ -22,8 +22,6 @@
 @property (nonatomic, strong) UITextField        *usernameField;
 @property (nonatomic, strong) UITextField        *passwordField;
 
-@property (nonatomic, weak  ) UIView             *custmizedView;
-
 
 @property (nonatomic, copy  ) NSString           *title;
 @property (nonatomic, copy  ) NSString           *message;
@@ -210,7 +208,8 @@
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(_titleLabel.superview).insets(UIEdgeInsetsMake(0, 20, 20, 20));
-        make.height.mas_equalTo(QTAlertViewTitleHeight);
+        CGFloat height = [_title sizeWithAttributes:@{ NSFontAttributeName : _titleLabel.font}].height + 60;
+        make.height.mas_equalTo(height);
     }];
     
     UIView *tempView = _titleLabel;
@@ -378,7 +377,7 @@
 
     
     
-    return QTAlertViewTitleHeight + buttonsHeight + middleHeight;
+    return [_title sizeWithAttributes:@{ NSFontAttributeName : _titleLabel.font}].height + 60 + buttonsHeight + middleHeight;
 }
 
 #pragma mark - 事件响应

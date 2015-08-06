@@ -7,24 +7,35 @@
 //
 
 #import "TestViewController.h"
-#import "DrawView.h"
+#import "UIView+Extension.h"
 
 @interface TestViewController ()
+
+@property (nonatomic, weak) UICollectionView *collectionView;
 
 @end
 
 @implementation TestViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-
-    DrawView *view = [[DrawView alloc] initWithFrame:self.view.bounds];
+    self.view.backgroundColor = [UIColor purpleColor];
     
-    [self.view addSubview:view];
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    
+    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    NSString *str = [UIView digView:ipc.view level:0];
+    
+    NSLog(@"%@", str);
+    
+    
     
 }
+
+
 
 
 @end

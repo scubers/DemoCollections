@@ -87,4 +87,60 @@
 {
     return self.frame.origin;
 }
+
+/**
+ * 返回传入veiw的所有层级结构
+ *
+ * @param view 需要获取层级结构的view
+ *
+ * @return 字符串
+ */
++ (NSString *)digView:(UIView *)view level:(int)level
+{
+    if ([view isKindOfClass:[UITableViewCell class]]) return @"";
+    // 1.初始化
+    NSMutableString *xml = [NSMutableString string];
+    
+    // 2.标签开头
+    for (int i = 0; i < level; i++) {
+        [xml appendString:@"   "];
+    }
+    
+    
+    [xml appendFormat:@"<%@ frame=\"%@\"", view.class, NSStringFromCGRect(view.frame)];
+    if (!CGPointEqualToPoint(view.bounds.origin, CGPointZero)) {
+        [xml appendFormat:@" bounds=\"%@\"", NSStringFromCGRect(view.bounds)];
+    }
+    
+    if ([view isKindOfClass:[UIScrollView class]]) {
+        UIScrollView *scroll = (UIScrollView *)view;
+        if (!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, scroll.contentInset)) {
+            [xml appendFormat:@" contentInset=\"%@\"", NSStringFromUIEdgeInsets(scroll.contentInset)];
+        }
+    }
+    
+    // 3.判断是否要结束
+    if (view.subviews.count == 0) {
+        [xml appendString:@" />\n\n"];
+        return xml;
+    } else {
+        [xml appendString:@">\n\n"];
+    }
+    
+    // 4.遍历所有的子控件
+    for (UIView *child in view.subviews) {
+        NSString *childXml = [self digView:child level:level + 1];
+        [xml appendString:childXml];
+    }
+    
+    // 5.标签结尾
+    for (int i = 0; i < level; i++) {
+        [xml appendString:@"   "];
+    }
+    [xml appendFormat:@"</%@>\n\n", view.class];
+    
+    
+    return xml;
+}
+
 @end

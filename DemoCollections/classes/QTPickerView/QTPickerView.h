@@ -39,6 +39,9 @@ typedef void(^QTConfirmButtonAction)(QTPickerView *pickerView);
 
 @optional
 - (UIView *)viewForMiddleBarInPickerView:(QTPickerView *)pickerView;
+- (UIView *)viewForBottomInPickerView:(QTPickerView *)pickerView;
+
+
 - (void)pickerViewDidConfirm:(QTPickerView *)pickerView;
 - (void)pickerViewDidCancel:(QTPickerView *)pickerView;
 
@@ -57,6 +60,7 @@ typedef void(^QTConfirmButtonAction)(QTPickerView *pickerView);
 @property (nonatomic, weak) id<QTPickerViewDateSource> dataSource;
 
 @property (nonatomic, assign) CGFloat heightForMiddleBar;
+@property (nonatomic, assign) CGFloat heightForBottomView;
 
 @property (nonatomic, copy) QTCancelButtonAction cancelBlock;
 @property (nonatomic, copy) QTConfirmButtonAction confirmBlock;

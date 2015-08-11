@@ -8,26 +8,31 @@
 
 #import "QTPickerView.h"
 #import "POP+MCAnimate.h"
+#import "Masonry.h"
 
 #define QTPickerViewTopBarHeight 50
+#define QTInsidePickerViewHeight 150
 
 #define QTPickerViewCoverTag 989898
 
 @interface QTPickerView()
 
-@property (nonatomic, weak) UIView *topBar;
+@property (nonatomic, weak) UIView          *topBar;
 
-@property (nonatomic, weak) UIButton *cancelButton;
-@property (nonatomic, weak) UIButton *confirmButton;
+@property (nonatomic, weak) UIButton        *cancelButton;
+@property (nonatomic, weak) UIButton        *confirmButton;
 
-@property (nonatomic, weak) UIView *middleBar;
-@property (nonatomic, weak) UIView *middleBarView;
+@property (nonatomic, weak) UIView          *middleBar;
+@property (nonatomic, weak) UIView          *middleBarView;
 
-@property (nonatomic, weak) UIPickerView *pickerView;
+@property (nonatomic, weak) UIView          *bottomView;
 
-@property (nonatomic, weak) UIDatePicker *datePicker;
+@property (nonatomic, weak) UIPickerView    *insidePickerView;
+
+@property (nonatomic, weak) UIDatePicker    *datePicker;
 
 @property (nonatomic, copy) CompleteHandler handler;
+
 
 @end
 
@@ -52,6 +57,8 @@
     QTPickerView *pickerView = [[QTPickerView alloc] init];
 
     pickerView.pickerMode = pickerMode;
+    
+    pickerView.frame = CGRectMake(-100, -100, 100, 100);
 
     return pickerView;
 }
@@ -61,6 +68,8 @@
     QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:pickerMode];
 
     pickerView.handler = handler;
+    
+    [pickerView hide];
 
     return pickerView;
 }
@@ -148,66 +157,88 @@
             pickerView.dataSource = _dataSource;
             
             [self addSubview:pickerView];
-            _pickerView = pickerView;
+            _insidePickerView = pickerView;
         }
-
-
     }
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-
+    
+    // 初始化底view
     {
-        CGFloat x      = 0;
-        CGFloat y      = 0;
-        CGFloat width  = self.frame.size.width;
-        CGFloat height = QTPickerViewTopBarHeight;
-        _topBar.frame = CGRectMake(x, y, width, height);
-
-        //两个按钮的位置
+        if (_delegate && [_delegate respondsToSelector:@selector(viewForBottomInPickerView:)])
         {
-            x      = 0;
-            y      = 0;
-            width  = 50;
-            height = 50;
-            _cancelButton.frame = CGRectMake(x, y, width, height);
-            _cancelButton.center = CGPointMake(width / 2, _topBar.center.y);
-
-            x      = 0;
-            y      = 0;
-            width  = 50;
-            height = 50;
-            _confirmButton.frame = CGRectMake(x, y, width, height);
-            _confirmButton.center = CGPointMake(self.frame.size.width - width / 2, _topBar.center.y);
+            UIView *view = [_delegate viewForBottomInPickerView:self];
+            
+            [self addSubview:view];
+            _bottomView = view;
         }
-
-        x      = 0;
-        y      = _topBar.frame.origin.y + _topBar.frame.size.height;
-        width  = self.frame.size.width;
-        height = _heightForMiddleBar;
-        _middleBar.frame = CGRectMake(x, y, width, height);
-
-        //中间view位置
-        {
-            x      = 0;
-            y      = 0;
-            width  = _middleBar.frame.size.width;
-            height = _middleBar.frame.size.height;
-            _middleBarView.frame = CGRectMake(x, y, width, height);
-
-        }
-
-
-        x      = 0;
-        y      = _middleBar.frame.origin.y + _middleBar.frame.size.height;
-        width  = self.frame.size.width;
-        height = self.frame.size.height - y;
-        _pickerView.frame = CGRectMake(x, y, width, height);
-
     }
+    
+    [self autolayout];
 }
+
+- (void)autolayout
+{
+    // 顶部条
+    [_topBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.mas_equalTo(_topBar.superview);
+        make.height.mas_equalTo(QTPickerViewTopBarHeight);
+    }];
+    
+    //取消按钮
+    [_cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_cancelButton.superview).offset(10);
+        make.top.bottom.mas_equalTo(_cancelButton.superview).insets(UIEdgeInsetsMake(10, 0, 10, 0));
+        make.width.mas_equalTo(50);
+    }];
+    
+    //确认按钮
+    [_confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(_confirmButton.superview).offset(-10);
+        make.top.bottom.mas_equalTo(_cancelButton.superview).insets(UIEdgeInsetsMake(10, 0, 10, 0));
+        make.width.mas_equalTo(50);
+    }];
+    
+    // 中间条
+    [_middleBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(_middleBar.superview);
+        make.top.mas_equalTo(_topBar.mas_bottom);
+        make.height.mas_equalTo(_heightForMiddleBar);
+    }];
+    
+    [_middleBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(_middleBarView.superview);
+    }];
+    
+    if (self.pickerMode == QTPickerModeDate)
+    {
+        [_datePicker mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(_datePicker.superview);
+            make.top.mas_equalTo(_middleBar.mas_bottom);
+            make.height.mas_equalTo(QTInsidePickerViewHeight);
+        }];
+        
+        [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.mas_equalTo(_bottomView.superview);
+            make.height.mas_equalTo(_heightForBottomView);
+        }];
+    }
+    else
+    {
+        [_insidePickerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo(_insidePickerView.superview);
+            make.top.mas_equalTo(_middleBar.mas_bottom);
+            make.height.mas_equalTo(QTInsidePickerViewHeight);
+        }];
+        
+        [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.bottom.right.mas_equalTo(_bottomView.superview);
+            make.height.mas_equalTo(_heightForBottomView);
+        }];
+    }
+    
+    _insidePickerView.backgroundColor = [UIColor yellowColor];
+    _bottomView.backgroundColor = [UIColor blueColor];
+}
+
 
 #pragma mark - 事件响应
 - (void)confirmButtonClick:(UIButton *)button
@@ -241,7 +272,7 @@
 {
     if (_pickerMode == QTPickerModeCustomize)
     {
-        return _pickerView;
+        return _insidePickerView;
     }
     else
     {
@@ -263,6 +294,10 @@
     cover.backgroundColor = [UIColor blackColor];
     cover.tag             = QTPickerViewCoverTag;
     cover.layer.opacity   = 0.1;
+    
+    CGFloat width = 300;
+    CGFloat height = QTPickerViewTopBarHeight + self.heightForMiddleBar + QTInsidePickerViewHeight + self.heightForBottomView;
+    self.frame = CGRectMake(0, 0, width, height);
 
     switch (direction) {
         case QTPickerAnimateDirectionTop:
@@ -301,16 +336,6 @@
         ws.center = window.center;
 
     }];
-
-    //使用pop动画
-//    [NSObject pop_animate:^{
-//
-//        ws.pop_springSpeed = 20;
-//        cover.layer.pop_spring.opacity = 0.5;
-//        ws.pop_spring.center           = window.center;
-//
-//    } completion:nil];
-
 
 }
 
@@ -377,7 +402,7 @@
 - (void)setDelegate:(id<QTPickerViewDelegate>)delegate
 {
     _delegate = delegate;
-    _pickerView.delegate = delegate;
+    _insidePickerView.delegate = delegate;
 
     [self setupSubviews];
 }
@@ -385,13 +410,27 @@
 - (void)setDataSource:(id<QTPickerViewDateSource>)dataSource
 {
     _dataSource = dataSource;
-    _pickerView.dataSource = dataSource;
+    _insidePickerView.dataSource = dataSource;
 }
 
 - (void)setPickerMode:(QTPickerMode)pickerMode
 {
     _pickerMode = pickerMode;
 
+    [self setupSubviews];
+}
+
+- (void)setHeightForMiddleBar:(CGFloat)heightForMiddleBar
+{
+    _heightForMiddleBar = heightForMiddleBar;
+    
+    [self setupSubviews];
+}
+
+- (void)setHeightForBottomView:(CGFloat)heightForBottomView
+{
+    _heightForBottomView = heightForBottomView;
+    
     [self setupSubviews];
 }
 

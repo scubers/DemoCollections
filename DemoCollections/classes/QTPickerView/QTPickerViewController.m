@@ -29,6 +29,8 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
 
 //    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCustomize];
     QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCustomize
@@ -49,8 +51,9 @@
     pickerView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     pickerView.delegate        = self;
     pickerView.dataSource      = self;
-    pickerView.frame           = CGRectMake(10, 100, 300, 250);
+//    pickerView.frame           = CGRectMake(0, 0, 300, 250);
     pickerView.heightForMiddleBar = 44;
+    pickerView.heightForBottomView = 44;
 
     [self.view addSubview:pickerView];
     _pickerView = pickerView;
@@ -64,13 +67,9 @@
         make.size.mas_equalTo(CGSizeMake(50, 50));
     }];
 
-
-    [btn addTarget:self action:@selector(testClick:) forControlEvents:UIControlEventTouchUpInside];
-
-
 }
 
-- (void)testClick:(UIButton *)button
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"%@", _pickerView);
     [_pickerView showWithDirection:QTPickerAnimateDirectionTop];
@@ -148,6 +147,13 @@
             break;
     }
 }
+
+//- (UIView *)viewForBottomInPickerView:(QTPickerView *)pickerView
+//{
+//    UIView *view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor lightGrayColor];
+//    return view;
+//}
 
 //- (void)pickerViewDidConfirm:(QTPickerView *)pickerView
 //{

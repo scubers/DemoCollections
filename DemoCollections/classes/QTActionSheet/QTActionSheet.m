@@ -9,19 +9,24 @@
 #import "QTActionSheet.h"
 #import "Masonry.h"
 
-#define QTActionSheetHeight 50
+#define QTActionSheetHeight 48
 #define QTActionSheetMargin 0.5
 #define QTActionSheetCoverTag 7878
 
 @interface QTActionSheet()
 
-@property (nonatomic, strong) NSMutableArray *otherButtonTitles;
-@property (nonatomic, strong) NSMutableArray *buttons;
+@property (nonatomic, strong) NSMutableArray       *otherButtonTitles;
+@property (nonatomic, strong) NSMutableArray       *buttons;
 
-@property (nonatomic, copy) NSString *cancelButtonTitle;
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, weak  ) UIView               *titleBgView;
+@property (nonatomic, weak  ) UILabel              *titleLabel;
 
-@property (nonatomic, copy) QTActionSheetHandler handler;
+@property (nonatomic, weak  ) UIView               *titleView;
+
+@property (nonatomic, copy  ) NSString             *cancelButtonTitle;
+@property (nonatomic, copy  ) NSString             *title;
+
+@property (nonatomic, copy  ) QTActionSheetHandler handler;
 
 @end
 
@@ -45,114 +50,162 @@
 
 - (void)setupSubviews
 {
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.buttons = nil;
+    
     //初始化控件
     {
-        if (!_title)
+        for (int i = 0; i < self.otherButtonTitles.count + 1; i++)
         {
-            for (int i = 0; i < self.otherButtonTitles.count + 1; i++)
-            {
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                
-                button.tag = i;
-                button.backgroundColor = [UIColor whiteColor];
-                [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-                
-                if (i == self.otherButtonTitles.count) {
-                    [button setTitle:_cancelButtonTitle forState:UIControlStateNormal];
-                }
-                else
-                {
-                    [button setTitle:self.otherButtonTitles[i] forState:UIControlStateNormal];
-                }
-                
-                [self addSubview:button];
-                [self.buttons addObject:button];
-                
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            
+            button.tag = i;
+            button.backgroundColor = [UIColor whiteColor];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+            
+            if (i == self.otherButtonTitles.count) {
+                [button setTitle:_cancelButtonTitle forState:UIControlStateNormal];
             }
-        }
-        else
-        {
-            for (int i = 0; i < self.otherButtonTitles.count + 2; i++)
+            else
             {
-                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-                
-                
-                button.backgroundColor = [UIColor whiteColor];
-                [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                if (i != 0)
-                {
-                    button.tag = i - 1;
-                    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-                }
-                else
-                {
-                    [button setTitle:_title forState:UIControlStateNormal];
-                }
-                
-                if (i == self.otherButtonTitles.count + 1)
-                {
-                    [button setTitle:_cancelButtonTitle forState:UIControlStateNormal];
-                }
-                else
-                {
-                    if (i != 0)
-                    {
-                        [button setTitle:self.otherButtonTitles[i - 1] forState:UIControlStateNormal];
-                    }
-                }
-                
-                [self addSubview:button];
-                [self.buttons addObject:button];
-                
+                [button setTitle:self.otherButtonTitles[i] forState:UIControlStateNormal];
             }
+            
+            [self addSubview:button];
+            [self.buttons addObject:button];
+            
         }
         
-    }
-    
-    //设置约束
-    {
-        UIButton *lastButton;
-        for (int i = 0; i < self.buttons.count; i++)
+        //如果有自定义titleView
+        if (_delegate && [_delegate respondsToSelector:@selector(titleViewForActionSheet:)])
         {
-            if (lastButton)
-            {
-                if (i == self.buttons.count - 1)//最后一个
-                {
-                    [self.buttons[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-                        make.left.right.bottom.mas_equalTo([self.buttons[i] superview]);
-                        make.height.mas_equalTo(QTActionSheetHeight);
-                    }];
-                }
-                else//中间的
-                {
-                    [self.buttons[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-                        make.left.right.mas_equalTo([self.buttons[i] superview]);
-                        make.height.mas_equalTo(QTActionSheetHeight);
-                        make.top.mas_equalTo(lastButton.mas_bottom).offset(QTActionSheetMargin);
-                    }];
-                }
-                
-            }
-            else//第一个
-            {
-                [self.buttons[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.right.top.mas_equalTo([self.buttons[i] superview]);
-                    make.height.mas_equalTo(QTActionSheetHeight);
-                }];
-            }
+            UIView *titleView = [_delegate titleViewForActionSheet:self];
+            
+            [self addSubview:titleView];
+            _titleView = titleView;
+        }
+        //如果有标题
+        else if (_title)
+        {
+            UIView *titleBgView = [[UIView alloc] init];
+            
+            titleBgView.backgroundColor = [UIColor whiteColor];
+            
+            [self addSubview:titleBgView];
+            _titleBgView = titleBgView;
             
             
-            lastButton = self.buttons[i];
+            UILabel *titleLabel = [[UILabel alloc] init];
+            
+            titleLabel.numberOfLines   = 0;
+            titleLabel.text            = _title;
+            titleLabel.backgroundColor = [UIColor whiteColor];
+            titleLabel.textAlignment   = NSTextAlignmentCenter;
+            
+            
+            [titleBgView addSubview:titleLabel];
+            _titleLabel = titleLabel;
         }
     }
     
+    [self autolayout];
+    
+}
+
+- (void)autolayout
+{
+    __weak typeof(self) ws = self;
+    //设置约束
+    UIButton *lastButton;
+    
+    if (_titleView)
+    {
+        [_titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.mas_equalTo(_titleView.superview);
+            if (ws.delegate && [ws.delegate respondsToSelector:@selector(heightForTitleViewInActionSheet:)])
+            {
+                make.height.mas_equalTo([ws.delegate heightForTitleViewInActionSheet:ws]);
+            }
+            else
+            {
+                make.height.mas_equalTo(QTActionSheetHeight);
+            }
+        }];
+    }
+    else if (_titleBgView)
+    {
+        [_titleBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.mas_equalTo(_titleBgView.superview);
+            make.height.mas_equalTo(QTActionSheetHeight);
+        }];
+        
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.mas_equalTo(_titleLabel.superview);
+            make.centerX.mas_equalTo(_titleLabel.superview);
+            make.left.right.mas_equalTo(_titleLabel.superview).insets(UIEdgeInsetsMake(0, 30, 0, 30));
+        }];
+    }
+    
+    
+    
+    
+    for (int i = 0; i < self.buttons.count; i++)
+    {
+        
+        if (i == 0) //第一个
+        {
+            
+            [self.buttons[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+                if (_titleView)
+                {
+                    make.left.right.mas_equalTo([self.buttons[i] superview]);
+                    make.top.mas_equalTo(_titleView.mas_bottom).offset(QTActionSheetMargin);
+                }
+                else if (_titleBgView)
+                {
+                    make.left.right.mas_equalTo([self.buttons[i] superview]);
+                    make.top.mas_equalTo(_titleBgView.mas_bottom).offset(QTActionSheetMargin);
+                }
+                else
+                {
+                    make.left.right.top.mas_equalTo([self.buttons[i] superview]);
+                }
+                
+                make.height.mas_equalTo(QTActionSheetHeight);
+            }];
+            
+            lastButton = self.buttons[i];
+            
+            continue;
+        }
+        
+        if (i == self.buttons.count - 1) //最后一个
+        {
+            [self.buttons[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.bottom.mas_equalTo([self.buttons[i] superview]);
+                make.height.mas_equalTo(QTActionSheetHeight);
+            }];
+            
+            continue;
+        }
+        
+        [self.buttons[i] mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.mas_equalTo([self.buttons[i] superview]);
+            make.height.mas_equalTo(QTActionSheetHeight);
+            make.top.mas_equalTo(lastButton.mas_bottom).offset(QTActionSheetMargin);
+        }];
+        
+        lastButton = self.buttons[i];
+    }
+
 }
 
 #pragma mark - 事件响应
 - (void)buttonClick:(UIButton *)button
 {
-    if (self.handler) {
+    if (self.handler)
+    {
         self.handler(self, button.tag);
     }
     
@@ -167,7 +220,24 @@
 #pragma mark - 公共方法
 - (CGFloat)heightForActionSheet
 {
-    CGFloat height = self.buttons.count * (QTActionSheetHeight + QTActionSheetMargin) + (QTActionSheetMargin);
+    CGFloat titleHeight = 0;
+    if (_delegate)
+    {
+        if ([_delegate respondsToSelector:@selector(heightForTitleViewInActionSheet:)])
+        {
+            titleHeight = [_delegate heightForTitleViewInActionSheet:self];
+        }
+        else
+        {
+            titleHeight = QTActionSheetHeight;
+        }
+    }
+    else if (_titleBgView)
+    {
+        titleHeight = QTActionSheetHeight;
+    }
+    
+    CGFloat height = self.buttons.count * (QTActionSheetHeight + QTActionSheetMargin) + (QTActionSheetMargin) + titleHeight;
     return height;
 }
 
@@ -233,6 +303,13 @@
         _buttons = [NSMutableArray array];
     }
     return _buttons;
+}
+
+- (void)setDelegate:(id<QTActionSheetDelegate>)delegate
+{
+    _delegate = delegate;
+    
+    [self setupSubviews];
 }
 
 

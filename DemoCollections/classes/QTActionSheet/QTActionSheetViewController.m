@@ -9,7 +9,7 @@
 #import "QTActionSheetViewController.h"
 #import "QTActionSheet.h"
 
-@interface QTActionSheetViewController ()
+@interface QTActionSheetViewController ()<QTActionSheetDelegate>
 
 @property (nonatomic, assign) BOOL flag;
 
@@ -31,15 +31,28 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    QTActionSheet *sheet = [[QTActionSheet alloc] initWithTitle:@"你懂的"
+    QTActionSheet *sheet = [[QTActionSheet alloc] initWithTitle:nil
                                                         handler:^(QTActionSheet *actionSheet, NSUInteger index) {
                                                             
                                                             NSLog(@"%zd", index);
                                                             
                                                             
                                                         } cancelButtonTitle:@"取消" otherButtonTitles:@[@"1",@"2"]];
+    sheet.delegate = self;
     
     [sheet show];
+}
+
+- (UIView *)titleViewForActionSheet:(QTActionSheet *)actionSheet
+{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor yellowColor];
+    return view;
+}
+
+- (CGFloat)heightForTitleViewInActionSheet:(QTActionSheet *)actionSheet
+{
+    return 100;
 }
 
 

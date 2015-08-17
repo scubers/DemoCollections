@@ -12,7 +12,18 @@
 
 typedef void(^QTActionSheetHandler)(QTActionSheet *actionSheet, NSUInteger index);
 
+@protocol QTActionSheetDelegate <NSObject>
+
+@optional
+- (UIView *)titleViewForActionSheet:(QTActionSheet *)actionSheet;
+- (CGFloat)heightForTitleViewInActionSheet:(QTActionSheet *)actionSheet;
+
+
+@end
+
 @interface QTActionSheet : UIView
+
+@property (nonatomic, weak) id<QTActionSheetDelegate> delegate;
 
 - (instancetype)initWithTitle:(NSString *)title
                       handler:(QTActionSheetHandler)handler

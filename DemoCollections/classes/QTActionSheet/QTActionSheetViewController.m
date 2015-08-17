@@ -31,7 +31,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    QTActionSheet *sheet = [[QTActionSheet alloc] initWithTitle:nil
+    QTActionSheet *sheet = [[QTActionSheet alloc] initWithTitle:@"你懂的你懂的你懂的你懂的你懂的你懂的你懂的你懂的你懂的你懂的"
                                                         handler:^(QTActionSheet *actionSheet, NSUInteger index) {
                                                             
                                                             NSLog(@"%zd", index);
@@ -43,17 +43,17 @@
     [sheet show];
 }
 
-- (UIView *)titleViewForActionSheet:(QTActionSheet *)actionSheet
-{
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor yellowColor];
-    return view;
-}
-
-- (CGFloat)heightForTitleViewInActionSheet:(QTActionSheet *)actionSheet
-{
-    return 100;
-}
+//- (UIView *)titleViewForActionSheet:(QTActionSheet *)actionSheet
+//{
+//    UIView *view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor yellowColor];
+//    return view;
+//}
+//
+//- (CGFloat)heightForTitleViewInActionSheet:(QTActionSheet *)actionSheet
+//{
+//    return 100;
+//}
 
 
 

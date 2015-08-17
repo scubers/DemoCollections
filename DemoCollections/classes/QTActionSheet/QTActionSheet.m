@@ -102,6 +102,7 @@
             titleLabel.text            = _title;
             titleLabel.backgroundColor = [UIColor whiteColor];
             titleLabel.textAlignment   = NSTextAlignmentCenter;
+            titleLabel.font            = [UIFont systemFontOfSize:14];
             
             
             [titleBgView addSubview:titleLabel];

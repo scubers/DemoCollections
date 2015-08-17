@@ -27,7 +27,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%f,%f", self.tableView.contentSize.height,self.view.height - 64);
 }
 
 

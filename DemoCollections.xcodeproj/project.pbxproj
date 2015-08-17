@@ -26,6 +26,7 @@
 		3D0121811B72ECD200A04388 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D01216C1B72ECD200A04388 /* UIScrollView+MJExtension.m */; };
 		3D0121821B72ECD200A04388 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D01216E1B72ECD200A04388 /* UIScrollView+MJRefresh.m */; };
 		3D0121831B72ECD200A04388 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0121701B72ECD200A04388 /* UIView+MJExtension.m */; };
+		3D05857F1B7A1990006A6903 /* QTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D05857E1B7A1990006A6903 /* QTPickerView.m */; };
 		3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */; };
 		3D223B1D1B6EFEB100C1F1B0 /* QTRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */; };
 		3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */; };
@@ -45,7 +46,6 @@
 		A846439B1B5A9F68009322F1 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = A846439A1B5A9F68009322F1 /* abc.png */; };
 		A8771A271B652344009602D3 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A8771A261B652344009602D3 /* UIView+Extension.m */; };
 		A88AACB71B5B744F00FBBFA7 /* QTTagListTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */; };
-		A88AACBE1B5B785300FBBFA7 /* QTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACBD1B5B785300FBBFA7 /* QTPickerView.m */; };
 		A88AACC11B5B7F1500FBBFA7 /* QTPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACC01B5B7F1500FBBFA7 /* QTPickerViewController.m */; };
 		A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867F1B52ADEF009B6D52 /* Images.xcassets */; };
 		A8AB868F1B52ADEF009B6D52 /* DemoCollectionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB868E1B52ADEF009B6D52 /* DemoCollectionsTests.m */; };
@@ -274,6 +274,8 @@
 		3D01216E1B72ECD200A04388 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		3D01216F1B72ECD200A04388 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		3D0121701B72ECD200A04388 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		3D05857D1B7A1990006A6903 /* QTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerView.h; sourceTree = "<group>"; };
+		3D05857E1B7A1990006A6903 /* QTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerView.m; sourceTree = "<group>"; };
 		3D223B151B6EFD0100C1F1B0 /* QTRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendView.h; sourceTree = "<group>"; };
 		3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTRecommendView.m; sourceTree = "<group>"; };
 		3D223B1B1B6EFEB100C1F1B0 /* QTRecommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendViewCell.h; sourceTree = "<group>"; };
@@ -308,8 +310,6 @@
 		A8771A261B652344009602D3 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		A88AACB51B5B744F00FBBFA7 /* QTTagListTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListTestViewController.h; sourceTree = "<group>"; };
 		A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListTestViewController.m; sourceTree = "<group>"; };
-		A88AACBC1B5B785300FBBFA7 /* QTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerView.h; sourceTree = "<group>"; };
-		A88AACBD1B5B785300FBBFA7 /* QTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerView.m; sourceTree = "<group>"; };
 		A88AACBF1B5B7F1500FBBFA7 /* QTPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerViewController.h; sourceTree = "<group>"; };
 		A88AACC01B5B7F1500FBBFA7 /* QTPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerViewController.m; sourceTree = "<group>"; };
 		A8AB866F1B52ADEF009B6D52 /* DemoCollections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoCollections.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -884,8 +884,8 @@
 		A88AACBB1B5B783900FBBFA7 /* QTPickerView */ = {
 			isa = PBXGroup;
 			children = (
-				A88AACBC1B5B785300FBBFA7 /* QTPickerView.h */,
-				A88AACBD1B5B785300FBBFA7 /* QTPickerView.m */,
+				3D05857D1B7A1990006A6903 /* QTPickerView.h */,
+				3D05857E1B7A1990006A6903 /* QTPickerView.m */,
 				A88AACBF1B5B7F1500FBBFA7 /* QTPickerViewController.h */,
 				A88AACC01B5B7F1500FBBFA7 /* QTPickerViewController.m */,
 			);
@@ -1666,7 +1666,6 @@
 				A8AB880B1B52AEB8009B6D52 /* RACBlockTrampoline.m in Sources */,
 				A8AB87F51B52AEB8009B6D52 /* NSData+RACSupport.m in Sources */,
 				A8AB88B61B52AECD009B6D52 /* POPAnimation.mm in Sources */,
-				A88AACBE1B5B785300FBBFA7 /* QTPickerView.m in Sources */,
 				A8AB884C1B52AEB8009B6D52 /* UITextView+RACSignalSupport.m in Sources */,
 				A8AB88BD1B52AECD009B6D52 /* POPCGUtils.mm in Sources */,
 				A8AB882B1B52AEB8009B6D52 /* RACSignalProvider.d in Sources */,
@@ -1822,6 +1821,7 @@
 				A8AB88001B52AEB8009B6D52 /* NSObject+RACPropertySubscribing.m in Sources */,
 				A8AB88291B52AEB8009B6D52 /* RACSignal+Operations.m in Sources */,
 				3D0121791B72ECD200A04388 /* MJRefreshBackGifFooter.m in Sources */,
+				3D05857F1B7A1990006A6903 /* QTPickerView.m in Sources */,
 				A842CF491B5D27390015464E /* MBProgressHUD.m in Sources */,
 				A8DC165E1B62912500FB5933 /* DynamicController.m in Sources */,
 				A8AB87141B52AEAF009B6D52 /* NSInvocation+BlocksKit.m in Sources */,

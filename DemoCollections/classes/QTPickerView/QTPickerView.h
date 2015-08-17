@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define QTPickerViewDefaultWidth 300
+
 typedef enum
 {
+    QTPickerModeTime,
     QTPickerModeDate,
     QTPickerModeDateAndTime,
     QTPickerModeCountDownTimer,
@@ -56,18 +59,20 @@ typedef void(^QTConfirmButtonAction)(QTPickerView *pickerView);
 
 @interface QTPickerView : UIView
 
-@property (nonatomic, weak) id<QTPickerViewDelegate> delegate;
-@property (nonatomic, weak) id<QTPickerViewDateSource> dataSource;
+@property (nonatomic, weak  ) id<QTPickerViewDelegate    > delegate;
+@property (nonatomic, weak  ) id<QTPickerViewDateSource  > dataSource;
 
-@property (nonatomic, assign) CGFloat heightForMiddleBar;
-@property (nonatomic, assign) CGFloat heightForBottomView;
+@property (nonatomic, assign) CGFloat                  heightForMiddleBar;
+@property (nonatomic, assign) CGFloat                  heightForBottomView;
 
-@property (nonatomic, copy) QTCancelButtonAction cancelBlock;
-@property (nonatomic, copy) QTConfirmButtonAction confirmBlock;
+@property (nonatomic, copy  ) QTCancelButtonAction     cancelBlock;
+@property (nonatomic, copy  ) QTConfirmButtonAction    confirmBlock;
 
-@property (nonatomic, assign) QTPickerMode pickerMode;
+@property (nonatomic, assign) QTPickerMode             pickerMode;
 
 @property (nonatomic, assign) QTPickerAnimateDirection animateDirection;
+
+@property (nonatomic, assign) NSUInteger               pickerViewTag;
 
 /**
  *  初始化，本初始化需要使用代理来处理确认

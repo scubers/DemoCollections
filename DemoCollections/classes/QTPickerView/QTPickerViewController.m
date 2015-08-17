@@ -33,7 +33,7 @@
     
 
 //    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCustomize];
-    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeCustomize
+    QTPickerView *pickerView = [[QTPickerView alloc] initWithPickerMode:QTPickerModeDate
                                                               withBlock:^(QTPickerView *pickerView, BOOL isConfirm) {
         if (isConfirm)
         {

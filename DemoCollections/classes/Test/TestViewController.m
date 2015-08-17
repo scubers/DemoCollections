@@ -61,7 +61,10 @@
                 
                 [sc addSubview:view];
                 [self.view addSubview:sc];
-                *stop = YES;
+                
+                if (index == 2) {
+                    *stop = YES;
+                }
             }
             
         }];

@@ -26,58 +26,37 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    btn.backgroundColor = [UIColor blackColor];
+    
+    [btn setTitle:@"定积分" forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"t_ico_rose"] forState:UIControlStateNormal];
+    
+    btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    btn.imageEdgeInsets = UIEdgeInsetsMake(7, 7, 7, 7);
+    [self.view addSubview:btn];
+    
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 30));
+        make.center.mas_equalTo(btn.superview);
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [btn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(100, 400));
+        }];
+    });
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        
-        [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-            
-            
-            if ([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto])
-            {
-                NSLog(@"%@", [result valueForProperty:ALAssetPropertyURLs]);
-                
-                UIImage *img = [UIImage imageWithCGImage:[result defaultRepresentation].fullScreenImage];
-                
-                NSData *data = UIImageJPEGRepresentation(img, 0.1);
-                
-                img = [UIImage imageWithData:data];
-                
-                NSLog(@"%ld", data.length);
-                
-                UIImageView *view = [[UIImageView alloc] initWithImage:img];
-                
-                UIScrollView *sc = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-                
-                sc.delegate = self;
-                
-                sc.zoomScale = 0.5;
-                sc.maximumZoomScale = 1;
-                sc.minimumZoomScale = 0.1;
-                sc.contentSize = view.size;
-                
-                [sc addSubview:view];
-                [self.view addSubview:sc];
-                
-                if (index == 2) {
-                    *stop = YES;
-                }
-            }
-            
-        }];
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+
+
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return scrollView.subviews.firstObject;
-}
 
 
 - (void)dealloc

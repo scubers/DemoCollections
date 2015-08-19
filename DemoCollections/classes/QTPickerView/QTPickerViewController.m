@@ -148,45 +148,6 @@
     }
 }
 
-//- (UIView *)viewForBottomInPickerView:(QTPickerView *)pickerView
-//{
-//    UIView *view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor lightGrayColor];
-//    return view;
-//}
-
-//- (void)pickerViewDidConfirm:(QTPickerView *)pickerView
-//{
-//    UIPickerView *pv = (UIPickerView *)pickerView.pickerView;
-//
-//    NSLog(@"%.2zd小时，%@分钟",[pv selectedRowInComponent:0], [pv selectedRowInComponent:2] == 0 ? @"00": @"30");
-//
-//    [pickerView hide];
-//
-//}
-//
-//- (void)pickerViewDidCancel:(QTPickerView *)pickerView
-//{
-//    NSLog(@"取消");
-//    [pickerView hide];
-//}
-
-#pragma mark - <QTSelectionViewDelegate,QTSelectionViewDataSource>
-- (NSInteger)numberOfSelectionsInSelectionView:(QTSelectionView *)selectionView
-{
-    return 3;
-}
-
-- (NSInteger)marginForEachSelectionsInSelectionView:(QTSelectionView *)selectionView
-{
-    return 0;
-}
-
-- (CGSize)selectionView:(QTSelectionView *)selectionView sizeForSelectionsAtIndex:(NSInteger)index
-{
-    return CGSizeMake(100, 44);
-}
-
 
 
 @end

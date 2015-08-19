@@ -53,12 +53,23 @@
     return staticDateFormatterWithFormatYYYYMMddHHmmss;
 }
 
++ (NSDateFormatter *)defaultDateFormatterWithFormatYYYYMMddHHmm
+{
+    static NSDateFormatter *staticDateFormatterWithFormatYYYYMMddHHmm;
+    if (!staticDateFormatterWithFormatYYYYMMddHHmm) {
+        staticDateFormatterWithFormatYYYYMMddHHmm = [[NSDateFormatter alloc] init];
+        [staticDateFormatterWithFormatYYYYMMddHHmm setDateFormat:@"YYYY-MM-dd HH:mm"];
+    }
+    
+    return staticDateFormatterWithFormatYYYYMMddHHmm;
+}
+
 + (NSDateFormatter *)defaultDateFormatterWithFormatYYYYMMdd
 {
     static NSDateFormatter *staticDateFormatterWithFormatYYYYMMddHHmmss;
     if (!staticDateFormatterWithFormatYYYYMMddHHmmss) {
         staticDateFormatterWithFormatYYYYMMddHHmmss = [[NSDateFormatter alloc] init];
-        [staticDateFormatterWithFormatYYYYMMddHHmmss setDateFormat:@"YYYY.MM.dd"];
+        [staticDateFormatterWithFormatYYYYMMddHHmmss setDateFormat:@"YYYY-MM-dd"];
     }
 
     return staticDateFormatterWithFormatYYYYMMddHHmmss;
@@ -183,6 +194,41 @@
 - (NSUInteger)weekday
 {
     return [self componentsOfDay].weekday;
+}
+
+/****************************************************
+ *@Description:获得NSDate对应的中文星期
+ *@Params:nil
+ *@Return:NSDate对应的星期
+ ****************************************************/
+- (NSString *)chineseWeekday
+{
+    switch (self.weekday) {
+        case 1:
+            return @"周日";
+            break;
+        case 2:
+            return @"周一";
+            break;
+        case 3:
+            return @"周二";
+            break;
+        case 4:
+            return @"周三";
+            break;
+        case 5:
+            return @"周四";
+            break;
+        case 6:
+            return @"周五";
+            break;
+        case 7:
+            return @"周六";
+            break;
+        default:
+            return nil;
+            break;
+    }
 }
 
 /******************************************
@@ -313,6 +359,11 @@
     return [[NSDate defaultDateFormatterWithFormatYYYYMMddHHmmss] stringFromDate:self];
 }
 
+- (NSString *)stringOfDateWithFormatYYYYMMddHHmm
+{
+    return [[NSDate defaultDateFormatterWithFormatYYYYMMddHHmm] stringFromDate:self];
+}
+
 - (NSString *)stringOfDateWithFormatYYYYMMdd
 {
     return [[NSDate defaultDateFormatterWithFormatYYYYMMdd] stringFromDate:self];
@@ -343,5 +394,56 @@
     return [NSDate dateWithTimeInterval:-60 * 60 * 24 sinceDate:self];
 }
 
+/**
+ *  是否闰年
+ */
+- (BOOL)isLeapYear
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    
+    df.dateFormat = @"yyyy";
+    
+    int year = [[df stringFromDate:self] intValue];
+    
+    if (year % 400 == 0)
+    {
+        return YES;
+    }
+    else
+    {
+        if (year % 4 == 0 && year % 100 != 0)
+        {
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }
+}
+
++ (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format
+{
+    static NSDateFormatter *formatter;
+    if (!formatter)
+    {
+        formatter = [[NSDateFormatter alloc] init];
+    }
+    
+    formatter.dateFormat = format;
+    
+    return [formatter dateFromString:string];
+}
+
 
 @end
+
+
+
+
+
+
+
+
+
+

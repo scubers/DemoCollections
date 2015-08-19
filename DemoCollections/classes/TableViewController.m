@@ -28,6 +28,9 @@
 {
     [super viewDidLoad];
     
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)];
+    view.hidden = YES;
+    self.tableView.tableFooterView = view;
 
 }
 

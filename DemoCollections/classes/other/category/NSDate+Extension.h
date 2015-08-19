@@ -30,6 +30,7 @@
  *Return:相应格式的NSDataFormatter对象
  ****************************************************/
 + (NSDateFormatter *)defaultDateFormatterWithFormatYYYYMMddHHmmss;
++ (NSDateFormatter *)defaultDateFormatterWithFormatYYYYMMddHHmm;
 + (NSDateFormatter *)defaultDateFormatterWithFormatYYYYMMdd;
 + (NSDateFormatter *)defaultDateFormatterWithFormatMMddHHmm;
 
@@ -96,6 +97,13 @@
  *@Return:NSDate对应的星期
  ****************************************************/
 - (NSUInteger)weekday;
+
+/****************************************************
+ *@Description:获得NSDate对应的中文星期
+ *@Params:nil
+ *@Return:NSDate对应的星期
+ ****************************************************/
+- (NSString *)chineseWeekday;
 
 /******************************************
  *@Description:获取当天是当年的第几周
@@ -166,10 +174,13 @@
  *@Return:时间的字符串格式
  ****************************************************/
 - (NSString *)stringOfDateWithFormatYYYYMMddHHmmss;
+- (NSString *)stringOfDateWithFormatYYYYMMddHHmm;
 - (NSString *)stringOfDateWithFormatYYYYMMdd;
 - (NSString *)stringOfDateWithFormatMMddHHmm;
 - (NSString *)stringOfDateWithFormatYYYYMMddHHmmInChinese;
 - (NSString *)stringOfDateWithFormatMMddHHmmInChinese;
+
++ (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format;
 
 /****************************************************
  *@Description:明天
@@ -179,6 +190,12 @@
  *@Description:昨天
  ****************************************************/
 - (NSDate *)yesterday;
+
+/**
+ *  是否闰年
+ */
+- (BOOL)isLeapYear;
+
 
 
 @end

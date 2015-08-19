@@ -7,7 +7,7 @@
 
 @implementation NSDate (Extension)
 
-/****************************************************
+/**
  *@Description:根据年份、月份、日期、小时数、分钟数、秒数返回NSDate
  *@Params:
  *  year:年份
@@ -17,7 +17,7 @@
  *  minute:分钟数
  *  second:秒数
  *@Return:
- ****************************************************/
+ */
 + (NSDate *)dateWithYear:(NSUInteger)year
                    Month:(NSUInteger)month
                      Day:(NSUInteger)day
@@ -37,11 +37,11 @@
 }
 
 
-/****************************************************
+/**
  *@Description:实现dateFormatter单例方法
  *@Params:nil
  *Return:相应格式的NSDataFormatter对象
- ****************************************************/
+ */
 + (NSDateFormatter *)defaultDateFormatterWithFormatYYYYMMddHHmmss
 {
     static NSDateFormatter *staticDateFormatterWithFormatYYYYMMddHHmmss;
@@ -110,11 +110,11 @@
 }
 
 
-/**********************************************************
+/**
  *@Description:获取当天的包括“年”，“月”，“日”，“周”，“时”，“分”，“秒”的NSDateComponents
  *@Params:nil
  *@Return:当天的包括“年”，“月”，“日”，“周”，“时”，“分”，“秒”的NSDateComponents
- ***********************************************************/
+ */
 - (NSDateComponents *)componentsOfDay
 {
     return [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
@@ -122,85 +122,85 @@
 
 
 //  --------------------------NSDate---------------------------
-/****************************************************
+/**
  *@Description:获得NSDate对应的年份
  *@Params:nil
  *@Return:NSDate对应的年份
- ****************************************************/
+ */
 - (NSUInteger)year
 {
     return [self componentsOfDay].year;
 }
 
-/****************************************************
+/**
  *@Description:获得NSDate对应的月份
  *@Params:nil
  *@Return:NSDate对应的月份
- ****************************************************/
+ */
 - (NSUInteger)month
 {
     return [self componentsOfDay].month;
 }
 
 
-/****************************************************
+/**
  *@Description:获得NSDate对应的日期
  *@Params:nil
  *@Return:NSDate对应的日期
- ****************************************************/
+ */
 - (NSUInteger)day
 {
     return [self componentsOfDay].day;
 }
 
 
-/****************************************************
+/****
  *@Description:获得NSDate对应的小时数
  *@Params:nil
  *@Return:NSDate对应的小时数
- ****************************************************/
+ ****/
 - (NSUInteger)hour
 {
     return [self componentsOfDay].hour;
 }
 
 
-/****************************************************
+/**
  *@Description:获得NSDate对应的分钟数
  *@Params:nil
  *@Return:NSDate对应的分钟数
- ****************************************************/
+ */
 - (NSUInteger)minute
 {
     return [self componentsOfDay].minute;
 }
 
 
-/****************************************************
+/**
  *@Description:获得NSDate对应的秒数
  *@Params:nil
  *@Return:NSDate对应的秒数
- ****************************************************/
+ */
 - (NSUInteger)second
 {
     return [self componentsOfDay].second;
 }
 
-/****************************************************
+/**
  *@Description:获得NSDate对应的星期
  *@Params:nil
  *@Return:NSDate对应的星期
- ****************************************************/
+ */
 - (NSUInteger)weekday
 {
     return [self componentsOfDay].weekday;
 }
 
-/****************************************************
+/**
  *@Description:获得NSDate对应的中文星期
  *@Params:nil
  *@Return:NSDate对应的星期
- ****************************************************/
+ */
 - (NSString *)chineseWeekday
 {
     switch (self.weekday) {
@@ -231,22 +231,22 @@
     }
 }
 
-/******************************************
+/**
  *@Description:获取当天是当年的第几周
  *@Params:nil
  *@Return:当天是当年的第几周
- ******************************************/
+ */
 - (NSUInteger)weekOfDayInYear
 {
     return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitWeekOfYear inUnit:NSCalendarUnitYear forDate:self];
 }
 
 
-/****************************************************
+/**
  *@Description:获得一般当天的工作开始时间
  *@Params:nil
  *@Return:一般当天的工作开始时间
- ****************************************************/
+ */
 - (NSDate *)workBeginTime
 {
     unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
@@ -258,11 +258,11 @@
     return [[NSCalendar currentCalendar] dateFromComponents:components];
 }
 
-/****************************************************
+/**
  *@Description:获得一般当天的工作结束时间
  *@Params:nil
  *@Return:一般当天的工作结束时间
- ****************************************************/
+ */
 - (NSDate *)workEndTime
 {
     unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
@@ -275,22 +275,22 @@
 }
 
 
-/****************************************************
+/**
  *@Description:获取一小时后的时间
  *@Params:nil
  *@Return:一小时后的时间
- ****************************************************/
+ */
 - (NSDate *)oneHourLater
 {
     return [NSDate dateWithTimeInterval:3600 sinceDate:self];
 }
 
 
-/****************************************************
+/**
  *@Description:获得某一天的这个时刻
  *@Params:nil
  *@Return:某一天的这个时刻
- ****************************************************/
+ */
 - (NSDate *)sameTimeOfDate
 {
     unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
@@ -302,12 +302,12 @@
     return [[NSCalendar currentCalendar] dateFromComponents:components];
 }
 
-/******************************************
+/**
  *@Description:判断与某一天是否为同一天
  *@Params:
  *  otherDate:某一天
  *@Return:YES-同一天；NO-不同一天
- ******************************************/
+ */
 - (BOOL)sameDayWithDate:(NSDate *)otherDate
 {
     if (self.year == otherDate.year && self.month == otherDate.month && self.day == otherDate.day) {
@@ -318,12 +318,12 @@
 }
 
 
-/******************************************
+/**
  *@Description:判断与某一天是否为同一周
  *@Params:
  *  otherDate:某一天
  *@Return:YES-同一周；NO-不同一周
- ******************************************/
+ */
 - (BOOL)sameWeekWithDate:(NSDate *)otherDate
 {
     if (self.year == otherDate.year  && self.month == otherDate.month && self.weekOfDayInYear == otherDate.weekOfDayInYear) {
@@ -333,12 +333,12 @@
     }
 }
 
-/******************************************
+/**
  *@Description:判断与某一天是否为同一月
  *@Params:
  *  otherDate:某一天
  *@Return:YES-同一月；NO-不同一月
- ******************************************/
+ */
 - (BOOL)sameMonthWithDate:(NSDate *)otherDate
 {
     if (self.year == otherDate.year && self.month == otherDate.month) {
@@ -349,11 +349,11 @@
 }
 
 
-/****************************************************
+/**
  *@Description:获取时间的字符串格式
  *@Params:nil
  *@Return:时间的字符串格式
- ****************************************************/
+ */
 - (NSString *)stringOfDateWithFormatYYYYMMddHHmmss
 {
     return [[NSDate defaultDateFormatterWithFormatYYYYMMddHHmmss] stringFromDate:self];

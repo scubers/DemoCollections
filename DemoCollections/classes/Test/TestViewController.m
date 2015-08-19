@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) UITextView *tv;
 
+@property (nonatomic, weak) UIButton *btn;
+
 @end
 
 @implementation TestViewController
@@ -38,23 +40,37 @@
     
     btn.imageEdgeInsets = UIEdgeInsetsMake(7, 7, 7, 7);
     [self.view addSubview:btn];
+    _btn = btn;
     
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(100, 30));
         make.center.mas_equalTo(btn.superview);
     }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [btn mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(100, 400));
-        }];
-    });
-}
 
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    static BOOL flag = YES;
 
+    if (flag)
+    {
+        [_btn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(_btn.superview).offset(-100);
+        }];
+    }
+    else
+    {
+        [_btn mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(_btn.superview).offset(100);
+        }];
+    }
 
+    flag = !flag;
+
+    [UIView animateWithDuration:2 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+    }];
 }
 
 

@@ -12,6 +12,10 @@
 #import "ReactiveCocoa.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
+#import <objc/runtime.h>
+
+
+
 
 @interface TestViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 
@@ -45,8 +49,10 @@
     }];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [btn mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(100, 400));
+        [UIView animateWithDuration:1.0 animations:^{
+            [btn mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.centerY.mas_equalTo(100);
+            }];
         }];
     });
 }

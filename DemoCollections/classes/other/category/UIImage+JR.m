@@ -10,7 +10,6 @@
 
 @implementation UIImage (JR)
 
-
 + (UIImage *)resizedImageWithName:(NSString *)name
 {
     return [self resizedImageWithName:name left:0.5 top:0.5];
@@ -31,11 +30,9 @@
     // 2.开启上下文
     CGFloat imageW = oldImage.size.width + 2 * borderWidth;
     CGFloat imageH = oldImage.size.height + 2 * borderWidth;
-
-    CGFloat baseWidth = MIN(imageW, imageH);
-
-//    CGSize imageSize = CGSizeMake(imageW, imageH);
-    CGSize imageSize = CGSizeMake(baseWidth, baseWidth);
+    
+    imageW = MIN(imageW, imageH);
+    CGSize imageSize = CGSizeMake(imageW, imageW);
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
     
     // 3.取得当前的上下文
@@ -43,7 +40,7 @@
     
     // 4.画边框(大圆)
     [borderColor set];
-    CGFloat bigRadius = baseWidth * 0.5; // 大圆半径
+    CGFloat bigRadius = imageW * 0.5; // 大圆半径
     CGFloat centerX = bigRadius; // 圆心
     CGFloat centerY = bigRadius;
     CGContextAddArc(ctx, centerX, centerY, bigRadius, 0, M_PI * 2, 0);
@@ -67,4 +64,98 @@
     return newImage;
 }
 
++ (UIImage *)trangleWithColor:(UIColor *)color andSize:(CGSize)size
+{
+    // 1.开启上下文
+    CGFloat imageW = size.width;
+    CGFloat imageH = size.height;
+    
+    CGSize imageSize = CGSizeMake(imageW, imageH);
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
+    
+    // 2.取得当前的上下文
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // 设置画画颜色
+    [color set];
+    
+    // 3.创建路线
+    CGMutablePathRef path = CGPathCreateMutable();
+
+    // 4.画三角形
+    CGPathMoveToPoint(path, NULL, imageW / 2, 0);
+    CGPathAddLineToPoint(path, NULL, 0, imageH);
+    CGPathAddLineToPoint(path, NULL, imageW, imageH);
+    CGPathAddLineToPoint(path, NULL, imageW / 2, 0);
+    
+    // 5.在上下文中添加路线
+    CGContextAddPath(ctx, path);
+    // 6.画线到上下文
+    CGContextFillPath(ctx);
+  
+    // 7.取图
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 8.结束上下文
+    UIGraphicsEndImageContext();
+    
+    return image;
+
+}
+
++ (UIImage *)imageWithView:(UIView *)view inRect:(CGRect)rect
+{
+    if (UIGraphicsBeginImageContextWithOptions != NULL)
+    {
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 0.0);
+    }
+    else
+    {
+        UIGraphicsBeginImageContext(view.frame.size);
+    }
+    
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSaveGState(context);
+    
+    UIRectClip(rect);
+    
+    [view.layer renderInContext:context];
+    
+    UIImage *fullImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    
+    //压缩图片
+    
+    
+    if (UIGraphicsBeginImageContextWithOptions != NULL)
+    {
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
+    }
+    else
+    {
+        UIGraphicsBeginImageContext(rect.size);
+    }
+    
+    [fullImage drawInRect:rect];
+    
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return result;
+}
+
 @end
+
+
+
+
+
+
+
+
+
+

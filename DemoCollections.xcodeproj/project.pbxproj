@@ -26,6 +26,7 @@
 		3D0121811B72ECD200A04388 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D01216C1B72ECD200A04388 /* UIScrollView+MJExtension.m */; };
 		3D0121821B72ECD200A04388 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D01216E1B72ECD200A04388 /* UIScrollView+MJRefresh.m */; };
 		3D0121831B72ECD200A04388 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0121701B72ECD200A04388 /* UIView+MJExtension.m */; };
+		3D043E721B85CDA9008F0B4F /* UIImage+JR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D043E711B85CDA9008F0B4F /* UIImage+JR.m */; };
 		3D05857F1B7A1990006A6903 /* QTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D05857E1B7A1990006A6903 /* QTPickerView.m */; };
 		3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */; };
 		3D223B1D1B6EFEB100C1F1B0 /* QTRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */; };
@@ -217,7 +218,6 @@
 		A8AB88C51B52AECD009B6D52 /* POPVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88AF1B52AECD009B6D52 /* POPVector.mm */; };
 		A8AB88C61B52AECD009B6D52 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88B21B52AECD009B6D52 /* TransformationMatrix.cpp */; };
 		A8AB88CA1B52AEEA009B6D52 /* QTSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */; };
-		A8AB88CD1B52B0E7009B6D52 /* UIImage+JR.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */; };
 		A8AB88D31B52B247009B6D52 /* QTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D21B52B247009B6D52 /* QTTestViewController.m */; };
 		A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */; };
 		A8DC165E1B62912500FB5933 /* DynamicController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC165D1B62912500FB5933 /* DynamicController.m */; };
@@ -274,6 +274,8 @@
 		3D01216E1B72ECD200A04388 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		3D01216F1B72ECD200A04388 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		3D0121701B72ECD200A04388 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		3D043E701B85CDA9008F0B4F /* UIImage+JR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JR.h"; sourceTree = "<group>"; };
+		3D043E711B85CDA9008F0B4F /* UIImage+JR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JR.m"; sourceTree = "<group>"; };
 		3D05857D1B7A1990006A6903 /* QTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerView.h; sourceTree = "<group>"; };
 		3D05857E1B7A1990006A6903 /* QTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerView.m; sourceTree = "<group>"; };
 		3D223B151B6EFD0100C1F1B0 /* QTRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendView.h; sourceTree = "<group>"; };
@@ -688,8 +690,6 @@
 		A8AB88B41B52AECD009B6D52 /* UnitBezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitBezier.h; sourceTree = "<group>"; };
 		A8AB88C81B52AEEA009B6D52 /* QTSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTSelectionView.h; sourceTree = "<group>"; };
 		A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTSelectionView.m; sourceTree = "<group>"; };
-		A8AB88CB1B52B0E7009B6D52 /* UIImage+JR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JR.h"; sourceTree = "<group>"; };
-		A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JR.m"; sourceTree = "<group>"; };
 		A8AB88D11B52B247009B6D52 /* QTTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTestViewController.h; sourceTree = "<group>"; };
 		A8AB88D21B52B247009B6D52 /* QTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTestViewController.m; sourceTree = "<group>"; };
 		A8AB88D41B52B2D5009B6D52 /* QTMultiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTMultiTableView.h; sourceTree = "<group>"; };
@@ -982,10 +982,10 @@
 		A8AB869C1B52AE4C009B6D52 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				3D043E701B85CDA9008F0B4F /* UIImage+JR.h */,
+				3D043E711B85CDA9008F0B4F /* UIImage+JR.m */,
 				A8771A251B652344009602D3 /* UIView+Extension.h */,
 				A8771A261B652344009602D3 /* UIView+Extension.m */,
-				A8AB88CB1B52B0E7009B6D52 /* UIImage+JR.h */,
-				A8AB88CC1B52B0E7009B6D52 /* UIImage+JR.m */,
 				A842CF4D1B5D28E50015464E /* NSDate+Extension.h */,
 				A842CF4E1B5D28E50015464E /* NSDate+Extension.m */,
 			);
@@ -1752,6 +1752,7 @@
 				A8AB87F21B52AEB8009B6D52 /* RACEXTRuntimeExtensions.m in Sources */,
 				A8AB87161B52AEAF009B6D52 /* NSMutableDictionary+BlocksKit.m in Sources */,
 				A8AB88421B52AEB8009B6D52 /* UIGestureRecognizer+RACSignalSupport.m in Sources */,
+				3D043E721B85CDA9008F0B4F /* UIImage+JR.m in Sources */,
 				A8AB88BA1B52AECD009B6D52 /* POPAnimationTracer.mm in Sources */,
 				A8AB87221B52AEAF009B6D52 /* NSCache+BlocksKit.m in Sources */,
 				3D01217D1B72ECD200A04388 /* MJRefreshNormalHeader.m in Sources */,
@@ -1831,7 +1832,6 @@
 				A8AB88211B52AEB8009B6D52 /* RACPassthroughSubscriber.m in Sources */,
 				A8AB88401B52AEB8009B6D52 /* UIControl+RACSignalSupportPrivate.m in Sources */,
 				3D0121751B72ECD200A04388 /* MJRefreshHeader.m in Sources */,
-				A8AB88CD1B52B0E7009B6D52 /* UIImage+JR.m in Sources */,
 				A8AB88411B52AEB8009B6D52 /* UIDatePicker+RACSignalSupport.m in Sources */,
 				A8AB88331B52AEB8009B6D52 /* RACTargetQueueScheduler.m in Sources */,
 				A8AB87F71B52AEB8009B6D52 /* NSEnumerator+RACSequenceAdditions.m in Sources */,

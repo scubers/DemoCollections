@@ -10,19 +10,17 @@
 
 @interface UIImage (JR)
 
-/**
- *  伸缩图片，默认拉伸最中间
- */
 + (UIImage *)resizedImageWithName:(NSString *)name;
 
-/**
- *  拉伸图片
- */
 + (UIImage *)resizedImageWithName:(NSString *)name left:(double)left top:(double)top;
 
-/**
- *  根据图片，获取其圆形图片
- */
 + (instancetype)circleImageWithName:(NSString *)name borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
+
+/**
+ *  返回一个三角形
+ */
++ (UIImage *)trangleWithColor:(UIColor *)color andSize:(CGSize)size;
+
++ (UIImage *)imageWithView:(UIView *)view inRect:(CGRect)rect;
 
 @end

@@ -50,15 +50,6 @@
         make.size.mas_equalTo(CGSizeMake(100, 30));
         make.center.mas_equalTo(btn.superview);
     }];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:1.0 animations:^{
-            [btn mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.centerY.mas_equalTo(100);
-            }];
-        }];
-    });
-}
 
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) UITextView *tv;
 
+@property (nonatomic, weak) UIButton *btn;
+
 @end
 
 @implementation TestViewController
@@ -42,6 +44,7 @@
     
     btn.imageEdgeInsets = UIEdgeInsetsMake(7, 7, 7, 7);
     [self.view addSubview:btn];
+    _btn = btn;
     
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(100, 30));
@@ -57,6 +60,7 @@
     });
 }
 
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"");

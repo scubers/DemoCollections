@@ -381,6 +381,23 @@
     _scrollView.contentInset = scrollViewContentInsets;
 }
 
+- (void)setMarkViewLocationPercent:(double)markViewLocationPercent
+{
+    if (markViewLocationPercent > 1 || markViewLocationPercent < 0)
+    {
+        return;
+    }
+    _markViewLocationPercent = markViewLocationPercent;
+    
+    
+    if (_markView)
+    {
+        double total = [self.selections.lastObject center].x - [self.selections.firstObject center].x;
+        double x = total * markViewLocationPercent + [self.selections.firstObject center].x;
+        self.markView.center = CGPointMake(x, self.markView.center.y);
+    }
+    
+}
 
 @end
 

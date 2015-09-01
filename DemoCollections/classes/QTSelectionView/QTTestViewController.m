@@ -43,9 +43,19 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //        [_selectionView scrollToIndex:5 animated:YES];
-    });
+    static double temp = 0;
+    [NSTimer bk_scheduledTimerWithTimeInterval:0.1 block:^(NSTimer *timer) {
+        
+        temp += 0.1;
+        
+        if (temp > 1) {
+            [timer invalidate];
+        }
+        
+        self.selectionView.markViewLocationPercent = temp;
+        
+    } repeats:YES];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -58,14 +68,14 @@
 {
     //初始化顶部选择view
     {
-        QTSelectionView *selectionView = [[QTSelectionView alloc] initWithFrame:CGRectMake(0, 50, 320, 100)];
+        QTSelectionView *selectionView = [[QTSelectionView alloc] initWithFrame:CGRectMake(0, 50, [UIApplication sharedApplication].keyWindow.width, 100)];
         selectionView.delegate = self;
         selectionView.dataSource = self;
         _selectionView = selectionView;
         _selectionView.backgroundColor = [UIColor yellowColor];
         [self.view addSubview:selectionView];
 
-        _selectionView.scrollViewContentInsets = UIEdgeInsetsMake(0, 320/2 - (320/3)/2, 0, 320/2 - (320/3)/2);
+//        _selectionView.scrollViewContentInsets = UIEdgeInsetsMake(0, 320/2 - (320/3)/2, 0, 320/2 - (320/3)/2);
 
     }
 
@@ -149,7 +159,13 @@
     iv.image = [UIImage circleImageWithName:@"abc.png" borderWidth:5 borderColor:[UIColor whiteColor]];
     return iv;
 }
+
 #pragma mark - <UITableViewDelegate,UITableViewDataSource>
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 10;
+}
 #pragma mark - <QTMultiTableViewDataSource,QTMultiTableViewDelegate>
 
 - (NSInteger)numberOfTableViewInMultiTableView:(QTMultiTableView *)multiTableView

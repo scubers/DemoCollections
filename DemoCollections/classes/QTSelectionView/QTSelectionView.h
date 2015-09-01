@@ -52,11 +52,14 @@
 @property (nonatomic, weak) id<QTSelectionViewDelegate> delegate;
 @property (nonatomic, weak) id<QTSelectionViewDataSource> dataSource;
 
-@property (nonatomic, assign, readonly) int selectedIndex;
-@property (nonatomic, assign, readonly) int selectionMargin;
+@property (nonatomic, assign, readonly) int    selectedIndex;
+@property (nonatomic, assign, readonly) int    selectionMargin;
 
-@property (nonatomic, assign, getter=isMarViewHidden) BOOL markViewHidden;
-@property (nonatomic, assign, getter=isScrollable) BOOL scrollable;
+@property (nonatomic, assign          ) double markViewLocationPercent;
+
+@property (nonatomic, assign, getter = isMarViewHidden) BOOL markViewHidden;
+@property (nonatomic, assign, getter = isScrollable) BOOL scrollable;
+
 
 /**
  *  是否跟随选择滚动

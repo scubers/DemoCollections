@@ -17,6 +17,7 @@
 #import "RecommendTestViewController.h"
 #import "QTAlertViewViewController.h"
 #import "TestViewController.h"
+#import "DemoCollections-Swift.h"
 
 @interface TableViewController ()
 
@@ -93,6 +94,10 @@
         {
             cell.textLabel.text = @"TEST";
         }break;
+        case 8:
+        {
+            cell.textLabel.text = @"SWIFT_TEST";
+        }break;
         default:
             break;
     }
@@ -154,6 +159,12 @@
         case 7:
         {
             TestViewController *dc = [[TestViewController alloc] init];
+            
+            [self.navigationController pushViewController:dc animated:YES];
+        }break;
+        case 8:
+        {
+            TestViewControllerSwift *dc = [[TestViewControllerSwift alloc] init];
             
             [self.navigationController pushViewController:dc animated:YES];
         }break;

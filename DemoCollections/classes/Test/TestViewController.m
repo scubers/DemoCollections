@@ -13,15 +13,22 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
+#import "BlocksKit.h"
 
 
 
 
-@interface TestViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
+@interface TestViewController ()
+<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate,
+NSURLConnectionDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITextView *tv;
 
 @property (nonatomic, weak) UIButton *btn;
+
+@property (nonatomic, assign) NSUInteger cursorLocation;
+
+@property (nonatomic, strong) id content;
 
 @end
 
@@ -33,29 +40,34 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIView *view1 = [[UIView alloc] init];
     
-    btn.backgroundColor = [UIColor blackColor];
+    view1.backgroundColor = [UIColor blueColor];
     
-    [btn setTitle:@"定积分" forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:@"t_ico_rose"] forState:UIControlStateNormal];
+    [self.view addSubview:view1];
     
-    btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    btn.imageEdgeInsets = UIEdgeInsetsMake(7, 7, 7, 7);
-    [self.view addSubview:btn];
-    _btn = btn;
+    UIView *view2 = [[UIView alloc] init];
+    view2.backgroundColor = [UIColor yellowColor];
     
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(100, 30));
-        make.center.mas_equalTo(btn.superview);
+    [view1 addSubview:view2];
+    
+    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(view1).offset(10);
+        make.bottom.mas_equalTo(view1).offset(-10);
+        make.left.mas_equalTo(view1).offset(10);
+        make.right.mas_equalTo(view1).offset(-10);
+        
+        
     }];
+    
+    
+    CGFloat h = [view2 systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    NSLog(@"%f", h);
+    
+}
 
-}
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"");
-}
+
 
 
 

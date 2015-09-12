@@ -34,6 +34,7 @@
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
+		3D9227421BA3D31D00F3B7E3 /* TestViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */; };
 		3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B551B71BE29000383A0 /* TestViewController.m */; };
 		3DC79D7F1B72F04B002B1382 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */; };
 		3DC79D801B72F04B002B1382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC79D7E1B72F04B002B1382 /* Main.storyboard */; };
@@ -290,6 +291,8 @@
 		3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheetViewController.m; sourceTree = "<group>"; };
 		3D85248E1B6B9B9200DA22FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3D9227401BA3D31C00F3B7E3 /* DemoCollections-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoCollections-Bridging-Header.h"; sourceTree = "<group>"; };
+		3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewControllerSwift.swift; sourceTree = "<group>"; };
 		3DAE5B541B71BE29000383A0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		3DAE5B551B71BE29000383A0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -843,6 +846,8 @@
 			children = (
 				3DAE5B541B71BE29000383A0 /* TestViewController.h */,
 				3DAE5B551B71BE29000383A0 /* TestViewController.m */,
+				3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */,
+				3D9227401BA3D31C00F3B7E3 /* DemoCollections-Bridging-Header.h */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -1714,6 +1719,7 @@
 				A8AB88731B52AEC2009B6D52 /* MCBasicAnimation.m in Sources */,
 				A8AB883D1B52AEB8009B6D52 /* UIButton+RACCommandSupport.m in Sources */,
 				A8AB87FD1B52AEB8009B6D52 /* NSObject+RACDescription.m in Sources */,
+				3D9227421BA3D31D00F3B7E3 /* TestViewControllerSwift.swift in Sources */,
 				A8AB88141B52AEB8009B6D52 /* RACEagerSequence.m in Sources */,
 				A8AB87F91B52AEB8009B6D52 /* NSIndexSet+RACSequenceAdditions.m in Sources */,
 				A8AB88491B52AEB8009B6D52 /* UITableViewCell+RACSignalSupport.m in Sources */,
@@ -1949,6 +1955,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1958,6 +1965,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4b093d68-d2ed-40f5-b294-e233d4a1cf49";
+				SWIFT_OBJC_BRIDGING_HEADER = "DemoCollections/classes/Test/DemoCollections-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1965,6 +1974,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1974,6 +1984,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "DemoCollections/classes/Test/DemoCollections-Bridging-Header.h";
 			};
 			name = Release;
 		};

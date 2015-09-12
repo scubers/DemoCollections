@@ -15,8 +15,6 @@
 #import <objc/runtime.h>
 
 
-
-
 @interface TestViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UITextView *tv;

@@ -14,13 +14,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
 #import "BlocksKit.h"
+#import "POP.h"
 
 
 
 
 @interface TestViewController ()
-<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate,
-NSURLConnectionDelegate, UITextViewDelegate>
 
 @property (nonatomic, strong) UITextView *tv;
 
@@ -40,36 +39,67 @@ NSURLConnectionDelegate, UITextViewDelegate>
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIView *view1 = [[UIView alloc] init];
-    
-    view1.backgroundColor = [UIColor blueColor];
-    
-    [self.view addSubview:view1];
-    
-    
-    UIView *view2 = [[UIView alloc] init];
-    view2.backgroundColor = [UIColor yellowColor];
-    
-    [view1 addSubview:view2];
-    
-    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(view1).offset(10);
-        make.bottom.mas_equalTo(view1).offset(-10);
-        make.left.mas_equalTo(view1).offset(10);
-        make.right.mas_equalTo(view1).offset(-10);
-        
-        
-    }];
-    
-    
-    CGFloat h = [view2 systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    NSLog(@"%f", h);
-    
 }
 
+- (CALayer *)createBall
+{
+    CALayer *layer = [[CALayer alloc] init];
+    
+    layer.frame           = CGRectMake(0, 100, 30, 30);
+    layer.cornerRadius    = 15;
+    layer.backgroundColor = [UIColor blackColor].CGColor;
+    
+    return layer;
+}
 
-
-
+- (void)keyFrameAnimationTest
+{
+    CALayer *ball = [self createBall];
+    
+    [self.view.layer addSublayer:ball];
+    
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    
+    CAKeyframeAnimation *ka = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    ka.values = @[
+                  [NSValue valueWithCGPoint:ball.frame.origin],
+                  [NSValue valueWithCGPoint:CGPointMake(100, 100)],
+                  [NSValue valueWithCGPoint:CGPointMake(100, 300)],
+                  [NSValue valueWithCGPoint:ball.frame.origin],
+                  ];
+    ka.timingFunctions = @[
+                           [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                           [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                           [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                           [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                           ];
+    ka.keyTimes = @[
+                    @(0.0),
+                    @(0.5),
+                    @(0.9),
+                    @(1.0),
+                    ];
+    //    ka.repeatCount = 1000;
+    //    ka.duration = 5;
+    
+    
+    CABasicAnimation *ba = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
+    ba.toValue = @(0);
+    ba.duration = 2.5;
+    
+    //    CABasicAnimation *ba2 = [CABasicAnimation animationWithKeyPath:@"cornerRadius"];
+    //    ba.toValue = @(15);
+    //    ba.duration = 2.5;
+    //    ba.beginTime = 2.5;
+    
+    [group setAnimations:@[ka, ba]];
+    
+    group.duration = 5;
+    group.repeatCount = 1000;
+    
+    //    [ball addAnimation:ka forKey:@"abc"];
+    [ball addAnimation:group forKey:@"group"];
+}
 
 - (void)dealloc
 {

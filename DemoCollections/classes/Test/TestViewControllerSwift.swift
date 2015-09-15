@@ -49,7 +49,7 @@ class TestViewControllerSwift : UIViewController {
         textField.delegate = self
         
         self.rac_signalForSelector("test").subscribeNext { (_) -> Void in
-            println()
+            print("")
         }
         
         setupSubViews()
@@ -57,7 +57,7 @@ class TestViewControllerSwift : UIViewController {
     }
     
     func setupSubViews() -> Void {
-        var button: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let button: UIButton = UIButton(type: UIButtonType.Custom)
         
         weak var ws = self;
         button.rac_signalForControlEvents(UIControlEvents.TouchUpInside).subscribeNext { (btn) -> Void in
@@ -74,11 +74,11 @@ class TestViewControllerSwift : UIViewController {
     }
     
     func test() {
-        println()
+        print("")
     }
     
     deinit {
-        println()
+        print("")
     }
     
 }
@@ -89,7 +89,7 @@ extension TestViewControllerSwift : UITextFieldDelegate {
     
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        println("sdlfjsldfkjsdfjslfdkj")
+        print("sdlfjsldfkjsdfjslfdkj")
         return true;
     }
     

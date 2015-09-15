@@ -17,7 +17,6 @@
 #import "RecommendTestViewController.h"
 #import "QTAlertViewViewController.h"
 #import "TestViewController.h"
-#import "DemoCollections-Swift.h"
 
 @interface TableViewController ()
 
@@ -59,116 +58,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
 
-        case 1:
-        {
-            cell.textLabel.text = @"QTTagListView";
-        }break;
-
-        case 2:
-        {
-            cell.textLabel.text = @"QTPickerView";
-        }break;
-
-        case 3:
-        {
-            cell.textLabel.text = @"DynamicDemo";
-        }break;
-            
-        case 4:
-        {
-            cell.textLabel.text = @"QTActionSheet";
-        }break;
-        case 5:
-        {
-            cell.textLabel.text = @"QTRecommendView";
-        }break;
-        case 6:
-        {
-            cell.textLabel.text = @"QTAlertView";
-        }break;
-        case 7:
-        {
-            cell.textLabel.text = @"TEST";
-        }break;
-        case 8:
-        {
-            cell.textLabel.text = @"SWIFT_TEST";
-        }break;
-        default:
-            break;
-    }
+    cell.textLabel.text = [self.classArray[indexPath.row] allKeys].lastObject;
 
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row) {
-        case 0:
-        {
-            QTTestViewController *tc = [[QTTestViewController alloc] init];
-            [self.navigationController pushViewController:tc animated:YES];
-        }break;
-
-        case 1:
-        {
-            QTTagListTestViewController *tc = [[QTTagListTestViewController alloc] init];
-
-            [self.navigationController pushViewController:tc animated:YES];
-        }break;
-
-        case 2:
-        {
-            QTPickerViewController *pv = [[QTPickerViewController alloc] init];
-
-            [self.navigationController pushViewController:pv animated:YES];
-        }break;
-
-        case 3:
-        {
-            DynamicController *dc = [[DynamicController alloc] init];
-
-            [self.navigationController pushViewController:dc animated:YES];
-        }break;
-            
-        case 4:
-        {
-            QTActionSheetViewController *dc = [[QTActionSheetViewController alloc] init];
-            
-            [self.navigationController pushViewController:dc animated:YES];
-        }break;
-            
-        case 5:
-        {
-            RecommendTestViewController *dc = [[RecommendTestViewController alloc] init];
-            
-            [self.navigationController pushViewController:dc animated:YES];
-        }break;
-            
-        case 6:
-        {
-            QTAlertViewViewController *dc = [[QTAlertViewViewController alloc] init];
-            
-            [self.navigationController pushViewController:dc animated:YES];
-        }break;
-            
-        case 7:
-        {
-            TestViewController *dc = [[TestViewController alloc] init];
-            
-            [self.navigationController pushViewController:dc animated:YES];
-        }break;
-        case 8:
-        {
-            TestViewControllerSwift *dc = [[TestViewControllerSwift alloc] init];
-            
-            [self.navigationController pushViewController:dc animated:YES];
-        }break;
-
-        default:
-            break;
-    }
-
+    UIViewController *controller = [[((Class)[self.classArray[indexPath.row] allValues].lastObject) alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

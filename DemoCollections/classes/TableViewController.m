@@ -21,6 +21,8 @@
 
 @interface TableViewController ()
 
+@property (nonatomic, strong) NSArray *classArray;
+
 @end
 
 @implementation TableViewController
@@ -28,23 +30,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 500)];
-    view.hidden = YES;
-    self.tableView.tableFooterView = view;
+
+    _classArray = @[
+                    @{@"QTSelectionView" : [QTTestViewController class]},
+                    @{@"QTTagListView" : [QTTagListTestViewController class]},
+                    @{@"QTPickerView" : [QTPickerViewController class]},
+                    @{@"DynamicDemo" : [DynamicController class]},
+                    @{@"QTActionSheet" : [QTActionSheetViewController class]},
+                    @{@"QTRecommendView" : [RecommendTestViewController class]},
+                    @{@"QTAlertView" : [QTAlertViewViewController class]},
+                    @{@"TEST" : [TestViewController class]},
+                    ];
 
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"%f,%f", self.tableView.contentSize.height,self.view.height - 64);
-}
-
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.classArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,13 +58,6 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
-
-    switch (indexPath.row) {
-        case 0:
-        {
-            cell.textLabel.text = @"QTSelectionView";
-        }break;
 
         case 1:
         {

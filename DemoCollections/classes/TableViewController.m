@@ -40,8 +40,20 @@
                     @{@"QTAlertView" : [QTAlertViewViewController class]},
                     @{@"TEST" : [TestViewController class]},
                     ];
+    
+    UISwipeGestureRecognizer *swipe = [UISwipeGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        NSLog(@"======");
+    }];
+    
+    [self.view addGestureRecognizer:swipe];
 
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithWhite:255/255.0 alpha:.1];
+}
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -16,10 +16,11 @@
 #import "BlocksKit.h"
 #import "POP.h"
 
+#define func_random_color() [UIColor colorWithRed:(float)(arc4random()%10000)/10000.0 green:(float)(arc4random()%10000)/10000.0 blue:(float)(arc4random()%10000)/10000.0 alpha:(float)(arc4random()%10000)/10000.0]
 
 
 
-@interface TestViewController ()
+@interface TestViewController () <UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITextView *tv;
 
@@ -29,6 +30,9 @@
 
 @property (nonatomic, strong) id content;
 
+
+
+
 @end
 
 @implementation TestViewController
@@ -37,7 +41,59 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blueColor];
+   
+    
+}
+
+
+- (void)testUIStackView
+{
+    UIStackView *stackView = [[UIStackView alloc] init];
+    
+    [self.view addSubview:stackView];
+    [stackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(stackView.superview);
+        make.top.mas_equalTo(stackView.superview).offset(64);
+    }];
+    
+    NSMutableArray *views = [NSMutableArray array];
+    
+    for (int i = 0; i < 5; i++)
+    {
+        UILabel *label = [[UILabel alloc] init];
+        label.text = [NSString stringWithFormat:@"%d", i];
+        
+        label.backgroundColor = func_random_color();
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        [views addObject:label];
+        [stackView addArrangedSubview:label];
+        
+    }
+    
+    stackView.axis                             = UILayoutConstraintAxisHorizontal;
+    stackView.distribution                     = UIStackViewDistributionFillProportionally;
+    stackView.alignment                        = UIStackViewAlignmentFill;
+    stackView.spacing                          = 3;
+    stackView.baselineRelativeArrangement      = YES;
+    stackView.layoutMarginsRelativeArrangement = YES;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            UILabel *label         = [[UILabel alloc] init];
+            label.backgroundColor  = func_random_color();
+            label.textAlignment    = NSTextAlignmentCenter;
+            [views addObject:label];
+            label.text             = [NSString stringWithFormat:@"%zd", views.count-1];
+            [stackView addArrangedSubview:label];
+//            stackView.distribution = UIStackViewDistributionFillEqually;
+        } completion:nil];
+        
+        
+    });
+    
     
 }
 
@@ -50,6 +106,27 @@
     layer.backgroundColor = [UIColor blackColor].CGColor;
     
     return layer;
+}
+
+- (void)keyFrameAnimationWithPath
+{
+    CALayer *ball = [self createBall];
+    
+    [self.view.layer addSublayer:ball];
+    
+    CAKeyframeAnimation *ka = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    
+    CGPathRef path = CGPathCreateWithEllipseInRect(CGRectMake(0, 100, 100, 100), NULL);
+    ka.path = path;
+    CGPathRelease(path);
+    
+    
+    ka.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    
+    ka.duration = 1;
+    ka.repeatCount = 1000;
+    
+    [ball addAnimation:ka forKey:@""];
 }
 
 - (void)keyFrameAnimationTest

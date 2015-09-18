@@ -14,9 +14,10 @@
 #import "QTSelectionView.h"
 #import "QTMultiTableView.h"
 #import "UIImage+JR.h"
+#import "UIGestureRecognizer+BlocksKit.h"
 
 
-@interface QTTestViewController () <QTSelectionViewDelegate,QTSelectionViewDataSource,UITableViewDelegate,UITableViewDataSource, QTMultiTableViewDataSource>
+@interface QTTestViewController () <QTSelectionViewDelegate,QTSelectionViewDataSource, QTMultiTableViewDataSource>
 
 /**
  *  顶部选择view
@@ -56,6 +57,17 @@
         
     } repeats:YES];
     
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIPanGestureRecognizer *swipe = [UIPanGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        UIPanGestureRecognizer *re = (UIPanGestureRecognizer *)sender;
+        
+        window.frame = CGRectMake(window.frame.origin.x + [re translationInView:sender.view].x, window.frame.origin.y, window.size.width, window.size.height);
+        
+        [re setTranslation:CGPointZero inView:sender.view];
+    }];
+    
+    [self.view addGestureRecognizer:swipe];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -88,7 +100,7 @@
 
         [multiTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(multiTableView.superview);
-            make.top.mas_equalTo(_selectionView.mas_bottom);
+            make.top.mas_equalTo(_selectionView.mas_bottom).offset(30);
         }];
     }
 

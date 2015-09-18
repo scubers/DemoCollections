@@ -34,6 +34,7 @@
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
+		3D8592A41BABF9DE0021D1B8 /* NavigationAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592A31BABF9DE0021D1B8 /* NavigationAnimationDemo.m */; settings = {ASSET_TAGS = (); }; };
 		3D9227421BA3D31D00F3B7E3 /* TestViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */; };
 		3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B551B71BE29000383A0 /* TestViewController.m */; };
 		3DC79D7F1B72F04B002B1382 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */; };
@@ -291,6 +292,8 @@
 		3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheetViewController.m; sourceTree = "<group>"; };
 		3D85248E1B6B9B9200DA22FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3D8592A21BABF9DE0021D1B8 /* NavigationAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationAnimationDemo.h; sourceTree = "<group>"; };
+		3D8592A31BABF9DE0021D1B8 /* NavigationAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationAnimationDemo.m; sourceTree = "<group>"; };
 		3D9227401BA3D31C00F3B7E3 /* DemoCollections-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoCollections-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewControllerSwift.swift; sourceTree = "<group>"; };
 		3DAE5B541B71BE29000383A0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -841,6 +844,15 @@
 			path = QTActionSheet;
 			sourceTree = "<group>";
 		};
+		3D8592A11BABF9C30021D1B8 /* NavigationAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				3D8592A21BABF9DE0021D1B8 /* NavigationAnimationDemo.h */,
+				3D8592A31BABF9DE0021D1B8 /* NavigationAnimationDemo.m */,
+			);
+			path = NavigationAnimation;
+			sourceTree = "<group>";
+		};
 		3DAE5B531B71BE1D000383A0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,6 +979,7 @@
 				A84643961B5A8EB4009322F1 /* QTTagListView */,
 				3DAE5B531B71BE1D000383A0 /* Test */,
 				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
+				3D8592A11BABF9C30021D1B8 /* NavigationAnimation */,
 				A8AB86991B52AE4C009B6D52 /* other */,
 			);
 			path = classes;
@@ -1808,6 +1821,7 @@
 				A8AB88C61B52AECD009B6D52 /* TransformationMatrix.cpp in Sources */,
 				A8AB884B1B52AEB8009B6D52 /* UITextField+RACSignalSupport.m in Sources */,
 				A8AB87301B52AEAF009B6D52 /* UIView+BlocksKit.m in Sources */,
+				3D8592A41BABF9DE0021D1B8 /* NavigationAnimationDemo.m in Sources */,
 				A8AB882A1B52AEB8009B6D52 /* RACSignal.m in Sources */,
 				A8AB87131B52AEAF009B6D52 /* NSIndexSet+BlocksKit.m in Sources */,
 				A8AB88721B52AEC2009B6D52 /* MCAnimationProxy.m in Sources */,

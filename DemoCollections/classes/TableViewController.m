@@ -17,6 +17,8 @@
 #import "RecommendTestViewController.h"
 #import "QTAlertViewViewController.h"
 #import "TestViewController.h"
+#import "NavigationAnimationDemo.h"
+#import "AnimationsController.h"
 
 @interface TableViewController ()
 
@@ -39,6 +41,8 @@
                     @{@"QTRecommendView" : [RecommendTestViewController class]},
                     @{@"QTAlertView" : [QTAlertViewViewController class]},
                     @{@"TEST" : [TestViewController class]},
+                    @{@"NavigationAnimationDemo" : [NavigationAnimationDemo class]},
+                    @{@"AnimationsController" : [AnimationsController class]},
                     ];
     
     UISwipeGestureRecognizer *swipe = [UISwipeGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {

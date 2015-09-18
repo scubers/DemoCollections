@@ -35,6 +35,8 @@
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
 		3D8592A41BABF9DE0021D1B8 /* NavigationAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592A31BABF9DE0021D1B8 /* NavigationAnimationDemo.m */; settings = {ASSET_TAGS = (); }; };
+		3D8592A81BAC0E330021D1B8 /* AnimationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592A71BAC0E330021D1B8 /* AnimationsController.m */; settings = {ASSET_TAGS = (); }; };
+		3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592AA1BAC0E8D0021D1B8 /* Animation1.m */; settings = {ASSET_TAGS = (); }; };
 		3D9227421BA3D31D00F3B7E3 /* TestViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */; };
 		3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B551B71BE29000383A0 /* TestViewController.m */; };
 		3DC79D7F1B72F04B002B1382 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */; };
@@ -294,6 +296,10 @@
 		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		3D8592A21BABF9DE0021D1B8 /* NavigationAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationAnimationDemo.h; sourceTree = "<group>"; };
 		3D8592A31BABF9DE0021D1B8 /* NavigationAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationAnimationDemo.m; sourceTree = "<group>"; };
+		3D8592A61BAC0E330021D1B8 /* AnimationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationsController.h; sourceTree = "<group>"; };
+		3D8592A71BAC0E330021D1B8 /* AnimationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationsController.m; sourceTree = "<group>"; };
+		3D8592A91BAC0E8D0021D1B8 /* Animation1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation1.h; sourceTree = "<group>"; };
+		3D8592AA1BAC0E8D0021D1B8 /* Animation1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation1.m; sourceTree = "<group>"; };
 		3D9227401BA3D31C00F3B7E3 /* DemoCollections-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoCollections-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewControllerSwift.swift; sourceTree = "<group>"; };
 		3DAE5B541B71BE29000383A0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -853,6 +859,17 @@
 			path = NavigationAnimation;
 			sourceTree = "<group>";
 		};
+		3D8592A51BAC0DFC0021D1B8 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				3D8592A61BAC0E330021D1B8 /* AnimationsController.h */,
+				3D8592A71BAC0E330021D1B8 /* AnimationsController.m */,
+				3D8592A91BAC0E8D0021D1B8 /* Animation1.h */,
+				3D8592AA1BAC0E8D0021D1B8 /* Animation1.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		3DAE5B531B71BE1D000383A0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -980,6 +997,7 @@
 				3DAE5B531B71BE1D000383A0 /* Test */,
 				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
 				3D8592A11BABF9C30021D1B8 /* NavigationAnimation */,
+				3D8592A51BAC0DFC0021D1B8 /* Animations */,
 				A8AB86991B52AE4C009B6D52 /* other */,
 			);
 			path = classes;
@@ -1660,6 +1678,7 @@
 				A8AB881C1B52AEB8009B6D52 /* RACKVOChannel.m in Sources */,
 				A8AB87111B52AEAF009B6D52 /* NSArray+BlocksKit.m in Sources */,
 				A8AB87F61B52AEB8009B6D52 /* NSDictionary+RACSequenceAdditions.m in Sources */,
+				3D8592A81BAC0E330021D1B8 /* AnimationsController.m in Sources */,
 				A8AB87311B52AEAF009B6D52 /* UIWebView+BlocksKit.m in Sources */,
 				A8AB88041B52AEB8009B6D52 /* NSString+RACKeyPathUtilities.m in Sources */,
 				A8AB887A1B52AEC2009B6D52 /* MCAnimationGroupInternal.m in Sources */,
@@ -1786,6 +1805,7 @@
 				A8AB88021B52AEB8009B6D52 /* NSOrderedSet+RACSequenceAdditions.m in Sources */,
 				A8AB880A1B52AEB8009B6D52 /* RACBehaviorSubject.m in Sources */,
 				A8AB86C01B52AEA5009B6D52 /* MASViewAttribute.m in Sources */,
+				3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */,
 				A842CF4F1B5D28E50015464E /* NSDate+Extension.m in Sources */,
 				A8AB87271B52AEAF009B6D52 /* MFMessageComposeViewController+BlocksKit.m in Sources */,
 				A8AB87F41B52AEB8009B6D52 /* NSArray+RACSequenceAdditions.m in Sources */,

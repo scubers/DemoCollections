@@ -47,11 +47,7 @@ class TestViewControllerSwift : UIViewController {
         self.view.addSubview(textField)
         
         textField.delegate = self
-        
-        self.rac_signalForSelector("test").subscribeNext { (_) -> Void in
-            print("")
-        }
-        
+
         setupSubViews()
 
     }
@@ -60,11 +56,7 @@ class TestViewControllerSwift : UIViewController {
         let button: UIButton = UIButton(type: UIButtonType.Custom)
         
         weak var ws = self;
-        button.rac_signalForControlEvents(UIControlEvents.TouchUpInside).subscribeNext { (btn) -> Void in
-            ws!.textField?.resignFirstResponder()
-            ws!.test();
-        }
-        
+
         button.frame = CGRectMake(0, 100, 100, 100)
         
         button.backgroundColor = UIColor.yellowColor()

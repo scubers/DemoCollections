@@ -18,6 +18,8 @@
 #import "QTAlertViewViewController.h"
 #import "TestViewController.h"
 #import "ViewController.h"
+#import "NavigationAnimationDemo.h"
+#import "AnimationsController.h"
 
 @interface TableViewController ()
 
@@ -40,6 +42,8 @@
                     @{@"QTRecommendView" : [RecommendTestViewController class]},
                     @{@"QTAlertView" : [QTAlertViewViewController class]},
                     @{@"TEST" : [TestViewController class]},
+                    @{@"NavigationAnimationDemo" : [NavigationAnimationDemo class]},
+                    @{@"AnimationsController" : [AnimationsController class]},
                     @{@"WindowExtension" : [ViewController class]},
                     ];
     
@@ -65,11 +69,6 @@
 
     NSLog(@"------->%@ %@", NSStringFromCGRect(nb.frame), nb.backgroundColor);
 
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithWhite:255/255.0 alpha:.1];
 }
 
 

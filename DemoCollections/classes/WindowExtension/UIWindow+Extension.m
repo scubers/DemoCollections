@@ -10,25 +10,22 @@
 #import <objc/runtime.h>
 
 #define BaseTag 9090
-#define AnimationTime 0.5
-#define ScreenBounce [UIScreen mainScreen].bounds
+#define AnimationTime 0.25
+#define ScreenBounds [UIScreen mainScreen].bounds
+
+#define DeltaOffset 100
 
 
 #pragma mark - 内部使用的ContainerView
 
 @class UIWindowContainerView;
-
 @protocol UIWindowContainerViewDelegate <NSObject>
-
-@optional
-- (void)windowContainer:(UIWindowContainerView *)container didPan:(UIPanGestureRecognizer *)recognizer;
-
+@optional - (void)windowContainer:(UIWindowContainerView *)container didPan:(UIPanGestureRecognizer *)recognizer;
 @end
 
 @interface UIWindowContainerView : UIView
-
 @property (nonatomic, weak) id<UIWindowContainerViewDelegate> delegate;
-
+@property (nonatomic, assign) CGFloat delta;
 @end
 
 @implementation UIWindowContainerView
@@ -43,16 +40,28 @@
     return self;
 }
 
+- (void)didMoveToSuperview
+{
+    self.layer.shadowOffset = CGSizeMake(-6, 0);
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOpacity = 0.4;
+}
+
 - (void)pan:(UIPanGestureRecognizer *)reco
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(windowContainer:didPan:)])
+    _delta += [reco translationInView:reco.view].x;
+
+    if ( _delta > 5 && _delegate && [_delegate respondsToSelector:@selector(windowContainer:didPan:)])
     {
         [_delegate windowContainer:self didPan:reco];
     }
+
+    [reco setTranslation:CGPointZero inView:reco.view];
 }
 
-
 @end
+
+
 
 
 #pragma mark - UIWindow分类实现
@@ -171,7 +180,7 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
         }
         else
         {
-            UIWindowContainerView *container = [[UIWindowContainerView alloc] initWithFrame:CGRectMake(ScreenBounce.origin.x - 100, ScreenBounce.origin.y, ScreenBounce.size.width, ScreenBounce.size.height)];
+            UIWindowContainerView *container = [[UIWindowContainerView alloc] initWithFrame:CGRectMake(ScreenBounds.origin.x - DeltaOffset, ScreenBounds.origin.y, ScreenBounds.size.width, ScreenBounds.size.height)];
             container.delegate = self;
 
             [container addSubview:controller.view];
@@ -226,7 +235,7 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
         nextContainer.frame = rect;
         if (preContainer)
         {
-            preContainer.frame = CGRectMake(rect.origin.x - 100, rect.origin.y, rect.size.width, rect.size.height);
+            preContainer.frame = CGRectMake(rect.origin.x - DeltaOffset, rect.origin.y, rect.size.width, rect.size.height);
         }
     } completion:^(BOOL finished) {
 
@@ -279,23 +288,57 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
         return;
     }
 
+    UIWindowContainerView *currentContainer = self.containerViews.lastObject;
+    UIWindowContainerView *preContainer     = [self.containerViews objectAtIndex:self.containerViews.count - 2];
+    CGPoint point = [recognizer translationInView:recognizer.view];
+
+    if (recognizer.state == UIGestureRecognizerStateFailed
+        || recognizer.state == UIGestureRecognizerStateCancelled
+        || recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        if ( currentContainer.frame.origin.x > DeltaOffset )
+        {
+            [self popControllerWithAnimated:YES];
+        }
+        else
+        {
+            [UIView animateWithDuration:.25 animations:^{
+                currentContainer.frame = ScreenBounds;
+                preContainer.frame = CGRectMake(-DeltaOffset, preContainer.origin.y, preContainer.width, preContainer.height);
+            } completion:^(BOOL finished) {
+                [preContainer removeFromSuperview];
+            }];
+        }
+    }
+
     if (recognizer.state == UIGestureRecognizerStateBegan)
     {
-        UIWindowContainerView *preContainer = [self.containerViews objectAtIndex:self.containerViews.count - 2];
         [self insertSubview:preContainer belowSubview:self.containerViews.lastObject];
     }
 
     if (recognizer.state == UIGestureRecognizerStateChanged)
     {
-        CGPoint point = [recognizer translationInView:recognizer.view];
+
+        if (!(point.x < 0 && currentContainer.origin.x <= 0))// 往左边移动
+        {
+
+            // 计算位置
+            CGRect currRect = currentContainer.frame;
+            currentContainer.frame = CGRectMake(currRect.origin.x + point.x, currRect.origin.y, currRect.size.width, currRect.size.height);
+
+            CGRect preRect = preContainer.frame;
+            CGFloat deltaOffsetX = point.x * (DeltaOffset / ScreenBounds.size.width);
+            preContainer.frame = CGRectMake(preRect.origin.x + deltaOffsetX, preRect.origin.y, preRect.size.width, preRect.size.height);
+
+            if (currentContainer.origin.x < 0)
+            {
+                currentContainer.frame = CGRectMake(0, currRect.origin.y, currRect.size.width, currRect.size.height);
+                preContainer.frame = CGRectMake(-DeltaOffset, preRect.origin.y, preRect.size.width, preRect.size.height);
+
+            }
+        }
+
     }
-
-    if (recognizer.state == UIGestureRecognizerStateFailed
-        || recognizer.state == UIGestureRecognizerStateCancelled)
-    {
-
-    }
-
 
     [recognizer setTranslation:CGPointZero inView:recognizer.view];
 

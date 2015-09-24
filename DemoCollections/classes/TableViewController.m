@@ -57,6 +57,9 @@
 
     self.navigationItem.leftBarButtonItem = item;
 
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -71,6 +74,10 @@
 
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -99,5 +106,7 @@
     UIViewController *controller = [[((Class)[self.classArray[indexPath.row] allValues].lastObject) alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+
 
 @end

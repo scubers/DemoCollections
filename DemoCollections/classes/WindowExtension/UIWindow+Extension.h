@@ -5,9 +5,16 @@
 //  Created by 王俊仁 on 15/9/23.
 //  Copyright © 2015年 王俊仁. All rights reserved.
 //
-//  在window级别的切换控制器
+//  在window级别的切换控制
 
 #import <UIKit/UIKit.h>
+
+@protocol UIWindowTransitionDelegate <NSObject>
+
+@optional
+- (NSTimeInterval)transitionAnimationDuration;
+
+@end
 
 @interface UIWindow (Extension)
 

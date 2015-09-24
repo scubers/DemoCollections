@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "UIWindow+Extension.h"
+#import "TableViewController.h"
 
 
 #define func_random_color()                     [UIColor colorWithRed:(float)(arc4random()%10000)/10000.0 green:(float)(arc4random()%10000)/10000.0 blue:(float)(arc4random()%10000)/10000.0 alpha:(float)(arc4random()%10000)/10000.0]
@@ -68,6 +69,11 @@ static int temp = 0;
     [button5 addTarget:self action:@selector(click5:) forControlEvents:UIControlEventTouchUpInside];
 
 
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    imgView.image = [UIImage imageNamed:@"abc"];
+    [self.view insertSubview:imgView atIndex:0];
+
+
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 300, 30, 30)];
 
     label.text = [NSString stringWithFormat:@"%d", temp];
@@ -125,6 +131,10 @@ static int temp = 0;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
 
     [delegate.window pushController:nav animated:YES];
+
+//    TableViewController *tvc = [[TableViewController alloc] init];
+//
+//    [delegate.window pushController:[[UINavigationController alloc] initWithRootViewController:tvc] animated:YES];
 
 
 }

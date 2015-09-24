@@ -55,8 +55,6 @@ class TestViewControllerSwift : UIViewController {
     func setupSubViews() -> Void {
         let button: UIButton = UIButton(type: UIButtonType.Custom)
         
-        weak var ws = self;
-
         button.frame = CGRectMake(0, 100, 100, 100)
         
         button.backgroundColor = UIColor.yellowColor()

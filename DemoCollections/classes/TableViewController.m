@@ -42,6 +42,12 @@
                     @{@"TEST" : [TestViewController class]},
                     @{@"WindowExtension" : [ViewController class]},
                     ];
+    
+    UISwipeGestureRecognizer *swipe = [UISwipeGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        NSLog(@"======");
+    }];
+    
+    [self.view addGestureRecognizer:swipe];
 
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"左边" style:UIBarButtonItemStylePlain target:self action:nil];
 
@@ -60,6 +66,12 @@
     NSLog(@"------->%@ %@", NSStringFromCGRect(nb.frame), nb.backgroundColor);
 
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithWhite:255/255.0 alpha:.1];
+}
+
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

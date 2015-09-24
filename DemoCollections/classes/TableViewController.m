@@ -17,6 +17,7 @@
 #import "RecommendTestViewController.h"
 #import "QTAlertViewViewController.h"
 #import "TestViewController.h"
+#import "ViewController.h"
 
 @interface TableViewController ()
 
@@ -39,7 +40,24 @@
                     @{@"QTRecommendView" : [RecommendTestViewController class]},
                     @{@"QTAlertView" : [QTAlertViewViewController class]},
                     @{@"TEST" : [TestViewController class]},
+                    @{@"WindowExtension" : [ViewController class]},
                     ];
+
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"左边" style:UIBarButtonItemStylePlain target:self action:nil];
+
+    self.navigationItem.leftBarButtonItem = item;
+
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    UINavigationBar *nb = self.navigationController.navigationBar;
+
+    [nb setBackgroundImage:[UIImage imageNamed:@"abc"] forBarMetrics:UIBarMetricsCompact];
+
+    nb.backgroundColor = [UIColor redColor];
+
+    NSLog(@"------->%@ %@", NSStringFromCGRect(nb.frame), nb.backgroundColor);
 
 }
 
@@ -59,6 +77,8 @@
     }
 
     cell.textLabel.text = [self.classArray[indexPath.row] allKeys].lastObject;
+
+    cell.backgroundColor = [UIColor purpleColor];
 
     return cell;
 }

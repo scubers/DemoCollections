@@ -35,7 +35,6 @@
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
 		3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B551B71BE29000383A0 /* TestViewController.m */; };
-		3DC79D7F1B72F04B002B1382 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */; };
 		3DC79D801B72F04B002B1382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC79D7E1B72F04B002B1382 /* Main.storyboard */; };
 		3DE9F76D1B704F930072F24B /* QTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9F76C1B704F930072F24B /* QTAlertView.m */; };
 		3DE9F7701B705ABE0072F24B /* QTAlertViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9F76F1B705ABE0072F24B /* QTAlertViewViewController.m */; };
@@ -46,6 +45,8 @@
 		A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A84643981B5A8EDD009322F1 /* QTTagListView.m */; };
 		A846439B1B5A9F68009322F1 /* abc.png in Resources */ = {isa = PBXBuildFile; fileRef = A846439A1B5A9F68009322F1 /* abc.png */; };
 		A8771A271B652344009602D3 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A8771A261B652344009602D3 /* UIView+Extension.m */; };
+		A878D5751BB4173D005F3BF2 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A878D5721BB4173D005F3BF2 /* UIWindow+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		A878D5761BB4173D005F3BF2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A878D5741BB4173D005F3BF2 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		A88AACB71B5B744F00FBBFA7 /* QTTagListTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */; };
 		A88AACC11B5B7F1500FBBFA7 /* QTPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88AACC01B5B7F1500FBBFA7 /* QTPickerViewController.m */; };
 		A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8AB867F1B52ADEF009B6D52 /* Images.xcassets */; };
@@ -220,6 +221,10 @@
 		A8AB88CA1B52AEEA009B6D52 /* QTSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88C91B52AEEA009B6D52 /* QTSelectionView.m */; };
 		A8AB88D31B52B247009B6D52 /* QTTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D21B52B247009B6D52 /* QTTestViewController.m */; };
 		A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */; };
+		A8C945F31BB1406C0034183B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C945EF1BB1406C0034183B /* Default@2x.png */; settings = {ASSET_TAGS = (); }; };
+		A8C945F41BB1406C0034183B /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C945F01BB1406C0034183B /* Default-736h@3x.png */; settings = {ASSET_TAGS = (); }; };
+		A8C945F51BB1406C0034183B /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C945F11BB1406C0034183B /* Default-667h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		A8C945F61BB1406C0034183B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A8C945F21BB1406C0034183B /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		A8DC165E1B62912500FB5933 /* DynamicController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC165D1B62912500FB5933 /* DynamicController.m */; };
 		A8DC16661B629ACC00FB5933 /* BallView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC16631B629ACC00FB5933 /* BallView.m */; };
 		A8DC16671B629ACC00FB5933 /* NewtonsCradleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DC16651B629ACC00FB5933 /* NewtonsCradleView.m */; };
@@ -292,7 +297,6 @@
 		3D85248F1B6B9B9200DA22FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		3DAE5B541B71BE29000383A0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		3DAE5B551B71BE29000383A0 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		3DC79D7E1B72F04B002B1382 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3DE9F76B1B704F930072F24B /* QTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTAlertView.h; sourceTree = "<group>"; };
 		3DE9F76C1B704F930072F24B /* QTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTAlertView.m; sourceTree = "<group>"; };
@@ -310,6 +314,10 @@
 		A846439A1B5A9F68009322F1 /* abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abc.png; sourceTree = "<group>"; };
 		A8771A251B652344009602D3 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A8771A261B652344009602D3 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A878D5711BB4173D005F3BF2 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
+		A878D5721BB4173D005F3BF2 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
+		A878D5731BB4173D005F3BF2 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A878D5741BB4173D005F3BF2 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A88AACB51B5B744F00FBBFA7 /* QTTagListTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTTagListTestViewController.h; sourceTree = "<group>"; };
 		A88AACB61B5B744F00FBBFA7 /* QTTagListTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTagListTestViewController.m; sourceTree = "<group>"; };
 		A88AACBF1B5B7F1500FBBFA7 /* QTPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerViewController.h; sourceTree = "<group>"; };
@@ -694,6 +702,10 @@
 		A8AB88D21B52B247009B6D52 /* QTTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTTestViewController.m; sourceTree = "<group>"; };
 		A8AB88D41B52B2D5009B6D52 /* QTMultiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTMultiTableView.h; sourceTree = "<group>"; };
 		A8AB88D51B52B2D5009B6D52 /* QTMultiTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTMultiTableView.m; sourceTree = "<group>"; };
+		A8C945EF1BB1406C0034183B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A8C945F01BB1406C0034183B /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
+		A8C945F11BB1406C0034183B /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
+		A8C945F21BB1406C0034183B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A8D5793D1B5AAAD100824E82 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		A8DC165C1B62912500FB5933 /* DynamicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicController.h; sourceTree = "<group>"; };
 		A8DC165D1B62912500FB5933 /* DynamicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicController.m; sourceTree = "<group>"; };
@@ -881,6 +893,17 @@
 			path = QTTagListView;
 			sourceTree = "<group>";
 		};
+		A878D5701BB4173D005F3BF2 /* WindowExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A878D5711BB4173D005F3BF2 /* UIWindow+Extension.h */,
+				A878D5721BB4173D005F3BF2 /* UIWindow+Extension.m */,
+				A878D5731BB4173D005F3BF2 /* ViewController.h */,
+				A878D5741BB4173D005F3BF2 /* ViewController.m */,
+			);
+			path = WindowExtension;
+			sourceTree = "<group>";
+		};
 		A88AACBB1B5B783900FBBFA7 /* QTPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -922,8 +945,11 @@
 		A8AB86721B52ADEF009B6D52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A8C945EF1BB1406C0034183B /* Default@2x.png */,
+				A8C945F01BB1406C0034183B /* Default-736h@3x.png */,
+				A8C945F11BB1406C0034183B /* Default-667h@2x.png */,
+				A8C945F21BB1406C0034183B /* Default-568h@2x.png */,
 				A8D5793D1B5AAAD100824E82 /* Prefix.pch */,
-				3DC79D7D1B72F04B002B1382 /* LaunchScreen.xib */,
 				3DC79D7E1B72F04B002B1382 /* Main.storyboard */,
 				A846439A1B5A9F68009322F1 /* abc.png */,
 				A8AB867F1B52ADEF009B6D52 /* Images.xcassets */,
@@ -962,6 +988,7 @@
 				A84643961B5A8EB4009322F1 /* QTTagListView */,
 				3DAE5B531B71BE1D000383A0 /* Test */,
 				A8AB88C71B52AEEA009B6D52 /* QTSelectionView */,
+				A878D5701BB4173D005F3BF2 /* WindowExtension */,
 				A8AB86991B52AE4C009B6D52 /* other */,
 			);
 			path = classes;
@@ -1577,7 +1604,7 @@
 				TargetAttributes = {
 					A8AB866E1B52ADEF009B6D52 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 8QL22JREKT;
+						DevelopmentTeam = FJ535WN7FW;
 					};
 					A8AB86871B52ADEF009B6D52 = {
 						CreatedOnToolsVersion = 6.4;
@@ -1609,11 +1636,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DC79D7F1B72F04B002B1382 /* LaunchScreen.xib in Resources */,
 				A846439B1B5A9F68009322F1 /* abc.png in Resources */,
 				3D01217F1B72ECD200A04388 /* MJRefresh.bundle in Resources */,
+				A8C945F61BB1406C0034183B /* Default-568h@2x.png in Resources */,
+				A8C945F41BB1406C0034183B /* Default-736h@3x.png in Resources */,
+				A8C945F51BB1406C0034183B /* Default-667h@2x.png in Resources */,
 				3DC79D801B72F04B002B1382 /* Main.storyboard in Resources */,
 				A842CF481B5D27390015464E /* MBProgressHUD.bundle in Resources */,
+				A8C945F31BB1406C0034183B /* Default@2x.png in Resources */,
 				A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1633,6 +1663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D01217C1B72ECD200A04388 /* MJRefreshGifHeader.m in Sources */,
+				A878D5751BB4173D005F3BF2 /* UIWindow+Extension.m in Sources */,
 				A8AB882E1B52AEB8009B6D52 /* RACStringSequence.m in Sources */,
 				3D0121761B72ECD200A04388 /* MJRefreshAutoGifFooter.m in Sources */,
 				A8AB882D1B52AEB8009B6D52 /* RACStream.m in Sources */,
@@ -1776,6 +1807,7 @@
 				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,
 				A8AB88481B52AEB8009B6D52 /* UISwitch+RACSignalSupport.m in Sources */,
 				A8AB871C1B52AEAF009B6D52 /* NSObject+BKBlockObservation.m in Sources */,
+				A878D5761BB4173D005F3BF2 /* ViewController.m in Sources */,
 				A8AB88761B52AEC2009B6D52 /* MCSpringAnimation.m in Sources */,
 				A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */,
 				A8AB88351B52AEB8009B6D52 /* RACTuple.m in Sources */,
@@ -1957,7 +1989,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4b093d68-d2ed-40f5-b294-e233d4a1cf49";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};

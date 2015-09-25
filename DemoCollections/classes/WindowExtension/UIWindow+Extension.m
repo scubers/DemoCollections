@@ -49,11 +49,16 @@
 
 - (void)pan:(UIPanGestureRecognizer *)reco
 {
+    if (reco.state == UIGestureRecognizerStateBegan)
+    {
+        _delta = 0;
+    }
     _delta += [reco translationInView:reco.view].x;
-
+    
     if ( _delta > 5 && _delegate && [_delegate respondsToSelector:@selector(windowContainer:didPan:)])
     {
         [_delegate windowContainer:self didPan:reco];
+        
     }
 
     [reco setTranslation:CGPointZero inView:reco.view];
@@ -96,7 +101,7 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
 
 - (UIViewController *)popControllerWithAnimated:(BOOL)animated
 {
-    if (self.controllers.count < 2)
+    if (!self.controllers.count)
     {
         return nil;
     }
@@ -253,15 +258,19 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     NSLog(@"====> container count %zd", self.containerViews.count);
     NSLog(@"====> controller count %zd", self.controllers.count);
 
-    if (self.controllers.count < 2)
+    if (!self.controllers.count)
     {
         return;
     }
 
     UIWindowContainerView *popContainer = self.containerViews.lastObject;
-    UIWindowContainerView *displayContainer = [self.containerViews objectAtIndex:self.containerViews.count-2];
-
-    [self insertSubview:displayContainer belowSubview:popContainer];
+    
+    UIWindowContainerView *displayContainer;
+    if (self.controllers.count > 1)
+    {
+        displayContainer = [self.containerViews objectAtIndex:self.containerViews.count-2];
+        [self insertSubview:displayContainer belowSubview:popContainer];
+    }
 
     // 执行动画
     CGRect rect = [UIScreen mainScreen].bounds;
@@ -292,6 +301,7 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     UIWindowContainerView *preContainer     = [self.containerViews objectAtIndex:self.containerViews.count - 2];
     CGPoint point = [recognizer translationInView:recognizer.view];
 
+    // 松开手
     if (recognizer.state == UIGestureRecognizerStateFailed
         || recognizer.state == UIGestureRecognizerStateCancelled
         || recognizer.state == UIGestureRecognizerStateEnded)
@@ -311,11 +321,13 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
         }
     }
 
+    // 手势开始
     if (recognizer.state == UIGestureRecognizerStateBegan)
     {
         [self insertSubview:preContainer belowSubview:self.containerViews.lastObject];
     }
 
+    // 手势移动
     if (recognizer.state == UIGestureRecognizerStateChanged)
     {
 
@@ -341,8 +353,6 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     }
 
     [recognizer setTranslation:CGPointZero inView:recognizer.view];
-
-    NSLog(@"state %zd", recognizer.state);
 
 }
 

@@ -16,7 +16,7 @@
 
 
 
-@interface ViewController ()
+@interface ViewController () <UIWindowTransitionDelegate>
 
 @end
 
@@ -80,13 +80,16 @@ static int temp = 0;
     label.backgroundColor = [UIColor yellowColor];
 
     [self.view addSubview:label];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.window.delegate = self;
 
 }
 
 - (void)click4:(id)sender
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
+    
     UIViewController *controller = [delegate.window.stackControllers objectAtIndex:1];
 
     [delegate.window popToController:controller animated:YES];
@@ -145,8 +148,14 @@ static int temp = 0;
     NSLog(@"=-=-=-=-=-=-=-=-=-=%@", self);
 
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
+    
     [delegate.window popControllerWithAnimated:YES];
+}
+
+#pragma mark - delegate
+- (NSTimeInterval)transitionAnimationDuration
+{
+    return 0.25;
 }
 
 @end

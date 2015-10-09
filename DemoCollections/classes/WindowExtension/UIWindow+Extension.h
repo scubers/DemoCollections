@@ -13,10 +13,18 @@
 
 @optional
 - (NSTimeInterval)transitionAnimationDuration;
+/**
+ *  设置container相对于屏幕的frame等属性动画即可/开始和结束都需要设置
+ *  complete 需要在动画执行完后必须调用
+ */
+- (void)pushAnimationWithPreviouseContainer:(UIView *)preContainer newContainer:(UIView *)newContainer complete:(dispatch_block_t)complete;
+- (void)popAnimationWithPopContainer:(UIView *)popContainer displayContainer:(UIView *)displayContainer complete:(dispatch_block_t)complete;
 
 @end
 
 @interface UIWindow (Extension)
+
+@property (nonatomic, strong) id<UIWindowTransitionDelegate> delegate;
 
 #pragma mark - Controller的操作
 - (void)pushController:(UIViewController *)controller animated:(BOOL)animated;

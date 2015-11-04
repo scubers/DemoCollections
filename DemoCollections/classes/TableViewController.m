@@ -59,22 +59,17 @@
 
     self.navigationItem.leftBarButtonItem = item;
 
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    UINavigationBar *nb = self.navigationController.navigationBar;
-
-    [nb setBackgroundImage:[UIImage imageNamed:@"abc"] forBarMetrics:UIBarMetricsCompact];
-
-    nb.backgroundColor = [UIColor redColor];
-
-    NSLog(@"------->%@ %@", NSStringFromCGRect(nb.frame), nb.backgroundColor);
-
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    UINavigationBar *nb = self.navigationController.navigationBar;
+//
+//    [nb setBackgroundImage:[UIImage imageNamed:@"abc"] forBarMetrics:UIBarMetricsCompact];
+//
+//}
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -97,8 +92,6 @@
     }
 
     cell.textLabel.text = [self.classArray[indexPath.row] allKeys].lastObject;
-
-    cell.backgroundColor = [UIColor purpleColor];
 
     return cell;
 }

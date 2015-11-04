@@ -41,6 +41,10 @@
     [self.view addSubview:button];
     
     [self addHandler];
+    
+    NSArray *array = self.navigationController.view.subviews;
+    
+    NSLog(@"%@", array);
 }
 
 

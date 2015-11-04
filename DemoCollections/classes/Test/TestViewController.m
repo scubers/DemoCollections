@@ -43,7 +43,16 @@
     
     self.view.backgroundColor = [UIColor blueColor];
    
-    
+//    UINavigationBar *bar = self.navigationController.navigationBar;
+//    
+//    UIView *view = [[UIView alloc] initWithFrame:bar.frame];
+//    
+//    [self.view addSubview:view];
+//    
+//    view.center = self.view.center;
+//    
+//    [view addSubview:bar];
+//    
 }
 
 

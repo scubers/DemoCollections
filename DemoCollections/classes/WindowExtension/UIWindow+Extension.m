@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 
 #define BaseTag 9090
-#define AnimationTime 0.25
+#define AnimationTime 0.3
 #define ScreenBounds [UIScreen mainScreen].bounds
 
 #define DeltaOffset 100
@@ -35,6 +35,10 @@
     if (self = [super initWithFrame:frame])
     {
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+        
+        pan.delaysTouchesBegan = YES;
+        pan.delaysTouchesEnded = YES;
+        
         [self addGestureRecognizer:pan];
     }
     return self;
@@ -49,9 +53,8 @@
 
 - (void)pan:(UIPanGestureRecognizer *)reco
 {
-    _delta += [reco translationInView:reco.view].x;
 
-    if ( _delta > 5 && _delegate && [_delegate respondsToSelector:@selector(windowContainer:didPan:)])
+    if (_delegate && [_delegate respondsToSelector:@selector(windowContainer:didPan:)])
     {
         [_delegate windowContainer:self didPan:reco];
     }
@@ -65,8 +68,9 @@
 
 
 #pragma mark - UIWindow分类实现
-static const NSString *WindowControllersKey         = @"WindowControllersKey";
-static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey";
+static const NSString *WindowControllersKey    = @"WindowControllersKey";
+static const NSString *WindowContainerViewsKey = @"WindowContainerViewsKey";
+static const NSString *WindowDelegateKey       = @"WindowDelegateKey";
 
 @interface UIWindow() <UIWindowContainerViewDelegate>
 
@@ -96,7 +100,7 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
 
 - (UIViewController *)popControllerWithAnimated:(BOOL)animated
 {
-    if (self.controllers.count < 2)
+    if (!self.controllers.count)
     {
         return nil;
     }
@@ -231,53 +235,80 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     // 将容器放入索引中
     [self.containerViews addObject:nextContainer];
 
-    [UIView animateWithDuration:animated?AnimationTime:0 animations:^{
-        nextContainer.frame = rect;
-        if (preContainer)
-        {
-            preContainer.frame = CGRectMake(rect.origin.x - DeltaOffset, rect.origin.y, rect.size.width, rect.size.height);
-        }
-    } completion:^(BOOL finished) {
-
-        [preContainer removeFromSuperview];
-
-        if (complete) complete();
-
-    }];
+    // 判断有没实现自定义动画
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pushAnimationWithPreviouseContainer:newContainer:complete:)])
+    {
+        dispatch_block_t block = ^{
+            [preContainer removeFromSuperview];
+        };
+        [self.delegate pushAnimationWithPreviouseContainer:preContainer newContainer:nextContainer complete:block];
+    }
+    else
+    {
+        [UIView animateWithDuration:animated?AnimationTime:0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            nextContainer.frame = rect;
+            if (preContainer)
+            {
+                preContainer.frame = CGRectMake(rect.origin.x - DeltaOffset, rect.origin.y, rect.size.width, rect.size.height);
+            }
+            
+        } completion:^(BOOL finished) {
+            [preContainer removeFromSuperview];
+            
+            if (complete) complete();
+            
+        }];
+    }
 
 
 }
 
 - (void)handlePop:(BOOL)animated complete:(dispatch_block_t)complete
 {
-    NSLog(@"====> container count %zd", self.containerViews.count);
-    NSLog(@"====> controller count %zd", self.controllers.count);
 
-    if (self.controllers.count < 2)
+    if (!self.controllers.count)
     {
         return;
     }
 
     UIWindowContainerView *popContainer = self.containerViews.lastObject;
-    UIWindowContainerView *displayContainer = [self.containerViews objectAtIndex:self.containerViews.count-2];
+    
+    UIWindowContainerView *displayContainer;
+    if (self.controllers.count > 1)
+    {
+        displayContainer = [self.containerViews objectAtIndex:self.containerViews.count-2];
+        [self insertSubview:displayContainer belowSubview:popContainer];
+    }
 
-    [self insertSubview:displayContainer belowSubview:popContainer];
-
-    // 执行动画
-    CGRect rect = [UIScreen mainScreen].bounds;
-    [UIView animateWithDuration:animated?AnimationTime:0 animations:^{
-
-        displayContainer.frame = rect;
-        popContainer.frame = CGRectMake(rect.size.width, rect.origin.y, rect.size.width, rect.size.height);
-
-    } completion:^(BOOL finished) {
-
-        [self.containerViews.lastObject removeFromSuperview];
-        [self.containerViews removeLastObject];
-        [self.controllers removeLastObject];
-
-        if (complete) complete();
-    }];
+    // 判断有没自定义动画
+    if (self.delegate && [self.delegate respondsToSelector:@selector(popAnimationWithPopContainer:displayContainer:complete:)])
+    {
+        dispatch_block_t block = ^{
+            [self.containerViews.lastObject removeFromSuperview];
+            [self.containerViews removeLastObject];
+            [self.controllers removeLastObject];
+        };
+        [self.delegate popAnimationWithPopContainer:popContainer displayContainer:displayContainer complete:block];
+    }
+    else
+    {
+        // 执行动画
+        CGRect rect = [UIScreen mainScreen].bounds;
+        [UIView animateWithDuration:animated?AnimationTime:0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            displayContainer.frame = rect;
+            popContainer.frame = CGRectMake(rect.size.width, rect.origin.y, rect.size.width, rect.size.height);
+            
+        } completion:^(BOOL finished) {
+            
+            [self.containerViews.lastObject removeFromSuperview];
+            [self.containerViews removeLastObject];
+            [self.controllers removeLastObject];
+            
+            if (complete) complete();
+        }];
+    }
+    
 }
 
 #pragma mark - UIWindowContainerViewDelegate
@@ -287,16 +318,20 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     {
         return;
     }
-
+    
     UIWindowContainerView *currentContainer = self.containerViews.lastObject;
     UIWindowContainerView *preContainer     = [self.containerViews objectAtIndex:self.containerViews.count - 2];
     CGPoint point = [recognizer translationInView:recognizer.view];
 
+    // 松开手
     if (recognizer.state == UIGestureRecognizerStateFailed
         || recognizer.state == UIGestureRecognizerStateCancelled
         || recognizer.state == UIGestureRecognizerStateEnded)
     {
-        if ( currentContainer.frame.origin.x > DeltaOffset )
+        CGPoint velocity = [recognizer velocityInView:recognizer.view];
+        NSLog(@"%@", NSStringFromCGPoint(velocity));
+            
+        if (velocity.x > 0)
         {
             [self popControllerWithAnimated:YES];
         }
@@ -311,11 +346,13 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
         }
     }
 
+    // 手势开始
     if (recognizer.state == UIGestureRecognizerStateBegan)
     {
         [self insertSubview:preContainer belowSubview:self.containerViews.lastObject];
     }
 
+    // 手势移动
     if (recognizer.state == UIGestureRecognizerStateChanged)
     {
 
@@ -341,8 +378,6 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     }
 
     [recognizer setTranslation:CGPointZero inView:recognizer.view];
-
-    NSLog(@"state %zd", recognizer.state);
 
 }
 
@@ -381,6 +416,16 @@ static const NSString *WindowContainerViewsKey      = @"WindowContainerViewsKey"
     }
 
     return containerViews;
+}
+
+- (void)setDelegate:(id<UIWindowTransitionDelegate>)delegate
+{
+    objc_setAssociatedObject(self, (__bridge const void *)(WindowDelegateKey), delegate, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (id<UIWindowTransitionDelegate>)delegate
+{
+    return objc_getAssociatedObject(self, (__bridge const void *)(WindowDelegateKey));
 }
 
 @end

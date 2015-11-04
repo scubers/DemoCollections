@@ -404,6 +404,11 @@ static NSNumberFormatter *numberFormatter_;
         }
     }];
     
+    // 去除系统自动增加的元素
+    if ([keyValues isKindOfClass:[NSMutableDictionary class]]) {
+        [keyValues removeObjectsForKeys:@[@"superclass", @"debugDescription", @"description", @"hash"]];
+    }
+    
     // 转换完毕
     if ([self respondsToSelector:@selector(objectDidFinishConvertingToKeyValues)]) {
         [self objectDidFinishConvertingToKeyValues];

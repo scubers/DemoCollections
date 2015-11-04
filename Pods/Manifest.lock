@@ -36,7 +36,7 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - Masonry (0.6.3)
-  - MJExtension (2.5.15)
+  - MJExtension (2.5.14)
   - pop (1.0.8)
   - POP+MCAnimate (2.0.1):
     - pop (~> 1.0)
@@ -71,6 +71,9 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - ZXingObjC (3.1.0):
+    - ZXingObjC/All (= 3.1.0)
+  - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
   - AFNetworking (= 2.6.1)
@@ -82,16 +85,18 @@ DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
   - RunTrace (~> 1.2)
   - SDWebImage (~> 3.7.3)
+  - ZXingObjC (~> 3.1.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
-  MJExtension: 76967711f6ac61b1dc60ea5e148f88e12cfc8427
+  MJExtension: fb8e6e900fb44c9a7be435ba3d72b7fdf5f0994c
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   POP+MCAnimate: a99e209148c602512de487f1160a44bf78572024
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RunTrace: 4daf5c37b5d8dc0afdb7767eee7c34e1d7794336
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 COCOAPODS: 0.39.0

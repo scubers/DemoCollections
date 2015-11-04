@@ -21,6 +21,7 @@
 #import "NavigationAnimationDemo.h"
 #import "AnimationsController.h"
 #import "QRDemoViewController.h"
+#import "PopupViewTestController.h"
 
 @interface TableViewController ()
 
@@ -47,6 +48,7 @@
                     @{@"AnimationsController" : [AnimationsController class]},
                     @{@"WindowExtension" : [ViewController class]},
                     @{@"QRDemoViewController" : [QRDemoViewController class]},
+                    @{@"PopupViewTestController" : [PopupViewTestController class]},
                     ];
     
     UISwipeGestureRecognizer *swipe = [UISwipeGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {

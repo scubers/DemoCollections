@@ -22,13 +22,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.backgroundColor = [UIColor blackColor].CGColor;
     
     shapeLayer.frame = CGRectMake(20, 100, 200, 200);
     shapeLayer.lineCap = @"round";
     shapeLayer.lineWidth = 10;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
     
-    shapeLayer.strokeColor = [UIColor purpleColor].CGColor;
+    shapeLayer.strokeColor = [UIColor clearColor].CGColor;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     

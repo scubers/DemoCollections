@@ -36,6 +36,10 @@
 
 @property (nonatomic, strong) NSMutableArray *titles;
 
+@property (nonatomic, assign) CGSize contentSize; ///< 指定的内容大小
+@property (nonatomic, assign) CGPoint atPoint;  ///< 触发的点
+@property (nonatomic, strong) UIView *hangView; ///< 显示pop的view
+
 @end
 
 @implementation QTPopupView
@@ -56,12 +60,10 @@
 {
     if (self = [super init])
     {
-        _titles = [titles mutableCopy];
-
-        self.frame = CGRectMake(point.x - contentSize.width/2, point.y, contentSize.width, contentSize.height);
-
-        [view addSubview:self];
-
+        _titles      = [titles mutableCopy];
+        _atPoint     = point;
+        _contentSize = contentSize;
+        _hangView    = view;
     }
     return self;
 }
@@ -89,14 +91,44 @@
     NSLog(@"%@", NSStringFromCGRect(rect));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-
     [_background.backgroundColor setFill];
-
-    CGContextMoveToPoint(context, rect.size.width * (_arrowPosition?:0.5), 0);
-
-    CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5) - 3, BorderMargin);
-    CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5) + 3, BorderMargin);
-    CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5), 0);
+    
+    // 根据方向画箭头
+    switch (_arrowPointTo) {
+        case QTPopupViewArrowPointToTop:
+        {
+            CGContextMoveToPoint(context, rect.size.width * (_arrowPosition?:0.5), 0);
+            CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5) - 3, _background.origin.y);
+            CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5) + 3, _background.origin.y);
+            CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5), 0);
+            break;
+        }
+        case QTPopupViewArrowPointToLeft:
+        {
+            CGContextMoveToPoint(context, 0, rect.size.height * (_arrowPosition?:0.5));
+            CGContextAddLineToPoint(context, _background.origin.x, rect.size.height * (_arrowPosition?:0.5) - 3);
+            CGContextAddLineToPoint(context, _background.origin.x,rect.size.height * (_arrowPosition?:0.5) + 3);
+            CGContextAddLineToPoint(context, 0, rect.size.height * (_arrowPosition?:0.5));
+            break;
+        }
+        case QTPopupViewArrowPointToBottom:
+        {
+            CGContextMoveToPoint(context, rect.size.width * (_arrowPosition?:0.5), rect.size.height);
+            CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5) - 3, rect.size.height - _background.origin.y);
+            CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5) + 3, rect.size.height - _background.origin.y);
+            CGContextAddLineToPoint(context, rect.size.width * (_arrowPosition?:0.5), rect.size.height);
+            break;
+        }
+        case QTPopupViewArrowPointToRight:
+        {
+            CGContextMoveToPoint(context, rect.size.width, rect.size.height * (_arrowPosition?:0.5));
+            CGContextAddLineToPoint(context, rect.size.width - _background.origin.x, rect.size.height * (_arrowPosition?:0.5) - 3);
+            CGContextAddLineToPoint(context, rect.size.width - _background.origin.x, rect.size.height * (_arrowPosition?:0.5) + 3);
+            CGContextAddLineToPoint(context, rect.size.width, rect.size.height * (_arrowPosition?:0.5));
+            break;
+        }
+        default:break;
+    }
 
     CGContextFillPath(context);
 
@@ -106,12 +138,8 @@
 {
     [super layoutSubviews];
 
-    if (_arrowPosition)
-    {
-        CGFloat x = (0.5 - _arrowPosition) * self.bounds.size.width;
-        self.frame = CGRectMake(self.frame.origin.x + x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
-    }
-
+    [self adjustSelfFrame];
+    
     _background.frame = CGRectMake(BorderMargin, BorderMargin, self.bounds.size.width - 2*BorderMargin, self.bounds.size.height - 2*BorderMargin);
     _tableView.frame  = _background.bounds;
 
@@ -119,10 +147,48 @@
     _background.clipsToBounds      = YES;
 }
 
+- (void)adjustSelfFrame
+{
+    if (!_arrowPosition) _arrowPosition = 0.5;
+    
+    CGRect frame;
+    
+//    self.frame = CGRectMake(_atPoint.x - _contentSize.width/2, _atPoint.y, _contentSize.width, _contentSize.height);
+    switch (_arrowPointTo) {
+        case QTPopupViewArrowPointToTop:
+        {
+            frame = CGRectMake(_atPoint.x - ((_arrowPosition?:0.5) * _contentSize.width), _atPoint.y, _contentSize.width, _contentSize.height);
+            break;
+        }
+        case QTPopupViewArrowPointToLeft:
+        {
+            frame = CGRectMake(_atPoint.x, _atPoint.y - ((_arrowPosition?:0.5) * _contentSize.height), _contentSize.width, _contentSize.height);
+            break;
+        }
+        case QTPopupViewArrowPointToBottom:
+        {
+            frame = CGRectMake(_atPoint.x - ((_arrowPosition?:0.5) * _contentSize.width), _atPoint.y - _contentSize.height, _contentSize.width, _contentSize.height);
+            break;
+        }
+        case QTPopupViewArrowPointToRight:
+        {
+            frame = CGRectMake(_atPoint.x - _contentSize.width, _atPoint.y - ((_arrowPosition?:0.5) * _contentSize.height), _contentSize.width, _contentSize.height);
+            break;
+        }
+        default:break;
+    }
+    
+    
+    self.frame = frame;
+    
+
+}
+
 #pragma mark - Touch事件
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
-    if (!CGRectContainsPoint(self.bounds, point))
+    CGRect rect = [self.tableView convertRect:self.tableView.bounds toView:self];
+    if (!CGRectContainsPoint(rect, point))
     {
         [self dismiss];
         return [[UIView alloc] init];
@@ -171,6 +237,11 @@
             [self removeFromSuperview];
         });
     }];
+}
+
+- (void)show
+{
+    [self.hangView addSubview:self];
 }
 
 #pragma mark - Getter Setter

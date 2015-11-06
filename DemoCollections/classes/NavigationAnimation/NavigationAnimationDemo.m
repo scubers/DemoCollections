@@ -145,7 +145,7 @@
         destTransForm = CGAffineTransformMakeScale(0.1, 0.1);
     }
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveEaseInOut   animations:^{
         destView.transform = destTransForm;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];

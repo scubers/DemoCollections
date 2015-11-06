@@ -10,6 +10,15 @@
 
 @class QTPopupView;
 
+typedef enum
+{
+    QTPopupViewArrowPointToTop,
+    QTPopupViewArrowPointToLeft,
+    QTPopupViewArrowPointToBottom,
+    QTPopupViewArrowPointToRight,
+    
+}QTPopupViewArrowPointTo;
+
 #pragma mark - QTPopupViewDelegate
 
 @protocol QTPopupViewDelegate <NSObject>
@@ -25,12 +34,14 @@
 
 @property (nonatomic, weak) id<QTPopupViewDelegate> delegate;
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView             *tableView; ///< 内部菜单列表tableView，可自省替换
 
-@property (nonatomic, assign) CGFloat itemFontSize;
-@property (nonatomic, assign) CGFloat itemRowHieght;
+@property (nonatomic, assign) CGFloat                 itemFontSize; ///< 菜单字体大小，自定义tableView后失效
+@property (nonatomic, assign) CGFloat                 itemRowHieght; ///< 菜单行高大小，自定义tableView后失效
 
-@property (nonatomic, assign) CGFloat arrowPosition;///< 头顶箭头的处于中间的位置0~1之间
+@property (nonatomic, assign) CGFloat                 arrowPosition;///< 箭头的处于边沿的位置0~1之间
+
+@property (nonatomic, assign) QTPopupViewArrowPointTo arrowPointTo;///< 箭头指向方向
 
 
 - (instancetype)initWithTitles:(NSArray *)titles
@@ -38,6 +49,7 @@
                        atPoint:(CGPoint)point
                    contentSize:(CGSize)contentSize;
 
+- (void)show;
 - (void)dismiss;
 
 @end

@@ -22,6 +22,7 @@
 #import "AnimationsController.h"
 #import "QRDemoViewController.h"
 #import "PopupViewTestController.h"
+#import "QTBounceMenuViewController.h"
 
 @interface TableViewController ()
 
@@ -36,6 +37,7 @@
     [super viewDidLoad];
 
     _classArray = @[
+                    @{@"QTBounceMenuViewController" : [QTBounceMenuViewController class]},
                     @{@"QTSelectionView" : [QTTestViewController class]},
                     @{@"QTTagListView" : [QTTagListTestViewController class]},
                     @{@"QTPickerView" : [QTPickerViewController class]},
@@ -62,6 +64,8 @@
     self.navigationItem.leftBarButtonItem = item;
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    NSLog(@"%@", NSLocalizedStringFromTable(@"abc", @"chinese", nil));
 
 }
 

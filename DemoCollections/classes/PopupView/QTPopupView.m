@@ -88,8 +88,6 @@
 {
     [super drawRect:rect];
 
-    NSLog(@"%@", NSStringFromCGRect(rect));
-
     CGContextRef context = UIGraphicsGetCurrentContext();
     [_background.backgroundColor setFill];
     

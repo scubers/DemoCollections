@@ -34,7 +34,11 @@
     popview.arrowPosition = 0.3;
     popview.arrowPointTo = (arc4random_uniform(4));
     
-    [popview show];
+    popview.alpha = 0.1;
+    [UIView animateWithDuration:0.25 animations:^{
+        [popview show];
+        popview.alpha = 1;
+    }];
     
 }
 

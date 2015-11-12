@@ -131,8 +131,8 @@
     {
         [containerView insertSubview:toController.view aboveSubview:fromController.view];
         destView           = toController.view;
-        destView.transform = CGAffineTransformMakeScale(0.1, 0.1);
-        destTransForm      = CGAffineTransformMakeScale(1, 1);
+//        destView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+//        destTransForm      = CGAffineTransformMakeScale(1, 1);
     }
     if (self.operation == UINavigationControllerOperationPop)
     {
@@ -142,11 +142,12 @@
         
         self.navigationController.delegate = toController;
         
-        destTransForm = CGAffineTransformMakeScale(0.1, 0.1);
+//        destTransForm = CGAffineTransformMakeScale(0.1, 0.1);
     }
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0 options:UIViewAnimationOptionCurveEaseInOut   animations:^{
-        destView.transform = destTransForm;
+//        destView.transform = destTransForm;
+        destView.frame = CGRectMake(10, 100, 100, 100);
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];

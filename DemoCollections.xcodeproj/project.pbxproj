@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		3D043E721B85CDA9008F0B4F /* UIImage+JR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D043E711B85CDA9008F0B4F /* UIImage+JR.m */; };
 		3D05857F1B7A1990006A6903 /* QTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D05857E1B7A1990006A6903 /* QTPickerView.m */; };
+		3D0DA4CD1BF0443C008AB8F0 /* chinese.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D0DA4CC1BF0443C008AB8F0 /* chinese.strings */; };
 		3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */; };
 		3D223B1D1B6EFEB100C1F1B0 /* QTRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */; };
 		3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */; };
+		3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */; };
+		3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */; };
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
@@ -70,12 +73,17 @@
 		3D043E711B85CDA9008F0B4F /* UIImage+JR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JR.m"; sourceTree = "<group>"; };
 		3D05857D1B7A1990006A6903 /* QTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerView.h; sourceTree = "<group>"; };
 		3D05857E1B7A1990006A6903 /* QTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerView.m; sourceTree = "<group>"; };
+		3D0DA4CC1BF0443C008AB8F0 /* chinese.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = chinese.strings; sourceTree = "<group>"; };
 		3D223B151B6EFD0100C1F1B0 /* QTRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendView.h; sourceTree = "<group>"; };
 		3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTRecommendView.m; sourceTree = "<group>"; };
 		3D223B1B1B6EFEB100C1F1B0 /* QTRecommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendViewCell.h; sourceTree = "<group>"; };
 		3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTRecommendViewCell.m; sourceTree = "<group>"; };
 		3D223B1E1B6F00F400C1F1B0 /* RecommendTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendTestViewController.h; sourceTree = "<group>"; };
 		3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendTestViewController.m; sourceTree = "<group>"; };
+		3D42F8691BF43F3800DF7B36 /* QTBounceMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBounceMenuViewController.h; sourceTree = "<group>"; };
+		3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBounceMenuViewController.m; sourceTree = "<group>"; };
+		3D42F86C1BF43F5B00DF7B36 /* QTBounceMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBounceMenuView.h; sourceTree = "<group>"; };
+		3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBounceMenuView.m; sourceTree = "<group>"; };
 		3D8524881B6B9B7200DA22FC /* QTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheet.h; sourceTree = "<group>"; };
 		3D8524891B6B9B7200DA22FC /* QTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheet.m; sourceTree = "<group>"; };
 		3D85248A1B6B9B7200DA22FC /* QTActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheetViewController.h; sourceTree = "<group>"; };
@@ -192,6 +200,17 @@
 				3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */,
 			);
 			path = QTRecommendView;
+			sourceTree = "<group>";
+		};
+		3D42F8681BF43F1B00DF7B36 /* QTBounceMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				3D42F8691BF43F3800DF7B36 /* QTBounceMenuViewController.h */,
+				3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */,
+				3D42F86C1BF43F5B00DF7B36 /* QTBounceMenuView.h */,
+				3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */,
+			);
+			path = QTBounceMenuView;
 			sourceTree = "<group>";
 		};
 		3D8524871B6B9B7200DA22FC /* QTActionSheet */ = {
@@ -337,6 +356,7 @@
 			children = (
 				A8AB86981B52AE4C009B6D52 /* classes */,
 				A8AB86721B52ADEF009B6D52 /* Supporting Files */,
+				3D0DA4CC1BF0443C008AB8F0 /* chinese.strings */,
 			);
 			path = DemoCollections;
 			sourceTree = "<group>";
@@ -380,6 +400,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D42F8681BF43F1B00DF7B36 /* QTBounceMenuView */,
 				3DE192C91BCBA9010082DDA0 /* QRDemo */,
 				A89973C01BE886A3006E18CB /* PopupView */,
 				3DE9F76A1B704F850072F24B /* QTAlertView */,
@@ -550,6 +571,7 @@
 				A8C945F31BB1406C0034183B /* Default@2x.png in Resources */,
 				3DC3636F1BCC9DB00044DE63 /* Launch Screen.storyboard in Resources */,
 				A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */,
+				3D0DA4CD1BF0443C008AB8F0 /* chinese.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +661,8 @@
 				3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */,
 				A842CF4F1B5D28E50015464E /* NSDate+Extension.m in Sources */,
 				A8DC16671B629ACC00FB5933 /* NewtonsCradleView.m in Sources */,
+				3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */,
+				3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */,
 				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,
 				A878D5761BB4173D005F3BF2 /* ViewController.m in Sources */,
 				A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */,

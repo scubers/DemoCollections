@@ -12,8 +12,17 @@
 
 typedef void(^QTCalendarViewControllerCompleteBlock)(QTCalendarViewController *controller ,NSDate *date);
 
+@protocol QTCalendarViewControllerDelegate <NSObject>
+
+- (void)calendarViewController:(QTCalendarViewController *)calendarController didSelectedDate:(NSDate *)date;
+
+@end
+
+
+
 @interface QTCalendarViewController : UITableViewController
 
+@property (nonatomic, weak) id<QTCalendarViewControllerDelegate> delegate;
 
 - (instancetype)initWithComplete:(QTCalendarViewControllerCompleteBlock)complete;
 - (instancetype)initWithDate:(NSDate *)date complete:(QTCalendarViewControllerCompleteBlock)complete;

@@ -12,7 +12,7 @@
 
 #define func_random_color() [UIColor colorWithRed:(float)(arc4random()%10000)/10000.0 green:(float)(arc4random()%10000)/10000.0 blue:(float)(arc4random()%10000)/10000.0 alpha:(float)(arc4random()%10000)/10000.0]
 
-#pragma mark - QTDateButton
+#pragma mark - QTDateButton ------------------------------------------------------------------------
 
 static NSString *QTDateButtonDidClickNotification        = @"QTDateButtonDidClickNotification";
 static NSString *QTDateButtonDidClickNotificationDateKey = @"QTDateButtonDidClickNotificationDateKey";
@@ -97,7 +97,7 @@ static NSDate *globalDate = nil;
 
 @end
 
-#pragma mark - QTDateLinesView
+#pragma mark - QTDateLinesView ---------------------------------------------------------------------
 
 typedef enum
 {
@@ -249,17 +249,11 @@ typedef enum
     [self.dateButtons enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         QTDateButton *button = (QTDateButton *)obj;
-        if ((idx + 1) == day)
+        if ((idx + 1) == day && i < self.dates.count)
         {
-            @try {
-                button.date = dates[i];
-                day++;
-                i++;
-            }
-            @catch (NSException *exception) {
-                NSLog(@"===========>%@", exception);
-                button.date = nil;
-            }
+            button.date = dates[i];
+            day++;
+            i++;
         }
         else
         {
@@ -272,7 +266,8 @@ typedef enum
 @end
 
 
-#pragma mark - QTCalendarViewCell
+#pragma mark - QTCalendarViewCell ------------------------------------------------------------------
+
 #define QTCalendarViewCellMargin 5
 @interface QTCalendarViewCell : UITableViewCell
 
@@ -555,15 +550,15 @@ typedef enum
             return ;
         }
         
-        @try {
+        if (count < self.dates.count && (count + (7 - self.dates[count].weekday + 1)) < self.dates.count) {
             view.dates = [[self.dates subarrayWithRange:NSMakeRange(count, (7 - self.dates[count].weekday + 1))] mutableCopy];
             count = count + (int)(7 - self.dates[count].weekday + 1);
         }
-        @catch (NSException *exception) {
-            NSLog(@"=-=-=-=-=-=->%@", exception);
+        else
+        {
             view.dates = [[self.dates subarrayWithRange:NSMakeRange(count, self.dates.count - count)] mutableCopy];
         }
-        
+                
     }];
     
     [self caculateFrames];
@@ -581,7 +576,7 @@ typedef enum
 @end
 
 
-#pragma mark - QTCalendarViewController
+#pragma mark - QTCalendarViewController ------------------------------------------------------------
 
 @interface QTCalendarViewController()
 
@@ -637,11 +632,17 @@ typedef enum
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectDate:) name:QTDateButtonDidClickNotification object:nil];
 }
 
+
 - (void)didSelectDate:(NSNotification *)noti
 {
-    if (_completeBlock) {
-        self.selectedDate = noti.userInfo[QTDateButtonDidClickNotificationDateKey];
+    self.selectedDate = noti.userInfo[QTDateButtonDidClickNotificationDateKey];
+    if (_completeBlock)
+    {
         _completeBlock(self, self.selectedDate);
+    }
+    else if(_delegate && [_delegate respondsToSelector:@selector(calendarViewController:didSelectedDate:)])
+    {
+        [_delegate calendarViewController:self didSelectedDate:self.selectedDate];
     }
 }
 

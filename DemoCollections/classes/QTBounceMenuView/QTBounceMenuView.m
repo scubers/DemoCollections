@@ -59,6 +59,7 @@
     }
     [self.menuItemViews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self addSubview:obj];
+        obj.alpha = 0;
     }];
 }
 
@@ -91,7 +92,9 @@
     
     [_baseOnView addSubview:self];
     
-    [self showAnimationWithComplete:complete];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self showAnimationWithComplete:complete];
+    });
 
 }
 

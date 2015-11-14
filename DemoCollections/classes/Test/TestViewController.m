@@ -19,6 +19,40 @@
 #define func_random_color() [UIColor colorWithRed:(float)(arc4random()%10000)/10000.0 green:(float)(arc4random()%10000)/10000.0 blue:(float)(arc4random()%10000)/10000.0 alpha:(float)(arc4random()%10000)/10000.0]
 
 
+@interface ABCController : UIViewController
+
+@end
+
+@implementation ABCController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+       self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    }];
+    
+}
+
+@end
+
 
 @interface TestViewController () <UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning,UIGestureRecognizerDelegate>
 
@@ -43,18 +77,20 @@
     
     self.view.backgroundColor = [UIColor blueColor];
    
-//    UINavigationBar *bar = self.navigationController.navigationBar;
-//    
-//    UIView *view = [[UIView alloc] initWithFrame:bar.frame];
-//    
-//    [self.view addSubview:view];
-//    
-//    view.center = self.view.center;
-//    
-//    [view addSubview:bar];
-//    
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    ABCController *abc = [[ABCController alloc] init];
+    
+//    abc.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    
+    [UIApplication sharedApplication].keyWindow.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    [self presentViewController:abc animated:NO completion:nil];
+    
+    
+}
 
 - (void)testUIStackView
 {

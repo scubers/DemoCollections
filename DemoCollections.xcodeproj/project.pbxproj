@@ -15,6 +15,8 @@
 		3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */; };
 		3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */; };
 		3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */; };
+		3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */; };
+		3D671D661BF575A10078F5F9 /* QTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */; };
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
@@ -84,6 +86,10 @@
 		3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBounceMenuViewController.m; sourceTree = "<group>"; };
 		3D42F86C1BF43F5B00DF7B36 /* QTBounceMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBounceMenuView.h; sourceTree = "<group>"; };
 		3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBounceMenuView.m; sourceTree = "<group>"; };
+		3D671D611BF5754D0078F5F9 /* DatePickerViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewControllerTest.h; sourceTree = "<group>"; };
+		3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewControllerTest.m; sourceTree = "<group>"; };
+		3D671D641BF575A10078F5F9 /* QTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTCalendarViewController.h; sourceTree = "<group>"; };
+		3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTCalendarViewController.m; sourceTree = "<group>"; };
 		3D8524881B6B9B7200DA22FC /* QTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheet.h; sourceTree = "<group>"; };
 		3D8524891B6B9B7200DA22FC /* QTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheet.m; sourceTree = "<group>"; };
 		3D85248A1B6B9B7200DA22FC /* QTActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheetViewController.h; sourceTree = "<group>"; };
@@ -211,6 +217,17 @@
 				3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */,
 			);
 			path = QTBounceMenuView;
+			sourceTree = "<group>";
+		};
+		3D7FADBE1BF4BFCA000717BA /* QTDatePickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D671D611BF5754D0078F5F9 /* DatePickerViewControllerTest.h */,
+				3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */,
+				3D671D641BF575A10078F5F9 /* QTCalendarViewController.h */,
+				3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */,
+			);
+			path = QTDatePickerViewController;
 			sourceTree = "<group>";
 		};
 		3D8524871B6B9B7200DA22FC /* QTActionSheet */ = {
@@ -400,6 +417,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D7FADBE1BF4BFCA000717BA /* QTDatePickerViewController */,
 				3D42F8681BF43F1B00DF7B36 /* QTBounceMenuView */,
 				3DE192C91BCBA9010082DDA0 /* QRDemo */,
 				A89973C01BE886A3006E18CB /* PopupView */,
@@ -659,12 +677,14 @@
 				3D043E721B85CDA9008F0B4F /* UIImage+JR.m in Sources */,
 				3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */,
 				3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */,
+				3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */,
 				A842CF4F1B5D28E50015464E /* NSDate+Extension.m in Sources */,
 				A8DC16671B629ACC00FB5933 /* NewtonsCradleView.m in Sources */,
 				3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */,
 				3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */,
 				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,
 				A878D5761BB4173D005F3BF2 /* ViewController.m in Sources */,
+				3D671D661BF575A10078F5F9 /* QTCalendarViewController.m in Sources */,
 				A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */,
 				A8771A271B652344009602D3 /* UIView+Extension.m in Sources */,
 				A88AACC11B5B7F1500FBBFA7 /* QTPickerViewController.m in Sources */,

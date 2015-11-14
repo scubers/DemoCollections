@@ -36,7 +36,7 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - Masonry (0.6.3)
-  - MJExtension (2.5.14)
+  - MJExtension (2.5.16)
   - pop (1.0.8)
   - POP+MCAnimate (2.0.1):
     - pop (~> 1.0)
@@ -91,7 +91,7 @@ SPEC CHECKSUMS:
   AFNetworking: 8e4e60500beb8bec644cf575beee72990a76d399
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
-  MJExtension: fb8e6e900fb44c9a7be435ba3d72b7fdf5f0994c
+  MJExtension: b8c1321a77d91bcc007b94d38cbf5383c95ea30e
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   POP+MCAnimate: a99e209148c602512de487f1160a44bf78572024
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a

@@ -66,6 +66,7 @@ static NSDate *globalDate = nil;
 - (void)click:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:QTDateButtonDidClickNotification object:nil userInfo:@{QTDateButtonDidClickNotificationDateKey : self.date}];
+    globalDate = self.date;
 }
 
 #pragma mark - Getter Setter

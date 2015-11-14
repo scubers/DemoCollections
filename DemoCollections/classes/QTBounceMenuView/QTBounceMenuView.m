@@ -105,18 +105,18 @@
 {
     [self.menuItemViews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        obj.transform = CGAffineTransformMakeTranslation(0, AnimateBaseOffset);
+        CGRect rect = obj.frame;
+        obj.frame = CGRectMake(obj.frame.origin.x, obj.frame.origin.y + AnimateBaseOffset, obj.frame.size.width, obj.frame.size.height);
         obj.alpha = 0;
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * idx * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                obj.transform = CGAffineTransformIdentity;
+            [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                obj.frame = rect;
                 obj.alpha = 1;
             } completion:^(BOOL finished) {
                 complete(self);
             }];
-
+            
         });
         
     }];
@@ -129,6 +129,8 @@
     [self.menuItemViews enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * (self.menuItemViews.count - idx - 1) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            
             [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 obj.frame = CGRectMake(obj.frame.origin.x, obj.frame.origin.y + AnimateBaseOffset, obj.frame.size.width, obj.frame.size.height);
                 obj.alpha = 0;

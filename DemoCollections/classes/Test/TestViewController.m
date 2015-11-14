@@ -29,6 +29,7 @@
 {
     self = [super init];
     if (self) {
+        
     }
     return self;
 }
@@ -37,7 +38,6 @@
 {
     [super viewDidLoad];
     self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     
 }
 
@@ -45,9 +45,9 @@
 {
     [super viewDidAppear:animated];
     
-    [UIView animateWithDuration:0.25 animations:^{
-       self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    }];
+//    [UIView animateWithDuration:0.25 animations:^{
+//       self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    }];
     
 }
 
@@ -83,13 +83,16 @@
 {
     ABCController *abc = [[ABCController alloc] init];
     
-//    abc.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    abc.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     
-    [UIApplication sharedApplication].keyWindow.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    [UIApplication sharedApplication].keyWindow.rootViewController.modalPresentationStyle = UIModalPresentationCurrentContext;
     
-    [self presentViewController:abc animated:NO completion:nil];
+    [self presentViewController:abc animated:YES completion:nil];
     
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ab" message:nil delegate:self cancelButtonTitle:@"sdf" otherButtonTitles:@"sdf", nil];
+        [alert show];
+    });
 }
 
 - (void)testUIStackView

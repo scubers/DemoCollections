@@ -23,6 +23,8 @@
 		3D8592A41BABF9DE0021D1B8 /* NavigationAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592A31BABF9DE0021D1B8 /* NavigationAnimationDemo.m */; };
 		3D8592A81BAC0E330021D1B8 /* AnimationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592A71BAC0E330021D1B8 /* AnimationsController.m */; };
 		3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8592AA1BAC0E8D0021D1B8 /* Animation1.m */; };
+		3D8ACD121BF734ED00DC222E /* QTInvitationConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ACD111BF734ED00DC222E /* QTInvitationConfirmViewController.m */; };
+		3D8ACD151BF736C500DC222E /* InvitationTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8ACD141BF736C500DC222E /* InvitationTestController.m */; };
 		3D9227421BA3D31D00F3B7E3 /* TestViewControllerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */; };
 		3DAE5B561B71BE29000383A0 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE5B551B71BE29000383A0 /* TestViewController.m */; };
 		3DC3636F1BCC9DB00044DE63 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DC3636E1BCC9DB00044DE63 /* Launch Screen.storyboard */; };
@@ -102,6 +104,10 @@
 		3D8592A71BAC0E330021D1B8 /* AnimationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationsController.m; sourceTree = "<group>"; };
 		3D8592A91BAC0E8D0021D1B8 /* Animation1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation1.h; sourceTree = "<group>"; };
 		3D8592AA1BAC0E8D0021D1B8 /* Animation1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation1.m; sourceTree = "<group>"; };
+		3D8ACD101BF734ED00DC222E /* QTInvitationConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTInvitationConfirmViewController.h; sourceTree = "<group>"; };
+		3D8ACD111BF734ED00DC222E /* QTInvitationConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTInvitationConfirmViewController.m; sourceTree = "<group>"; };
+		3D8ACD131BF736C500DC222E /* InvitationTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationTestController.h; sourceTree = "<group>"; };
+		3D8ACD141BF736C500DC222E /* InvitationTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationTestController.m; sourceTree = "<group>"; };
 		3D9227401BA3D31C00F3B7E3 /* DemoCollections-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoCollections-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D9227411BA3D31D00F3B7E3 /* TestViewControllerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewControllerSwift.swift; sourceTree = "<group>"; };
 		3DAE5B541B71BE29000383A0 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -261,6 +267,17 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		3D8ACD0F1BF734CF00DC222E /* QTInvitationConfirmController */ = {
+			isa = PBXGroup;
+			children = (
+				3D8ACD101BF734ED00DC222E /* QTInvitationConfirmViewController.h */,
+				3D8ACD111BF734ED00DC222E /* QTInvitationConfirmViewController.m */,
+				3D8ACD131BF736C500DC222E /* InvitationTestController.h */,
+				3D8ACD141BF736C500DC222E /* InvitationTestController.m */,
+			);
+			path = QTInvitationConfirmController;
+			sourceTree = "<group>";
+		};
 		3DAE5B531B71BE1D000383A0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +434,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D8ACD0F1BF734CF00DC222E /* QTInvitationConfirmController */,
 				3D7FADBE1BF4BFCA000717BA /* QTDatePickerViewController */,
 				3D42F8681BF43F1B00DF7B36 /* QTBounceMenuView */,
 				3DE192C91BCBA9010082DDA0 /* QRDemo */,
@@ -668,6 +686,8 @@
 				A8DC16661B629ACC00FB5933 /* BallView.m in Sources */,
 				A8AB86A21B52AE4C009B6D52 /* main.m in Sources */,
 				3DE192D41BCBB0090082DDA0 /* QTQRScanViewController.m in Sources */,
+				3D8ACD151BF736C500DC222E /* InvitationTestController.m in Sources */,
+				3D8ACD121BF734ED00DC222E /* QTInvitationConfirmViewController.m in Sources */,
 				A8AB86A11B52AE4C009B6D52 /* AppDelegate.m in Sources */,
 				3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */,
 				3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */,

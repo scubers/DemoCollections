@@ -24,6 +24,7 @@
 #import "PopupViewTestController.h"
 #import "QTBounceMenuViewController.h"
 #import "DatePickerViewControllerTest.h"
+#import "InvitationTestController.h"
 
 @interface TableViewController ()
 
@@ -38,6 +39,7 @@
     [super viewDidLoad];
 
     _classArray = @[
+                    @{@"InvitationTestController" : [InvitationTestController class]},
                     @{@"DatePickerViewControllerTest" : [DatePickerViewControllerTest class]},
                     @{@"QTBounceMenuViewController" : [QTBounceMenuViewController class]},
                     @{@"QTSelectionView" : [QTTestViewController class]},

@@ -618,7 +618,7 @@ typedef enum
 {
     [super viewDidAppear:animated];
     
-//    [[NSNotificationCenter defaultCenter] postNotificationName:QTDateButtonDidClickNotification object:nil userInfo:@{QTDateButtonDidClickNotificationDateKey : self.selectedDate}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:QTDateButtonDidClickNotification object:nil userInfo:@{QTDateButtonDidClickNotificationDateKey : self.selectedDate}];
 }
 
 

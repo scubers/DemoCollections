@@ -8,6 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class QTInvitationConfirmViewController, QTInvitation;
+
+typedef enum
+{
+    QTInvitationConfirmViewControllerStatusNormal,
+    QTInvitationConfirmViewControllerStatusLoading,
+    QTInvitationConfirmViewControllerStatusError
+}QTInvitationConfirmViewControllerStatus;
+
+typedef void(^QTConfirmBlock)(QTInvitationConfirmViewController *controller, QTInvitation *invitation);
+
+
 @interface QTInvitationConfirmViewController : UIViewController
+
+@property (nonatomic, assign) QTInvitationConfirmViewControllerStatus status;
+
+
+- (instancetype)initWithInvitation:(QTInvitation *)invitation extraRose:(int)extraRose block:(QTConfirmBlock)block;
+- (void)setStatus:(QTInvitationConfirmViewControllerStatus)status animated:(BOOL)animated;
+
 
 @end

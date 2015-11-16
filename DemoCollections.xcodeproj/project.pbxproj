@@ -15,6 +15,7 @@
 		3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */; };
 		3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */; };
 		3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */; };
+		3D4E6F481BF96FF300570F21 /* ico_xiangce@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D4E6F471BF96FF300570F21 /* ico_xiangce@3x.png */; };
 		3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */; };
 		3D671D661BF575A10078F5F9 /* QTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */; };
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
@@ -88,6 +89,7 @@
 		3D42F86A1BF43F3800DF7B36 /* QTBounceMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBounceMenuViewController.m; sourceTree = "<group>"; };
 		3D42F86C1BF43F5B00DF7B36 /* QTBounceMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTBounceMenuView.h; sourceTree = "<group>"; };
 		3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTBounceMenuView.m; sourceTree = "<group>"; };
+		3D4E6F471BF96FF300570F21 /* ico_xiangce@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_xiangce@3x.png"; sourceTree = "<group>"; };
 		3D671D611BF5754D0078F5F9 /* DatePickerViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewControllerTest.h; sourceTree = "<group>"; };
 		3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewControllerTest.m; sourceTree = "<group>"; };
 		3D671D641BF575A10078F5F9 /* QTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTCalendarViewController.h; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				A8D5793D1B5AAAD100824E82 /* Prefix.pch */,
 				3DC79D7E1B72F04B002B1382 /* Main.storyboard */,
 				A846439A1B5A9F68009322F1 /* abc.png */,
+				3D4E6F471BF96FF300570F21 /* ico_xiangce@3x.png */,
 				A8AB867F1B52ADEF009B6D52 /* Images.xcassets */,
 				A8AB86731B52ADEF009B6D52 /* Info.plist */,
 				3DC3636E1BCC9DB00044DE63 /* Launch Screen.storyboard */,
@@ -602,6 +605,7 @@
 				A846439B1B5A9F68009322F1 /* abc.png in Resources */,
 				A8C945F61BB1406C0034183B /* Default-568h@2x.png in Resources */,
 				A8C945F41BB1406C0034183B /* Default-736h@3x.png in Resources */,
+				3D4E6F481BF96FF300570F21 /* ico_xiangce@3x.png in Resources */,
 				A8C945F51BB1406C0034183B /* Default-667h@2x.png in Resources */,
 				3DC79D801B72F04B002B1382 /* Main.storyboard in Resources */,
 				A8C945F31BB1406C0034183B /* Default@2x.png in Resources */,

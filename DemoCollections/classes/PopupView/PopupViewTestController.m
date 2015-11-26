@@ -26,10 +26,25 @@
 {
     CGPoint point = [touches.anyObject locationInView:self.view];
 
-    QTPopupView *popview = [[QTPopupView alloc] initWithTitles:@[@"黑名单",@"举报",@"打人"] inView:self.navigationController.view atPoint:point contentSize:CGSizeMake(100, 150)];
+//    QTPopupView *popview = [[QTPopupView alloc] initWithTitles:@[@"黑名单",@"举报",@"打人"]
+//                                                        inView:self.navigationController.view
+//                                                       atPoint:point
+//                                                   contentSize:CGSizeMake(100, 150)];
+    
+    QTPopupView *popview = [[QTPopupView alloc] initWithTitleAndIcons:@[
+                                                                        @{@"黑名单": [UIImage imageNamed:@"p_ico_bar"]},
+                                                                        @{@"打人": [UIImage imageNamed:@"p_ico_rice"]},
+                                                                        @{@"你妹": [UIImage imageNamed:@"p_ico_cofee"]},
+                                                                        ]
+                                                               inView:self.navigationController.view
+                                                              atPoint:point
+                                                          contentSize:CGSizeMake(150, 200)
+                                                             complete:nil];
 
+    popview.itemTextColor = [UIColor whiteColor];
+    popview.contentInsets = UIEdgeInsetsMake(5, 0, 5, 0);
     popview.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    popview.itemRowHieght = 30;
+    popview.itemRowHieght = 50;
     popview.itemFontSize = 13;
     popview.arrowPosition = 0.3;
     popview.arrowPointTo = (arc4random_uniform(4));

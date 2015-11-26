@@ -12,9 +12,15 @@
 
 @interface QTBounceMenuView()
 
-@property (nonatomic, weak) UIView *baseOnView;///< 显示在哪个view上面, 默认window
+@property (nonatomic, weak  ) UIView       *baseOnView;///< 显示在哪个view上面, 默认window
 
-@property (nonatomic, strong) NSMutableArray<__kindof UIView *> *menuItemViews;
+@property (nonatomic, strong) NSMutableArray<__kindof UIView                   *> *menuItemViews;
+
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, assign) int          pageSize;
+
+@property (nonatomic, assign) int          totalPage;
 
 @end
 
@@ -28,8 +34,7 @@
         [self setupSubviews];
         
         self.baseItemSize = CGSizeZero;
-//        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTap:)];
         [self addGestureRecognizer:tap];
@@ -43,6 +48,11 @@
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.menuItemViews = nil;
+    
+    _scrollView = [[UIScrollView alloc] init];
+    _scrollView.alwaysBounceHorizontal = YES;
+    _scrollView.pagingEnabled          = YES;
+    [self addSubview:_scrollView];
     
     for (int i = 0; i < [_delegate numberOfItemForBounceMenuView:self]; i++)
     {
@@ -58,7 +68,7 @@
         }
     }
     [self.menuItemViews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self addSubview:obj];
+        [_scrollView addSubview:obj];
         obj.alpha = 0;
     }];
 }
@@ -67,6 +77,8 @@
 {
     [super layoutSubviews];
 
+    _scrollView.frame = self.bounds;
+    
     {// 设置每个菜单的大小
         [self.menuItemViews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
@@ -83,6 +95,9 @@
             
         }];
     }
+    
+    // 设置contentSize
+    _scrollView.contentSize = CGSizeMake(_scrollView.width * self.totalPage, 0);
 }
 
 #pragma mark - 公共方法
@@ -134,7 +149,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * (self.menuItemViews.count - idx - 1) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             
-            [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 obj.frame = CGRectMake(obj.frame.origin.x, obj.frame.origin.y + AnimateBaseOffset, obj.frame.size.width, obj.frame.size.height);
                 obj.alpha = 0;
             } completion:^(BOOL finished) {
@@ -152,21 +167,28 @@
 - (void)defaultLayoutForMenuView:(UIView *)menuView AtIndex:(NSInteger)index
 {
     if (CGSizeEqualToSize(_baseItemSize, CGSizeZero)) return;
-        
+    
     CGRect areaRect = CGRectMake(_contentInsets.left, _contentInsets.top, self.bounds.size.width - (_contentInsets.left + _contentInsets.right), self.bounds.size.height - (_contentInsets.top + _contentInsets.bottom));
     
     CGFloat x = 0;
     CGFloat y = 0;
     
-    int line = (int)index / _totalColumn;
+    int line = (index % self.pageSize) / _totalColumn;
     int column = (int)index % _totalColumn;
     
     CGFloat columnGap = (areaRect.size.width - (_totalColumn * _baseItemSize.width)) / (_totalColumn - 1);
     
-    x = column * (_baseItemSize.width + columnGap) + _contentInsets.left;
+    int currentPage = (int)floor((double)index / self.pageSize);
+    
+    NSLog(@"%d", currentPage);
+    NSLog(@"%d", self.pageSize);
+    
+    x = column * (_baseItemSize.width + columnGap) + _contentInsets.left + (/**页码*/currentPage * (_scrollView.frame.size.width));
     y = line * (_baseItemSize.height + _lineGap) + _contentInsets.top;
     
     menuView.frame = CGRectMake(x, y, _baseItemSize.width, _baseItemSize.height);
+    
+//    NSLog(@"%@", NSStringFromCGRect(menuView.frame));
 }
 
 #pragma mark - 事件响应
@@ -208,6 +230,17 @@
     _delegate = delegate;
     
     [self setupSubviews];
+}
+
+- (int)pageSize
+{
+    return self.totalLine * self.totalColumn;
+}
+
+- (int)totalPage
+{
+    NSInteger totalItemCount = [self.delegate numberOfItemForBounceMenuView:self];
+    return (int)ceil((double)totalItemCount/self.pageSize);
 }
 
 @end

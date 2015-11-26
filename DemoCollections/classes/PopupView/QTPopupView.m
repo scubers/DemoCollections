@@ -7,6 +7,7 @@
 //
 
 #import "QTPopupView.h"
+#import "ReactiveCocoa.h"
 
 #pragma mark - QTPopupViewCell
 @interface QTPopupViewCell : UITableViewCell
@@ -24,6 +25,16 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    CGRect rect = self.contentView.bounds;
+    CGFloat height = rect.size.height - 10;
+    self.imageView.frame = CGRectMake(10, 5, height, height);
+    self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 5, rect.size.width - CGRectGetMaxX(self.imageView.frame) - 10, height);
+}
+
 @end
 
 #pragma mark - QTPopupView
@@ -34,11 +45,17 @@
 
 @property (nonatomic, strong) UIView *background;
 
-@property (nonatomic, strong) NSMutableArray *titles;
+@property (nonatomic, strong) NSMutableArray<NSString *> *titles;
+@property (nonatomic, strong) NSMutableArray<NSDictionary<NSString *, UIImage *> *> *selectionsInfo;
 
 @property (nonatomic, assign) CGSize contentSize; ///< 指定的内容大小
 @property (nonatomic, assign) CGPoint atPoint;  ///< 触发的点
 @property (nonatomic, strong) UIView *hangView; ///< 显示pop的view
+
+
+
+
+@property (nonatomic, copy) QTPopupViewCompleteBlock completeBlock;
 
 @end
 
@@ -50,13 +67,27 @@
     if (self = [super initWithFrame:frame])
     {
         [self setupSubviews];
-        self.backgroundColor = [UIColor blackColor];
-        self.userInteractionEnabled = YES;
+        
+        // 初始化默认值
+        _itemTextColor       = [UIColor whiteColor];
+        _contentInsets       = UIEdgeInsetsMake(5, 0, 5, 0);
+        _itemRowHieght       = 50;
+        _itemFontSize        = 13;
+        _arrowPosition       = 0.5;
+        _arrowPointTo        = QTPopupViewArrowPointToTop;
+        self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        
+        
+        
     }
     return self;
 }
 
-- (instancetype)initWithTitles:(NSArray *)titles inView:(UIView *)view atPoint:(CGPoint)point contentSize:(CGSize)contentSize
+- (instancetype)initWithTitles:(NSArray<NSString *> *)titles
+                        inView:(UIView *)view
+                       atPoint:(CGPoint)point
+                   contentSize:(CGSize)contentSize
+                      complete:(QTPopupViewCompleteBlock)complete
 {
     if (self = [super init])
     {
@@ -67,6 +98,21 @@
     }
     return self;
 }
+
+- (instancetype)initWithTitleAndIcons:(NSArray<NSDictionary<NSString *, UIImage *> *> *)infos
+                               inView:(UIView *)view
+                              atPoint:(CGPoint)point
+                          contentSize:(CGSize)contentSize
+                             complete:(QTPopupViewCompleteBlock)complete
+{
+    self = [[QTPopupView alloc] initWithTitles:nil inView:view atPoint:point contentSize:contentSize complete:complete];
+    if (self) {
+        _selectionsInfo = [infos mutableCopy];
+    }
+    return self;
+}
+
+
 
 - (void)setupSubviews
 {
@@ -139,7 +185,8 @@
     [self adjustSelfFrame];
     
     _background.frame = CGRectMake(BorderMargin, BorderMargin, self.bounds.size.width - 2*BorderMargin, self.bounds.size.height - 2*BorderMargin);
-    _tableView.frame  = _background.bounds;
+    
+    _tableView.frame  = UIEdgeInsetsInsetRect(_background.bounds, self.contentInsets);
 
     _background.layer.cornerRadius = 3;
     _background.clipsToBounds      = YES;
@@ -197,15 +244,39 @@
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _titles.count;
+    if (_titles.count) {
+        return _titles.count;
+    }
+    else if(_selectionsInfo.count)
+    {
+        return _selectionsInfo.count;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     QTPopupViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([QTPopupViewCell class]) forIndexPath:indexPath];
 
-    cell.textLabel.text = _titles[indexPath.row];
-    if (_itemFontSize) cell.textLabel.font = [UIFont systemFontOfSize:_itemFontSize];
+    if (_titles.count)
+    {
+        cell.textLabel.text = _titles[indexPath.row];
+    }
+    else if(_selectionsInfo.count)
+    {
+        NSDictionary *info = _selectionsInfo[indexPath.row];
+        cell.textLabel.text = info.allKeys.firstObject;
+        cell.imageView.image = info.allValues.firstObject;
+    }
+    
+    if (_itemTextColor) {
+        cell.textLabel.textColor = _itemTextColor;
+    }
+    
+    if (_itemFontSize)
+        cell.textLabel.font = [UIFont systemFontOfSize:_itemFontSize];
+    
+    cell.backgroundColor = func_random_color();
 
     return cell;
 }
@@ -217,7 +288,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(popupView:didSelectItemAtIndex:)])
+    
+    if(_completeBlock)
+    {
+        _completeBlock(self, indexPath);
+    }
+    else if (_delegate && [_delegate respondsToSelector:@selector(popupView:didSelectItemAtIndex:)])
     {
         [_delegate popupView:self didSelectItemAtIndex:indexPath];
     }
@@ -259,6 +335,20 @@
 {
     [_tableView removeFromSuperview];
     _tableView = tableView;
+    
+    __weak typeof(self) ws = self;
+    [[tableView rac_signalForSelector:@selector(selectRowAtIndexPath:animated:scrollPosition:)] subscribeNext:^(id x) {
+        if (ws.completeBlock) {
+            ws.completeBlock(ws, [x first]);
+        }
+        else
+        {
+            if (ws.delegate && [ws.delegate respondsToSelector:@selector(popupView:didSelectItemAtIndex:)]) {
+                [ws.delegate popupView:ws didSelectItemAtIndex:[x first]];
+            }
+        }
+    }];
+    
     [_background addSubview:_tableView];
 }
 

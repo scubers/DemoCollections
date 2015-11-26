@@ -33,10 +33,11 @@
     menu.delegate = self;
     
     menu.lineGap = 20;
-    menu.baseItemSize = CGSizeMake(50, 50);
-    menu.totalColumn = 4;
+    menu.baseItemSize = CGSizeMake(60, 60);
+    menu.totalColumn = 3;
+    menu.totalLine = 3;
     
-    menu.contentInsets = UIEdgeInsetsMake(200, 20, 0, 20);
+    menu.contentInsets = UIEdgeInsetsMake(200, 40, 0, 40);
     
     [menu showAtView:self.view complete:^(QTBounceMenuView *bounceMenuView) {
         
@@ -47,7 +48,7 @@
 #pragma mark - <QTBounceMenuViewDelegate>
 - (NSInteger)numberOfItemForBounceMenuView:(QTBounceMenuView *)bounceMenuView
 {
-    return 8;
+    return 19;
 }
 
 //- (CGRect)frameForItemInBounceMenuView:(QTBounceMenuView *)bounceMenuView atIndex:(NSInteger)index

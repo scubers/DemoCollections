@@ -34,6 +34,7 @@
 
 @property (nonatomic, assign) CGFloat                  lineGap;
 @property (nonatomic, assign) int                      totalColumn;
+@property (nonatomic, assign) int                      totalLine;
 @property (nonatomic, assign) CGSize                   baseItemSize;
 
 - (void)showAtView:(UIView *)view complete:(void (^)(QTBounceMenuView *bounceMenuView))complete;

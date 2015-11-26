@@ -18,6 +18,12 @@
 		3D4E6F481BF96FF300570F21 /* ico_xiangce@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D4E6F471BF96FF300570F21 /* ico_xiangce@3x.png */; };
 		3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */; };
 		3D671D661BF575A10078F5F9 /* QTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */; };
+		3D7CCA351C06DBC2001002AD /* p_ico_cofee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA2F1C06DBC2001002AD /* p_ico_cofee@2x.png */; };
+		3D7CCA361C06DBC2001002AD /* p_ico_cofee@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA301C06DBC2001002AD /* p_ico_cofee@3x.png */; };
+		3D7CCA371C06DBC2001002AD /* p_ico_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA311C06DBC2001002AD /* p_ico_bar@2x.png */; };
+		3D7CCA381C06DBC2001002AD /* p_ico_bar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA321C06DBC2001002AD /* p_ico_bar@3x.png */; };
+		3D7CCA391C06DBC2001002AD /* p_ico_rice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA331C06DBC2001002AD /* p_ico_rice@2x.png */; };
+		3D7CCA3A1C06DBC2001002AD /* p_ico_rice@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA341C06DBC2001002AD /* p_ico_rice@3x.png */; };
 		3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8524891B6B9B7200DA22FC /* QTActionSheet.m */; };
 		3D85248D1B6B9B7200DA22FC /* QTActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248B1B6B9B7200DA22FC /* QTActionSheetViewController.m */; };
 		3D8524901B6B9B9200DA22FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D85248F1B6B9B9200DA22FC /* TableViewController.m */; };
@@ -94,6 +100,12 @@
 		3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewControllerTest.m; sourceTree = "<group>"; };
 		3D671D641BF575A10078F5F9 /* QTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTCalendarViewController.h; sourceTree = "<group>"; };
 		3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTCalendarViewController.m; sourceTree = "<group>"; };
+		3D7CCA2F1C06DBC2001002AD /* p_ico_cofee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_cofee@2x.png"; sourceTree = "<group>"; };
+		3D7CCA301C06DBC2001002AD /* p_ico_cofee@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_cofee@3x.png"; sourceTree = "<group>"; };
+		3D7CCA311C06DBC2001002AD /* p_ico_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_bar@2x.png"; sourceTree = "<group>"; };
+		3D7CCA321C06DBC2001002AD /* p_ico_bar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_bar@3x.png"; sourceTree = "<group>"; };
+		3D7CCA331C06DBC2001002AD /* p_ico_rice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_rice@2x.png"; sourceTree = "<group>"; };
+		3D7CCA341C06DBC2001002AD /* p_ico_rice@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_rice@3x.png"; sourceTree = "<group>"; };
 		3D8524881B6B9B7200DA22FC /* QTActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheet.h; sourceTree = "<group>"; };
 		3D8524891B6B9B7200DA22FC /* QTActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTActionSheet.m; sourceTree = "<group>"; };
 		3D85248A1B6B9B7200DA22FC /* QTActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTActionSheetViewController.h; sourceTree = "<group>"; };
@@ -400,6 +412,12 @@
 		A8AB86721B52ADEF009B6D52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3D7CCA2F1C06DBC2001002AD /* p_ico_cofee@2x.png */,
+				3D7CCA301C06DBC2001002AD /* p_ico_cofee@3x.png */,
+				3D7CCA311C06DBC2001002AD /* p_ico_bar@2x.png */,
+				3D7CCA321C06DBC2001002AD /* p_ico_bar@3x.png */,
+				3D7CCA331C06DBC2001002AD /* p_ico_rice@2x.png */,
+				3D7CCA341C06DBC2001002AD /* p_ico_rice@3x.png */,
 				A8C945EF1BB1406C0034183B /* Default@2x.png */,
 				A8C945F01BB1406C0034183B /* Default-736h@3x.png */,
 				A8C945F11BB1406C0034183B /* Default-667h@2x.png */,
@@ -606,11 +624,17 @@
 				A8C945F61BB1406C0034183B /* Default-568h@2x.png in Resources */,
 				A8C945F41BB1406C0034183B /* Default-736h@3x.png in Resources */,
 				3D4E6F481BF96FF300570F21 /* ico_xiangce@3x.png in Resources */,
+				3D7CCA391C06DBC2001002AD /* p_ico_rice@2x.png in Resources */,
 				A8C945F51BB1406C0034183B /* Default-667h@2x.png in Resources */,
+				3D7CCA351C06DBC2001002AD /* p_ico_cofee@2x.png in Resources */,
+				3D7CCA371C06DBC2001002AD /* p_ico_bar@2x.png in Resources */,
 				3DC79D801B72F04B002B1382 /* Main.storyboard in Resources */,
+				3D7CCA361C06DBC2001002AD /* p_ico_cofee@3x.png in Resources */,
 				A8C945F31BB1406C0034183B /* Default@2x.png in Resources */,
+				3D7CCA3A1C06DBC2001002AD /* p_ico_rice@3x.png in Resources */,
 				3DC3636F1BCC9DB00044DE63 /* Launch Screen.storyboard in Resources */,
 				A8AB86801B52ADEF009B6D52 /* Images.xcassets in Resources */,
+				3D7CCA381C06DBC2001002AD /* p_ico_bar@3x.png in Resources */,
 				3D0DA4CD1BF0443C008AB8F0 /* chinese.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

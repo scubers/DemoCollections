@@ -42,6 +42,8 @@ typedef void(^QTPopupViewCompleteBlock)(QTPopupView *popupView, NSIndexPath *ind
 @property (nonatomic, assign) CGFloat                 itemFontSize;///< 菜单字体大小，自定义tableView后失效
 @property (nonatomic, assign) CGFloat                 itemRowHieght;///< 菜单行高大小，自定义tableView后失效
 @property (nonatomic, strong) UIColor                 *itemTextColor;
+@property (nonatomic, strong) UIColor                 *seperatorColor;///< 分割线颜色
+
 
 @property (nonatomic, assign) CGFloat                 arrowPosition;///< 箭头的处于边沿的位置0~1之间
 

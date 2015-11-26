@@ -12,6 +12,8 @@
 #pragma mark - QTPopupViewCell
 @interface QTPopupViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIView *seperator;
+
 @end
 
 @implementation QTPopupViewCell
@@ -20,6 +22,8 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
+        _seperator = [[UIView alloc] init];
+        [self.contentView addSubview:_seperator];
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
@@ -33,6 +37,8 @@
     CGFloat height = rect.size.height - 10;
     self.imageView.frame = CGRectMake(10, 5, height, height);
     self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 5, rect.size.width - CGRectGetMaxX(self.imageView.frame) - 10, height);
+    
+    self.seperator.frame = CGRectMake(0, rect.size.height - 0.3, rect.size.width, 0.3);
 }
 
 @end
@@ -71,13 +77,12 @@
         // 初始化默认值
         _itemTextColor       = [UIColor whiteColor];
         _contentInsets       = UIEdgeInsetsMake(5, 0, 5, 0);
-        _itemRowHieght       = 50;
+        _itemRowHieght       = 35;
         _itemFontSize        = 13;
         _arrowPosition       = 0.5;
         _arrowPointTo        = QTPopupViewArrowPointToTop;
+        _seperatorColor      = [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1];
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-        
-        
         
     }
     return self;
@@ -273,10 +278,13 @@
         cell.textLabel.textColor = _itemTextColor;
     }
     
-    if (_itemFontSize)
+    if (_itemFontSize) {
         cell.textLabel.font = [UIFont systemFontOfSize:_itemFontSize];
+    }
     
-    cell.backgroundColor = func_random_color();
+    if (_seperatorColor) {
+        cell.seperator.backgroundColor = _seperatorColor;
+    }
 
     return cell;
 }

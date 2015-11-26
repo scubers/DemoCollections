@@ -44,7 +44,7 @@
     popview.itemTextColor = [UIColor whiteColor];
     popview.contentInsets = UIEdgeInsetsMake(5, 0, 5, 0);
     popview.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    popview.itemRowHieght = 50;
+    popview.itemRowHieght = 35;
     popview.itemFontSize = 13;
     popview.arrowPosition = 0.3;
     popview.arrowPointTo = (arc4random_uniform(4));

@@ -18,6 +18,10 @@
 		3D4E6F481BF96FF300570F21 /* ico_xiangce@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D4E6F471BF96FF300570F21 /* ico_xiangce@3x.png */; };
 		3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */; };
 		3D671D661BF575A10078F5F9 /* QTCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */; };
+		3D700EA31C09505D00A64EC0 /* QTParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D700EA21C09505D00A64EC0 /* QTParentViewController.m */; };
+		3D700EA61C09508800A64EC0 /* QTFirstController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D700EA51C09508800A64EC0 /* QTFirstController.m */; };
+		3D700EA91C09509000A64EC0 /* QTSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D700EA81C09509000A64EC0 /* QTSecondController.m */; };
+		3D700EAC1C09509800A64EC0 /* QTThirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D700EAB1C09509800A64EC0 /* QTThirdController.m */; };
 		3D7CCA351C06DBC2001002AD /* p_ico_cofee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA2F1C06DBC2001002AD /* p_ico_cofee@2x.png */; };
 		3D7CCA361C06DBC2001002AD /* p_ico_cofee@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA301C06DBC2001002AD /* p_ico_cofee@3x.png */; };
 		3D7CCA371C06DBC2001002AD /* p_ico_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7CCA311C06DBC2001002AD /* p_ico_bar@2x.png */; };
@@ -100,6 +104,14 @@
 		3D671D621BF5754D0078F5F9 /* DatePickerViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewControllerTest.m; sourceTree = "<group>"; };
 		3D671D641BF575A10078F5F9 /* QTCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTCalendarViewController.h; sourceTree = "<group>"; };
 		3D671D651BF575A10078F5F9 /* QTCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTCalendarViewController.m; sourceTree = "<group>"; };
+		3D700EA11C09505D00A64EC0 /* QTParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTParentViewController.h; sourceTree = "<group>"; };
+		3D700EA21C09505D00A64EC0 /* QTParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTParentViewController.m; sourceTree = "<group>"; };
+		3D700EA41C09508800A64EC0 /* QTFirstController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTFirstController.h; sourceTree = "<group>"; };
+		3D700EA51C09508800A64EC0 /* QTFirstController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTFirstController.m; sourceTree = "<group>"; };
+		3D700EA71C09509000A64EC0 /* QTSecondController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTSecondController.h; sourceTree = "<group>"; };
+		3D700EA81C09509000A64EC0 /* QTSecondController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTSecondController.m; sourceTree = "<group>"; };
+		3D700EAA1C09509800A64EC0 /* QTThirdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTThirdController.h; sourceTree = "<group>"; };
+		3D700EAB1C09509800A64EC0 /* QTThirdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTThirdController.m; sourceTree = "<group>"; };
 		3D7CCA2F1C06DBC2001002AD /* p_ico_cofee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_cofee@2x.png"; sourceTree = "<group>"; };
 		3D7CCA301C06DBC2001002AD /* p_ico_cofee@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_cofee@3x.png"; sourceTree = "<group>"; };
 		3D7CCA311C06DBC2001002AD /* p_ico_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_ico_bar@2x.png"; sourceTree = "<group>"; };
@@ -237,6 +249,21 @@
 				3D42F86D1BF43F5B00DF7B36 /* QTBounceMenuView.m */,
 			);
 			path = QTBounceMenuView;
+			sourceTree = "<group>";
+		};
+		3D700EA01C09504800A64EC0 /* ChildViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D700EA11C09505D00A64EC0 /* QTParentViewController.h */,
+				3D700EA21C09505D00A64EC0 /* QTParentViewController.m */,
+				3D700EA41C09508800A64EC0 /* QTFirstController.h */,
+				3D700EA51C09508800A64EC0 /* QTFirstController.m */,
+				3D700EA71C09509000A64EC0 /* QTSecondController.h */,
+				3D700EA81C09509000A64EC0 /* QTSecondController.m */,
+				3D700EAA1C09509800A64EC0 /* QTThirdController.h */,
+				3D700EAB1C09509800A64EC0 /* QTThirdController.m */,
+			);
+			path = ChildViewController;
 			sourceTree = "<group>";
 		};
 		3D7FADBE1BF4BFCA000717BA /* QTDatePickerViewController */ = {
@@ -455,6 +482,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D700EA01C09504800A64EC0 /* ChildViewController */,
 				3D8ACD0F1BF734CF00DC222E /* QTInvitationConfirmController */,
 				3D7FADBE1BF4BFCA000717BA /* QTDatePickerViewController */,
 				3D42F8681BF43F1B00DF7B36 /* QTBounceMenuView */,
@@ -713,9 +741,11 @@
 				A8AB88CA1B52AEEA009B6D52 /* QTSelectionView.m in Sources */,
 				A8DC16661B629ACC00FB5933 /* BallView.m in Sources */,
 				A8AB86A21B52AE4C009B6D52 /* main.m in Sources */,
+				3D700EAC1C09509800A64EC0 /* QTThirdController.m in Sources */,
 				3DE192D41BCBB0090082DDA0 /* QTQRScanViewController.m in Sources */,
 				3D8ACD151BF736C500DC222E /* InvitationTestController.m in Sources */,
 				3D8ACD121BF734ED00DC222E /* QTInvitationConfirmViewController.m in Sources */,
+				3D700EA31C09505D00A64EC0 /* QTParentViewController.m in Sources */,
 				A8AB86A11B52AE4C009B6D52 /* AppDelegate.m in Sources */,
 				3D85248C1B6B9B7200DA22FC /* QTActionSheet.m in Sources */,
 				3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */,
@@ -724,6 +754,7 @@
 				3DE192D11BCBA9430082DDA0 /* QTQRUtil.m in Sources */,
 				3D043E721B85CDA9008F0B4F /* UIImage+JR.m in Sources */,
 				3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */,
+				3D700EA61C09508800A64EC0 /* QTFirstController.m in Sources */,
 				3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */,
 				3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */,
 				A842CF4F1B5D28E50015464E /* NSDate+Extension.m in Sources */,
@@ -731,6 +762,7 @@
 				3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */,
 				3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */,
 				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,
+				3D700EA91C09509000A64EC0 /* QTSecondController.m in Sources */,
 				A878D5761BB4173D005F3BF2 /* ViewController.m in Sources */,
 				3D671D661BF575A10078F5F9 /* QTCalendarViewController.m in Sources */,
 				A84643991B5A8EDD009322F1 /* QTTagListView.m in Sources */,

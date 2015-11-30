@@ -10,6 +10,8 @@
 		3D043E721B85CDA9008F0B4F /* UIImage+JR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D043E711B85CDA9008F0B4F /* UIImage+JR.m */; };
 		3D05857F1B7A1990006A6903 /* QTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D05857E1B7A1990006A6903 /* QTPickerView.m */; };
 		3D0DA4CD1BF0443C008AB8F0 /* chinese.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D0DA4CC1BF0443C008AB8F0 /* chinese.strings */; };
+		3D14A76F1C09A0D8006C3383 /* ASDisplayKitDemoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14A76E1C09A0D8006C3383 /* ASDisplayKitDemoController.m */; };
+		3D14A7721C09AD7C006C3383 /* ASDemoCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D14A7711C09AD7C006C3383 /* ASDemoCellNode.m */; };
 		3D223B171B6EFD0100C1F1B0 /* QTRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */; };
 		3D223B1D1B6EFEB100C1F1B0 /* QTRecommendViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1C1B6EFEB100C1F1B0 /* QTRecommendViewCell.m */; };
 		3D223B201B6F00F400C1F1B0 /* RecommendTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D223B1F1B6F00F400C1F1B0 /* RecommendTestViewController.m */; };
@@ -89,6 +91,10 @@
 		3D05857D1B7A1990006A6903 /* QTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTPickerView.h; sourceTree = "<group>"; };
 		3D05857E1B7A1990006A6903 /* QTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTPickerView.m; sourceTree = "<group>"; };
 		3D0DA4CC1BF0443C008AB8F0 /* chinese.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = chinese.strings; sourceTree = "<group>"; };
+		3D14A76D1C09A0D8006C3383 /* ASDisplayKitDemoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDisplayKitDemoController.h; sourceTree = "<group>"; };
+		3D14A76E1C09A0D8006C3383 /* ASDisplayKitDemoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDisplayKitDemoController.m; sourceTree = "<group>"; };
+		3D14A7701C09AD7C006C3383 /* ASDemoCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDemoCellNode.h; sourceTree = "<group>"; };
+		3D14A7711C09AD7C006C3383 /* ASDemoCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDemoCellNode.m; sourceTree = "<group>"; };
 		3D223B151B6EFD0100C1F1B0 /* QTRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendView.h; sourceTree = "<group>"; };
 		3D223B161B6EFD0100C1F1B0 /* QTRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTRecommendView.m; sourceTree = "<group>"; };
 		3D223B1B1B6EFEB100C1F1B0 /* QTRecommendViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTRecommendViewCell.h; sourceTree = "<group>"; };
@@ -225,6 +231,17 @@
 				6AD81BD45849FF5CF73D6E14 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3D14A76C1C09A0BE006C3383 /* ASDisplayKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3D14A76D1C09A0D8006C3383 /* ASDisplayKitDemoController.h */,
+				3D14A76E1C09A0D8006C3383 /* ASDisplayKitDemoController.m */,
+				3D14A7701C09AD7C006C3383 /* ASDemoCellNode.h */,
+				3D14A7711C09AD7C006C3383 /* ASDemoCellNode.m */,
+			);
+			path = ASDisplayKitDemo;
 			sourceTree = "<group>";
 		};
 		3D223B141B6EFCF600C1F1B0 /* QTRecommendView */ = {
@@ -482,6 +499,7 @@
 			children = (
 				3D85248E1B6B9B9200DA22FC /* TableViewController.h */,
 				3D85248F1B6B9B9200DA22FC /* TableViewController.m */,
+				3D14A76C1C09A0BE006C3383 /* ASDisplayKitDemo */,
 				3D700EA01C09504800A64EC0 /* ChildViewController */,
 				3D8ACD0F1BF734CF00DC222E /* QTInvitationConfirmController */,
 				3D7FADBE1BF4BFCA000717BA /* QTDatePickerViewController */,
@@ -758,7 +776,9 @@
 				3D8592AB1BAC0E8D0021D1B8 /* Animation1.m in Sources */,
 				3D671D631BF5754D0078F5F9 /* DatePickerViewControllerTest.m in Sources */,
 				A842CF4F1B5D28E50015464E /* NSDate+Extension.m in Sources */,
+				3D14A7721C09AD7C006C3383 /* ASDemoCellNode.m in Sources */,
 				A8DC16671B629ACC00FB5933 /* NewtonsCradleView.m in Sources */,
+				3D14A76F1C09A0D8006C3383 /* ASDisplayKitDemoController.m in Sources */,
 				3D42F86B1BF43F3800DF7B36 /* QTBounceMenuViewController.m in Sources */,
 				3D42F86E1BF43F5B00DF7B36 /* QTBounceMenuView.m in Sources */,
 				A8AB88D61B52B2D5009B6D52 /* QTMultiTableView.m in Sources */,

@@ -451,7 +451,7 @@ typedef enum
     _weekDayView.frame = CGRectMake(x, y, width, height);
     
     __block UIView *lastView;
-    int lineNum = [QTCalendarViewCell lineNumberWith:self.dates];
+    int lineNum = [QTCalendarViewCell lineNumberWithDates:self.dates];
     [self.dateLines enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (!lastView)
         {
@@ -521,14 +521,18 @@ typedef enum
 #pragma mark - 公共方法
 + (CGFloat)cellHeightWithDates:(NSMutableArray<NSDate *> *)dates
 {
-    int lineNum = [QTCalendarViewCell lineNumberWith:dates];
+    int lineNum = [QTCalendarViewCell lineNumberWithDates:dates];
     return (2 * QTCalendarViewCellMargin) + ((3 + lineNum) * BaseLineHeight);
 }
 
 #pragma mark - 私有方法
-+ (int)lineNumberWith:(NSMutableArray<NSDate *> *)dates
++ (int)lineNumberWithDates:(NSMutableArray<NSDate *> *)dates
 {
-    int lineNum = (int)((dates.count - (7 - dates.firstObject.weekday + 1)) % 7 ? ((dates.count - (7 - dates.firstObject.weekday + 1)) / 7+1):(dates.count - (7 - dates.firstObject.weekday + 1)) / 7);
+    int base = (int)(dates.count - (7 - dates.firstObject.weekday + 1));
+    if (base <= 0) return 0;
+    
+//    int lineNum = (int)((dates.count - (7 - dates.firstObject.weekday + 1)) % 7 ? ((dates.count - (7 - dates.firstObject.weekday + 1)) / 7+1):(dates.count - (7 - dates.firstObject.weekday + 1)) / 7);
+    int lineNum = (int)ceil(base / 7.0);
     return lineNum;
 }
 
@@ -541,7 +545,7 @@ typedef enum
     _titleLabel.text = [NSString stringWithFormat:@"%zd年%2zd月", dates.firstObject.year, dates.firstObject.month];
     
     __block int count = 0;
-    int lineNum = [QTCalendarViewCell lineNumberWith:dates];
+    int lineNum = [QTCalendarViewCell lineNumberWithDates:dates];
     [self.dateLines enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         QTDateLinesView *view = (QTDateLinesView *)obj;
@@ -717,6 +721,8 @@ typedef enum
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat abc = [QTCalendarViewCell cellHeightWithDates:self.monthDates[indexPath.row]];
+    NSLog(@"%f", abc);
     return [QTCalendarViewCell cellHeightWithDates:self.monthDates[indexPath.row]];
 }
 

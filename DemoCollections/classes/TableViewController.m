@@ -26,6 +26,7 @@
 #import "DatePickerViewControllerTest.h"
 #import "InvitationTestController.h"
 #import "QTParentViewController.h"
+#import "ASDisplayKitDemoController.h"
 
 @interface TableViewController ()
 
@@ -40,6 +41,7 @@
     [super viewDidLoad];
 
     _classArray = @[
+                    @{@"ASDisplayKitDemoController" : [ASDisplayKitDemoController class]},
                     @{@"QTParentViewController" : [QTParentViewController class]},
                     @{@"InvitationTestController" : [InvitationTestController class]},
                     @{@"DatePickerViewControllerTest" : [DatePickerViewControllerTest class]},
